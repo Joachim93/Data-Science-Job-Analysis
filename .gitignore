@@ -1,2 +1,5 @@
 /.idea
 /.ipynb_checkpoints
+/data
+/__pycache__
+config.py
