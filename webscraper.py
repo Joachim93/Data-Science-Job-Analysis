@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-import time
 import concurrent.futures
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
-import json
 import os
 import re
 from selenium import webdriver
@@ -75,18 +73,21 @@ def get_content(link):
     try:
         r = requests.get(link, headers=headers, timeout=10)
     except:
-        jobs["link"] = link
-        jobs["company"] = np.nan
-        jobs["title"] = np.nan
-        jobs["location"] = np.nan
-        jobs["contract_type"] = np.nan
-        jobs["work_type"] = np.nan
-        jobs["content"] = np.nan
-        jobs["industry"] = np.nan
-        jobs["rating"] = np.nan
-        jobs["num_ratings"] = np.nan
-        print(link)
-        return jobs
+        try:
+            r = requests.get(link, headers=headers, timeout=10)
+        except:
+            jobs["link"] = link
+            jobs["company"] = np.nan
+            jobs["title"] = np.nan
+            jobs["location"] = np.nan
+            jobs["contract_type"] = np.nan
+            jobs["work_type"] = np.nan
+            jobs["content"] = np.nan
+            jobs["industry"] = np.nan
+            jobs["rating"] = np.nan
+            jobs["num_ratings"] = np.nan
+            print(link)
+            return jobs
     jobs["link"] = link
     soup_job = BeautifulSoup(r.content, "html.parser")
     try:
@@ -140,73 +141,68 @@ def get_content(link):
 
 
 if __name__ == '__main__':
-    # cookies = get_cookies()
-    # os.makedirs("data", exist_ok=True)
-    # keywords = ["Data%20Science", "Machine%20Learning", "Maschinelles%20Lernen", "Data%20Scientist", "Data%20Analyst",
-    #             "Data%20Mining", "Data%20Engineer", "Deep%20Learning", "Künstliche%20Intelligenz",
-    #             "Artificial%20Intelligence"]
-    # # keywords = ["Data%20Science", "Machine%20Learning"]
-    #
-    # for keyword in keywords:
-    #
-    #     # find the number of available jobs (includes similar jobs)
-    #     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0"}
-    #     url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
-    #           f"&action=facet_selected%3BcontractTypes%3B222&ct=222"
-    #     r = requests.get(url, headers=headers)
-    #     soup = BeautifulSoup(r.content, "html.parser")
-    #     num_jobs = soup.find("span", class_="at-facet-header-total-results").text
-    #     num_jobs = int(num_jobs.replace(".", ""))
-    #     print(num_jobs)
-    #
-    #     # find the number of similar job to calculate the number of relevant jobs
-    #     url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
-    #           f"&action=facet_selected%3BcontractTypes%3B222&ct=222&of={num_jobs - 1}"
-    #     r = requests.get(url, headers=headers)
-    #     soup = BeautifulSoup(r.content, "html.parser")
-    #     similar_jobs = soup.find("h4", class_="SectionHeaderStyled-sc-fdk3rh-1 cnAJiQ").text
-    #     num_similar_jobs = int(re.sub("[^0-9]", "", similar_jobs))
-    #     print(num_similar_jobs)
-    #     num_relevant_jobs = num_jobs - num_similar_jobs
-    #     print(num_relevant_jobs)
-    #
-    #     urls = []
-    #     for offset in range(0, num_relevant_jobs, 25):
-    #         url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa" \
-    #               f"-3ca166f5fbce&action=facet_selected%3BcontractTypes%3B222&ct=222&of={offset}"
-    #         urls.append(url)
-    #
-    #     print(f"Get links for all job descriptions {keyword.replace('%20', '_')}")
-    #     with concurrent.futures.ThreadPoolExecutor() as executor:
-    #         results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls), total=len(urls)))
-    #
-    #     links = []
-    #     for i in results:
-    #         links.extend(i["link"])
-    #     salaries = []
-    #     for i in results:
-    #         salaries.extend(i["salary"])
-    #
-    #     links_df = pd.DataFrame({"link": links, "salary": salaries,
-    #                              "keyword": len(links) * [keyword.replace('%20', '_')]})
-    #     links_df.to_csv(f"data/{keyword.replace('%20', '_')}_links.csv", index=False)
-    #
-    # if os.path.exists("data/all_links.csv"):
-    #     os.remove("data/all_links.csv")
-    # all_links = pd.read_csv(os.path.join("data", os.listdir("data")[0]))
-    # for file in os.listdir("data")[1:]:
-    #     df = pd.read_csv(os.path.join("data", file))
-    #     all_links = pd.concat([all_links, df], ignore_index=True)
-    # all_links.to_csv("data/all_links.csv", index=False)
+    cookies = get_cookies()
+    os.makedirs("data2", exist_ok=True)
+    keywords = ["Data%20Science", "Machine%20Learning", "Maschinelles%20Lernen", "Data%20Scientist", "Data%20Analyst",
+                "Data%20Mining", "Data%20Engineer", "Deep%20Learning", "Künstliche%20Intelligenz",
+                "Artificial%20Intelligence"]
+    # keywords = ["Data%20Science", "Machine%20Learning"]
 
-    links_df = pd.read_csv("data/all_links.csv")
+    links = []
+    salaries = []
+    keywords_result = []
+
+    for keyword in keywords:
+
+        # find the number of available jobs (includes similar jobs)
+        headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0"}
+        url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
+              f"&action=facet_selected%3BcontractTypes%3B222&ct=222"
+        r = requests.get(url, headers=headers)
+        soup = BeautifulSoup(r.content, "html.parser")
+        num_jobs = soup.find("span", class_="at-facet-header-total-results").text
+        num_jobs = int(num_jobs.replace(".", ""))
+
+        # find the number of similar job to calculate the number of relevant jobs
+        url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
+              f"&action=facet_selected%3BcontractTypes%3B222&ct=222&of={num_jobs - 1}"
+        r = requests.get(url, headers=headers)
+        soup = BeautifulSoup(r.content, "html.parser")
+        similar_jobs = soup.find("h4", class_="SectionHeaderStyled-sc-fdk3rh-1 cnAJiQ").text
+        num_similar_jobs = int(re.sub("[^0-9]", "", similar_jobs))
+        num_relevant_jobs = num_jobs - num_similar_jobs
+
+        urls = []
+        for offset in range(0, num_relevant_jobs, 25):
+            url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa" \
+                  f"-3ca166f5fbce&action=facet_selected%3BcontractTypes%3B222&ct=222&of={offset}"
+            urls.append(url)
+
+        print(f"Get links for {num_relevant_jobs} job descriptions {keyword.replace('%20', '_')}")
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls), total=len(urls)))
+
+        for result in results:
+            links.extend(result["link"])
+            salaries.extend(result["salary"])
+            keywords_result.extend(len(result["link"])*[keyword.replace('%20', '_')])
+
+    if os.path.exists("data2/links.csv"):
+        os.remove("data2/links.csv")
+
+    links_df = pd.DataFrame({"link": links, "salary": salaries,
+                             "keyword": keywords_result})
+    links_df.to_csv("data2/links.csv", index=False)
+
+
+    # links_df = pd.read_csv("data2/links.csv")
     links = links_df["link"].unique()
 
-    print("Get content for all job descriptions")
+    print(f"Get content for {len(links)} job descriptions")
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = list(tqdm(executor.map(get_content, links), total=len(links)))
 
     content_df = pd.DataFrame(results)
-    content_df.to_csv("data/jobs_unique.csv", index=False)
+    content_df.to_csv("data2/jobs_unique.csv", index=False)
     results_df = pd.merge(content_df, links_df, on="link", how="left")
-    results_df.to_csv("data/jobs.csv", index=False)
+    results_df.to_csv("data2/jobs.csv", index=False)
