@@ -86,6 +86,7 @@ def get_content(link):
             jobs["industry"] = np.nan
             jobs["rating"] = np.nan
             jobs["num_ratings"] = np.nan
+            jobs["release_date"] = np.nan
             print(link)
             return jobs
     jobs["link"] = link
@@ -136,6 +137,13 @@ def get_content(link):
             jobs["company_link"] = np.nan
     except AttributeError:
         jobs["company_link"] = np.nan
+    try:
+        js_code = soup_job.find("script", id="js-section-preloaded-HeaderStepStoneBlock").text
+        pattern = re.compile(r'"onlineDate":"(\d{4}-\d{2}-\d{2})')
+        match = pattern.search(js_code)
+        jobs["release_date"] = match.group(1)
+    except AttributeError:
+        jobs["release_date"] = np.nan
 
     return jobs
 
@@ -146,7 +154,7 @@ if __name__ == '__main__':
     keywords = ["Data%20Science", "Machine%20Learning", "Maschinelles%20Lernen", "Data%20Scientist", "Data%20Analyst",
                 "Data%20Mining", "Data%20Engineer", "Deep%20Learning", "Künstliche%20Intelligenz",
                 "Artificial%20Intelligence"]
-    # keywords = ["Data%20Science", "Machine%20Learning"]
+    # keywords = ["Deep%20Learning"]
 
     links = []
     salaries = []
