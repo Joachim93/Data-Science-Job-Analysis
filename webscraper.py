@@ -148,6 +148,28 @@ def get_content(link):
     return jobs
 
 
+def get_company_info(link):
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0"}
+    infos = {}
+    infos["company_link"] = link
+    try:
+        r = requests.get(link, headers=headers, timeout=10)
+    except:
+        infos["company_size"] = np.nan
+        print(link)
+        return infos
+    soup = BeautifulSoup(r.content, "html.parser")
+    try:
+        elements = soup.find_all("li", re.compile("StyledMetaDataWrapper"))
+        if len(elements) > 1 and ("http" not in elements[1].text):
+            infos["company_size"] = elements[1].text
+        else:
+            infos["company_size"] = np.nan
+    except AttributeError:
+        infos["company_size"] = np.nan
+    return infos
+
+
 if __name__ == '__main__':
     cookies = get_cookies()
     os.makedirs("data2", exist_ok=True)
@@ -164,16 +186,18 @@ if __name__ == '__main__':
 
         # find the number of available jobs (includes similar jobs)
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0"}
-        url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
-              f"&action=facet_selected%3BcontractTypes%3B222&ct=222"
+        # url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
+        #       f"&action=facet_selected%3BcontractTypes%3B222&ct=222"
+        url = f"https://www.stepstone.de/5/ergebnisliste.html?what={keyword}&searchOrigin=Resultlist_top-search"
         r = requests.get(url, headers=headers)
         soup = BeautifulSoup(r.content, "html.parser")
         num_jobs = soup.find("span", class_="at-facet-header-total-results").text
         num_jobs = int(num_jobs.replace(".", ""))
 
         # find the number of similar job to calculate the number of relevant jobs
-        url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
-              f"&action=facet_selected%3BcontractTypes%3B222&ct=222&of={num_jobs - 1}"
+        # url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa-3ca166f5fbce" \
+        #       f"&action=facet_selected%3BcontractTypes%3B222&ct=222&of={num_jobs - 1}"
+        url = f"https://www.stepstone.de/5/ergebnisliste.html?what={keyword}&searchOrigin=Resultlist_top-search&of={num_jobs - 1}"
         r = requests.get(url, headers=headers)
         soup = BeautifulSoup(r.content, "html.parser")
         similar_jobs = soup.find("h4", class_="SectionHeaderStyled-sc-fdk3rh-1 cnAJiQ").text
@@ -182,8 +206,9 @@ if __name__ == '__main__':
 
         urls = []
         for offset in range(0, num_relevant_jobs, 25):
-            url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa" \
-                  f"-3ca166f5fbce&action=facet_selected%3BcontractTypes%3B222&ct=222&of={offset}"
+            # url = f"https://www.stepstone.de/5/ergebnisliste.html?ke={keyword}&suid=da46ff49-bcee-4919-91aa" \
+            #       f"-3ca166f5fbce&action=facet_selected%3BcontractTypes%3B222&ct=222&of={offset}"
+            url = f"https://www.stepstone.de/5/ergebnisliste.html?what={keyword}&searchOrigin=Resultlist_top-search&of={offset}"
             urls.append(url)
 
         print(f"Get links for {num_relevant_jobs} job descriptions {keyword.replace('%20', '_')}")
@@ -214,3 +239,16 @@ if __name__ == '__main__':
     content_df.to_csv("data2/jobs_unique.csv", index=False)
     results_df = pd.merge(content_df, links_df, on="link", how="left")
     results_df.to_csv("data2/jobs.csv", index=False)
+
+
+    # results_df = pd.read_csv("data2/jobs.csv")
+    company_links = results_df["company_link"].dropna().unique()
+
+    print("Get additional company information")
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = list(tqdm(executor.map(get_company_info, company_links), total=len(company_links)))
+
+    company_df = pd.DataFrame(results)
+    company_df.to_csv("data2/companies.csv", index=False)
+    results_df = pd.merge(results_df, company_df, on="company_link", how="left")
+    results_df.to_csv("data2/jobs2.csv", index=False)
