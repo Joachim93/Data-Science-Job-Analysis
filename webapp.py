@@ -12,7 +12,7 @@ def load_data():
     geo_data = pd.read_csv("data2/geo_data.csv", index_col=0)
     df_filtered = df_long.loc[(df_long["latitude"].notnull()) & (df_long["confidence"] == 1)
                               & (df_long["title_cat"] != "Others")]
-    df_requirements = pd.read_csv("data2/skills.csv").drop(["link", "content"], axis=1)
+    df_requirements = pd.read_csv("data2/requirements.csv").drop(["link", "content"], axis=1)
     return df_filtered, geo_data, df_requirements
 
 def region_analysis(df_filtered, geo_data):
@@ -66,7 +66,7 @@ def requirements_analysis(df_requirements):
 
     with col1:
         selected_skills = st.selectbox("Which Skills are you interested in?",
-                                       ("All", "Languages", "Technologies", "Libraries"))
+                                       ("All", "Languages", "Technologies", "Libraries", "Education", "Degree", "Experience"))
 
     with col2:
         first_choice = st.selectbox("Which Jobtitle are you interested in?", choices)
@@ -88,7 +88,8 @@ def requirements_analysis(df_requirements):
     percentages_first = pd.Series(
         df_first.drop("title_cat", axis=1).sum() * 100 / len(df_first),
         name=first_choice).to_frame()
-    percentages_first["type"] = 19 * ["Languages"] + 20 * ["Technologies"] + 14 * ["Libraries"]
+    percentages_first["type"] = 19 * ["Languages"] + 20 * ["Technologies"] + 14 * ["Libraries"] + 3 * ["Education"] + \
+                                5 * ["Degree"] + 4 * ["Experience"]
 
     if second_choice == "None":
         percentages = percentages_first
