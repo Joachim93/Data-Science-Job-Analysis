@@ -1,20 +1,28 @@
 import pandas as pd
 from tqdm import tqdm
 import requests
+import concurrent.futures
 
 import config
 
-api_key = config.positionstack_key
-df = pd.read_csv("cleaned_long.csv")
-geo_data = pd.DataFrame()
-locations = df["location_y"].unique()
-for location in tqdm(locations):
+
+def get_location(location):
+    api_key = config.positionstack_key
     url = f"http://api.positionstack.com/v1/forward?access_key={api_key}&query={location}&limit=1&country=DE"
     try:
-        data = pd.DataFrame(requests.get(url).json()["data"])
+        results = pd.DataFrame(requests.get(url).json()["data"])
+        results["location"] = [location]
     except:
-        data = pd.DataFrame(columns=geo_data.columns)
-    data["location"] = [location]
-    geo_data = pd.concat([geo_data, data], ignore_index=True)
+        pass
+    return results
 
-geo_data.to_csv("data2/geo_data2.csv")
+
+df = pd.read_csv("data2/cleaned_long2.csv")
+locations = df["location"].unique()
+
+with concurrent.futures.ThreadPoolExecutor() as executor:
+    geo_data = list(tqdm(executor.map(get_location, locations), total=len(locations)))
+
+geo_data = pd.concat(geo_data)
+
+geo_data.to_csv("data2/geo_data2.csv", index=False)

@@ -8,14 +8,14 @@ st.set_page_config(layout="wide")
 
 @st.cache
 def load_data():
-    df_long = pd.read_csv("data2/cleaned_long.csv")
-    geo_data = pd.read_csv("data2/geo_data.csv", index_col=0)
-    df_filtered = df_long.loc[(df_long["latitude"].notnull()) & (df_long["confidence"] == 1)
-                              & (df_long["title_cat"] != "Others")]
+    df_long = pd.read_csv("data2/cleaned_long_geo.csv")
+    # geo_data = pd.read_csv("data2/geo_data.csv", index_col=0)
+    # df_filtered = df_long.loc[(df_long["latitude"].notnull()) & (df_long["confidence"] == 1)
+    #                           & (df_long["title_cat"] != "Others")]
     df_requirements = pd.read_csv("data2/requirements.csv").drop(["link", "content"], axis=1)
-    return df_filtered, geo_data, df_requirements
+    return df_long, df_requirements
 
-def region_analysis(df_filtered, geo_data):
+def region_analysis(df_long):
     st.title("Distribution of Data Science Jobs in Germany")
     col1, col2 = st.columns([1, 2])
     choices = ["Data Scientist", "Data Analyst", "Data Engineer", "Machine Learning Engineer", "Software Engineer",
@@ -36,11 +36,14 @@ def region_analysis(df_filtered, geo_data):
 
         selected = [check_ds, check_da, check_de, check_mle, check_se, check_dsc, check_m]
         choices_selected = [choice for (choice, value) in zip(choices, selected) if value]
-        df_choice = df_filtered.loc[df_filtered["title_cat"].isin(choices_selected)]
-        counts = df_choice.groupby("location_y")["link"].count().reset_index().rename(
-            {"location_y": "location", "link": "count"}, axis=1)
+        df_choice = df_long.loc[df_long["title_category"].isin(choices_selected)]
+        # counts = df_choice.groupby("location_y")["link"].count().reset_index().rename(
+        #     {"location_y": "location", "link": "count"}, axis=1)
 
-        df_map = pd.merge(counts, geo_data[["location", "latitude", "longitude"]], on="location", how="left")
+        # df_map = pd.merge(counts, geo_data[["location", "latitude", "longitude"]], on="location", how="left")
+
+        df_map = df_choice.groupby(["location", "latitude", "longitude"], as_index=False)["link"].agg({"count": "count"})
+
         df_map["size"] = np.log(df_map["count"] + 1)
 
         fig = px.scatter_mapbox(df_map,
@@ -89,7 +92,7 @@ def requirements_analysis(df_requirements):
         df_first.drop("title_cat", axis=1).sum() * 100 / len(df_first),
         name=first_choice).to_frame()
     percentages_first["type"] = 19 * ["Languages"] + 20 * ["Technologies"] + 14 * ["Libraries"] + 3 * ["Education"] + \
-                                5 * ["Degree"] + 4 * ["Experience"]
+                                5 * ["Degree"] + 3 * ["Experience"]
 
     if second_choice == "None":
         percentages = percentages_first
@@ -126,14 +129,14 @@ def requirements_analysis(df_requirements):
     st.plotly_chart(fig)
 
 
-df_filtered, geo_data, df_requirements = load_data()
+data_long, data_requirements = load_data()
 
 st.sidebar.write("Sidebar")
 options = st.sidebar.radio("Pages", options=["Home", "Requirements Analysis", "Region Analysis"])
 if options == "Requirements Analysis":
-    requirements_analysis(df_requirements)
+    requirements_analysis(data_requirements)
 elif options == "Region Analysis":
-    region_analysis(df_filtered, geo_data)
+    region_analysis(data_long)
 else:
     st.write("TODO")
 
