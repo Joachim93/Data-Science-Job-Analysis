@@ -4,7 +4,8 @@
 /data2
 /__pycache__
 /shapefiles
+/catboost_info
 config.py
 Untitled.ipynb
 Indeed.ipynb
-EDA.ipynb
+Modeling.ipynb
