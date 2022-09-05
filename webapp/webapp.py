@@ -29,8 +29,8 @@ def load_data():
     # df_filtered = df_long.loc[(df_long["latitude"].notnull()) & (df_long["confidence"] == 1)
     #                           & (df_long["title_cat"] != "Others")]
     df_requirements = pd.read_csv("data2/cleaned_wide.csv")
-    groups = 21 * ["General_info"] + 18 * ["Languages"] + 23 * ["Technologies"] + 13 * ["Libraries"] + 4 * [
-        "Education"] + 5 * ["Degree"] + 4 * ["Experience"]
+    groups = 21*["General_info"] + 18*["Languages"] + 19*["Technologies"] + 14*["Libraries"] + 4*["Education"] \
+             + 5*["Degree"] + 8*["Knowledge"] + 10*["Soft Skills"] + 4*["Experience"]
     df_requirements.columns = pd.MultiIndex.from_arrays([groups, df_requirements.columns])
     # df_requirements = pd.read_csv("../data2/requirements.csv")
     return df_long, df_requirements
