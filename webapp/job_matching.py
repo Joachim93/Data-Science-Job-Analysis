@@ -6,16 +6,24 @@ def job_matching(df):
     st.title("Job Matching")
 
     with st.form(key="inputs"):
-        experience = st.radio("how much professional experience do you have?", ["little", "some", "much"])
-        st.write("job with lower experience levels will always be included")
-        education = st.radio("what level of education do you have?", ["no degree", "bachelor", "master", "phd"])
-        st.write("job with lower education levels will always be included")
+        col1, col2 = st.columns(2)
+        with col1:
+            experience = st.radio("how much professional experience do you have?", ["little", "some", "much"])
+            st.write("job with lower experience levels will always be included")
+        with col2:
+            education = st.radio("what level of education do you have?", ["no degree", "bachelor", "master", "phd"])
+            st.write("job with lower education levels will always be included")
 
-        languages = st.multiselect("languages", df["Languages"].columns)
-        technologies = st.multiselect("technologies", df["Technologies"].columns)
-        libraries = st.multiselect("python libraries", df["Libraries"].columns)
-
-        min_matches = st.number_input("Select the minimum number of matches for an opening to be displayed", min_value=0)
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            languages = st.multiselect("languages", df["Languages"].columns)
+            technologies = st.multiselect("technologies", df["Technologies"].columns)
+        with col2:
+            libraries = st.multiselect("python libraries", df["Libraries"].columns)
+            knowledge = st.multiselect("knowledge", df["Knowledge"].columns)
+        with col3:
+            soft_skills = st.multiselect("soft_skills", df["Soft Skills"].columns)
+            min_matches = st.number_input("Select the minimum number of matches for an opening to be displayed", min_value=0)
 
         submitted = st.form_submit_button("Search Jobs")
 
@@ -35,7 +43,7 @@ def job_matching(df):
         elif education == "master":
             df_filtered = df_filtered.loc[df_filtered["Education", "no_degree_info"] | df_filtered["Education", "master"]]
 
-        query = languages + technologies + libraries
+        query = languages + technologies + libraries + knowledge + soft_skills
 
         df_query = df_filtered.droplevel(0, axis=1).loc[:, query]
 

@@ -57,7 +57,7 @@ def requirements_analysis(df):
     fig = px.bar(percentages,
                  x=percentages.index,
                  y=choices_selected,
-                 labels={"value": "Percentages", "variable": "Jobtype"},
+                 labels={"value": "Percentages", "index": selected_skills, "variable": "job title"},
                  barmode="group",
                  width=1050, height=500)
     fig.update_layout(legend={"yanchor": "top", "y": 0.99, "xanchor": "right", "x": 0.99})

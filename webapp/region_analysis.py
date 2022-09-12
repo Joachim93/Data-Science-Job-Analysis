@@ -25,26 +25,24 @@ def region_analysis(df_long):
         selected = [check_ds, check_da, check_de, check_mle, check_se, check_dsc, check_m]
         choices_selected = [choice for (choice, value) in zip(choices, selected) if value]
         df_choice = df_long.loc[df_long["title_category"].isin(choices_selected)]
-        # counts = df_choice.groupby("location_y")["link"].count().reset_index().rename(
-        #     {"location_y": "location", "link": "count"}, axis=1)
 
-        # df_map = pd.merge(counts, geo_data[["location", "latitude", "longitude"]], on="location", how="left")
+        df_map = df_choice.groupby(["location", "latitude", "longitude"], as_index=False)["link"].agg({"number of jobs": "count"})
 
-        df_map = df_choice.groupby(["location", "latitude", "longitude"], as_index=False)["link"].agg({"count": "count"})
-
-        df_map["size"] = np.log(df_map["count"] + 1)
+        df_map["size"] = np.log(df_map["number of jobs"] + 1)
 
         fig = px.scatter_mapbox(df_map,
                                 lat="latitude", lon="longitude",
-                                # color="link",
                                 hover_name="location",
-                                hover_data=["count"],
+                                hover_data={"latitude": False, "longitude": False, "size": False,
+                                            "number of jobs": True},
                                 color_discrete_sequence=["blue"],
                                 mapbox_style="carto-positron",
                                 size="size",
                                 size_max=20,
                                 zoom=5,
+                                opacity=0.5,
                                 center={"lat": 51, "lon": 10},
-                                width=600, height=800)
+                                width=650, height=750)
+
         with col2:
             st.plotly_chart(fig)

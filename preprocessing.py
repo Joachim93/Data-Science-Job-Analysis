@@ -109,7 +109,7 @@ def extract_locations(df):
 def integrate_geo_data(df, df_long):
     print("integrate geo data")
     geo_df = pd.read_csv("data/geo_data.csv")
-    geo_df = geo_df.loc[geo_df["type"] == "locality"]
+    geo_df = geo_df.loc[(geo_df["type"] == "locality") & (geo_df["confidence"] == 1)]
     df_long_geo = pd.merge(df_long, geo_df[["latitude", "longitude", "location", "region"]], on="location", how="inner")
     locations = df_long.groupby("link")["location"].apply(lambda x: x.tolist())
     df = pd.merge(df, locations, on="link", suffixes=("_x", None), how="left")
