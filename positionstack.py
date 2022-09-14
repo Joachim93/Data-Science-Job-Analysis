@@ -1,19 +1,25 @@
 import pandas as pd
 from tqdm import tqdm
 import requests
+import os
 import concurrent.futures
-
+from arguments import parse_directory
 import config
 
 
-def main(df):
-    print("get geo data")
-    api_key = config.positionstack_key
-    locations = df["location"].unique()
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        geo_data = list(tqdm(executor.map(lambda x: get_location(x, api_key), locations), total=len(locations)))
-    geo_data = pd.concat(geo_data)
-    geo_data.to_csv("data/geo_data.csv", index=False)
+def main(directory):
+    try:
+        df = pd.read_csv(os.path.join(directory, "data_long.csv"))
+    except FileNotFoundError:
+        print("Needed Data was not found in directory.")
+    else:
+        print("get geo data")
+        api_key = config.positionstack_key
+        locations = df["location"].unique()
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            geo_data = list(tqdm(executor.map(lambda x: get_location(x, api_key), locations), total=len(locations)))
+        geo_data = pd.concat(geo_data)
+        geo_data.to_csv(os.path.join(directory, "geo_data.csv"), index=False)
     return None
 
 
@@ -30,5 +36,5 @@ def get_location(location, key):
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("data2/cleaned_long2.csv")
-    main(data)
+    dir_ = parse_directory()
+    main(dir_)

@@ -1,32 +1,36 @@
 import pandas as pd
 import numpy as np
-import time
 import re
+import os
 import positionstack
+from arguments import parse_directory
 import warnings
 warnings.filterwarnings('ignore')
 
 
 def main():
-    start = time.time()
-    data = pd.read_csv("data/jobs.csv")
-    data = filter_contract_types(data)
-    data = convert_work_types(data)
-    data = convert_title(data)
-    data = extract_experience_level(data)
-    data = convert_salary(data)
-    data_long = extract_locations(data)
-    # positionstack.main(data_long)
-    data, data_long = integrate_geo_data(data, data_long)
-    data_long.to_csv("data/data_long.csv", index=False)
-    data = create_location_features(data)
-    data = convert_industries(data)
-    data = convert_company_size(data)
-    data = extract_skills(data)
-    data = extract_experience(data)
-    data.to_csv("data/data_wide.csv", index=False)
-    end = time.time()
-    print(end-start)
+    directory = parse_directory()
+    try:
+        data = pd.read_csv(os.path.join(directory, "data_raw.csv"))
+    except FileNotFoundError:
+        print("Needed data was not found in directory.")
+    else:
+        data = filter_contract_types(data)
+        data = convert_work_types(data)
+        data = convert_title(data)
+        data = extract_experience_level(data)
+        data = convert_salary(data)
+        data_long = extract_locations(data)
+        data_long.to_csv(os.path.join(directory, "data_long.csv"), index=False)
+        positionstack.main(directory)
+        data, data_long = integrate_geo_data(data, data_long, directory)
+        data_long.to_csv(os.path.join(directory, "data_long.csv"), index=False)
+        data = create_location_features(data)
+        data = convert_industries(data)
+        data = convert_company_size(data)
+        data = extract_skills(data)
+        data = extract_experience(data)
+        data.to_csv(os.path.join(directory, "data_wide.csv"), index=False)
     return None
 
 
@@ -106,9 +110,9 @@ def extract_locations(df):
     return df_long
 
 
-def integrate_geo_data(df, df_long):
+def integrate_geo_data(df, df_long, directory):
     print("integrate geo data")
-    geo_df = pd.read_csv("data/geo_data.csv")
+    geo_df = pd.read_csv(os.path.join(directory, "geo_data.csv"))
     geo_df = geo_df.loc[(geo_df["type"] == "locality") & (geo_df["confidence"] == 1)]
     df_long_geo = pd.merge(df_long, geo_df[["latitude", "longitude", "location", "region"]], on="location", how="inner")
     locations = df_long.groupby("link")["location"].apply(lambda x: x.tolist())
@@ -119,6 +123,7 @@ def integrate_geo_data(df, df_long):
 
 def create_location_features(df):
     print("create location features")
+
     def remove_element(x):
         x.remove("bundesweit")
         return x
@@ -173,7 +178,7 @@ def extract_skills(df):
     df["php"] = df["content"].str.contains("Php", case=False)
     df["html"] = df["content"].str.contains("HTML", case=False)
     df["css"] = df["content"].str.contains("CSS", case=False)
-    # Tools (19)
+    # tools (19)
     df["excel"] = df["content"].str.contains("Excel", case=True)
     df["tableau"] = df["content"].str.contains("Tableau", case=False)
     df["power_bi"] = df["content"].str.contains("(Power ?BI|PBI)", case=False, regex=True)
@@ -219,7 +224,7 @@ def extract_skills(df):
     df["natural_science"] = df["content"].str.contains("(Physik|physics|Naturwissenschaft|natural science|Chemie|chemistry|Biologie|biology|natur-)", case=False, regex=True)
     df["engineering"] = df["content"].str.contains("(Ingenieurwesen|Ingenieurwissenschaft|Engineering)", case=False, regex=True)
     df["business"] = df["content"].str.contains("(bwl|Betriebswirtschaft|vwl|Volkswirtschaft|Wirtschaftswissenschaft)", case=False, regex=True)
-    # Knowledge (8)
+    # knowledge (8)
     df["machine_learning"] = df["content"].str.contains("(Machine Learning|Machinelle[sn]? Lern)", case=False, regex=True)
     df["deep_learning"] = df["content"].str.contains("Deep Learning|Neural|Neuronal", case=False, regex=True)
     df["computer_vision"] = df["content"].str.contains("computer vision|convolution|cnn|image processing|Bildverarbeitung", case=False, regex=True)
@@ -228,7 +233,7 @@ def extract_skills(df):
     df["robotics"] = df["content"].str.contains("roboti", case=False, regex=True)
     df["reinforcement_learning"] = df["content"].str.contains("reinforcement", case=False, regex=True)
     df["predictive_modeling"] = df["content"].str.contains("forecasting|time series|Zeitreihe|predictive|anomal|Vorhersage|modeling", case=False, regex=True)
-    # Soft Skills (10)
+    # soft skills (10)
     df["communication"] = df["content"].str.contains("communication| Kommunikation|storytelling", case=False, regex=True)
     df["teamwork"] = df["content"].str.contains("teamfähig|teamplay|teamwork|teamorient|interpersonal|zwischenmenschlich", case=False, regex=True)
     df["motivation"] = df["content"].str.contains("motivation |Neugier|curiosity|lernbereit|to learn|persönlich[\S]* weiterentwick|Engagement|Leidenschaft|passion", case=False, regex=True)
@@ -244,6 +249,7 @@ def extract_skills(df):
 
 def extract_experience(df):
     print("extract experience")
+
     # Helper Functions
     def drop_outliers(x):
         try:
@@ -349,10 +355,9 @@ def extract_experience(df):
 
     experience_bins = experience.replace(
         {"1": "little_experience", "2": "little_experience", "3": "some_experience", "4": "some_experience",
-         "5": "much_experience",
-         "6": "much_experience", "7": "much_experience", "8": "much_experience", "9": "much_experience",
-         "10": "much_experience",
-         "little": "little_experience", "some": "some_experience", "much": "much_experience"})
+         "5": "much_experience", "6": "much_experience", "7": "much_experience", "8": "much_experience",
+         "9": "much_experience", "10": "much_experience", "little": "little_experience",
+         "some": "some_experience", "much": "much_experience"})
     experience_bins.fillna("no_experience_information", inplace=True)
     experience_dummies = pd.get_dummies(experience_bins, dtype="bool")
     df = pd.merge(df, experience_dummies, left_index=True, right_index=True)
