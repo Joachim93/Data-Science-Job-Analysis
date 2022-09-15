@@ -1,9 +1,23 @@
+"""
+This script contains the function for regional analysis of the webapp.
+"""
+
 import streamlit as st
 import plotly.express as px
 import numpy as np
 
 
-def region_analysis(df_long):
+def regional_analysis(df):
+    """Realizes the regional analysis of the webapp.
+
+    Filters the data by the specified job titles and displays the distribution of jobs in Germany on a scatter map.
+
+    Parameters
+    ----------
+    df: pandas.DatFrame
+        long format data (contains one entry per location)
+    """
+
     st.title("Distribution of Data Science Jobs in Germany")
     col1, col2 = st.columns([1, 2])
     choices = ["Data Scientist", "Data Analyst", "Data Engineer", "Machine Learning Engineer", "Software Engineer",
@@ -24,7 +38,7 @@ def region_analysis(df_long):
 
         selected = [check_ds, check_da, check_de, check_mle, check_se, check_dsc, check_m]
         choices_selected = [choice for (choice, value) in zip(choices, selected) if value]
-        df_choice = df_long.loc[df_long["title_category"].isin(choices_selected)]
+        df_choice = df.loc[df["title_category"].isin(choices_selected)]
 
         df_map = df_choice.groupby(["location", "latitude", "longitude"], as_index=False)["link"].agg({"number of jobs": "count"})
 

@@ -1,9 +1,24 @@
+"""
+This script contains the function for requirement analysis of the webapp.
+"""
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 
 
 def requirements_analysis(df):
+    """Realizes the requirement analysis of the webapp.
+
+    Filters the data according to the specified information and calculates for each of the specified attributes the
+    percentage of jobs where this attribute occurs.
+
+    Parameters
+    ----------
+    df: pandas.DatFrame
+        wide format data (contains one entry per job)
+    """
+
     st.title("Requirements for Data Science Jobs in Germany")
     col1, col2, col3 = st.columns(3)
     choices_job = ["All"] + list(df["General_info", "title_category"].unique())

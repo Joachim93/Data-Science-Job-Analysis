@@ -1,3 +1,7 @@
+"""
+This script contains functions to capture command-line arguments for various other scripts.
+"""
+
 import argparse
 
 
@@ -15,13 +19,15 @@ def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--directory",
                         type=str,
-                        default="data",
+                        required=True,
+                        # default="data",
                         help="path to directory with scraped data inside")
     parser.add_argument("-k", "--keywords",
                         type=str,
                         nargs="*",
                         default=["data scientist", "data engineer"],
-                        help="keywords to search for (for keywords consisting of multiple words replace spaces with _)")
+                        help="keywords to search for (to specifiy keywords consisting of multiple words use '_' instead"
+                             " of spaces)")
     args = parser.parse_args()
     return args
 

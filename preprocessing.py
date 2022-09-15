@@ -1,3 +1,7 @@
+"""
+Script to prepare the scraped data for later analysis.
+"""
+
 import pandas as pd
 import numpy as np
 import re
@@ -9,6 +13,13 @@ warnings.filterwarnings('ignore')
 
 
 def main():
+    """Loads, transforms and saves the data.
+
+    Two different dataframes are generated from the raw data:
+    1. long format: contains one entry per location ==> needed for regional analysis
+    2. wide format: contains one entry per job ad ==> needed for all further analysis
+    """
+
     directory = parse_directory()
     try:
         data = pd.read_csv(os.path.join(directory, "data_raw.csv"))
@@ -28,13 +39,26 @@ def main():
         data = create_location_features(data)
         data = convert_industries(data)
         data = convert_company_size(data)
-        data = extract_skills(data)
+        data = extract_requirements(data)
         data = extract_experience(data)
         data.to_csv(os.path.join(directory, "data_wide.csv"), index=False)
     return None
 
 
 def filter_contract_types(df):
+    """Filters out unwanted contract types (e.g. internship).
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("filter contract type")
     df["permanent_employment"] = df["contract_type"].str.contains("Feste Anstellung")
     df["trainee"] = df["contract_type"].str.contains("Trainee")
@@ -44,6 +68,19 @@ def filter_contract_types(df):
 
 
 def convert_work_types(df):
+    """Extracts the individual information from the attribute 'work_type'.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("convert work type")
     work_types = df["work_type"].str.replace(", ", ",").str.get_dummies(",").astype("bool")
     work_types = work_types.rename({"Vollzeit": "full_time", "Teilzeit": "part_time",
@@ -54,6 +91,19 @@ def convert_work_types(df):
 
 
 def convert_title(df):
+    """Classifies job titles into different categories.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("convert title")
     df["title_category"] = "Others"
     df.loc[df["title"].str.contains(r"Software|Developer|Entwickler", case=False, regex=True), "title_category"] = "Software Engineer"
@@ -67,6 +117,19 @@ def convert_title(df):
 
 
 def extract_experience_level(df):
+    """Captures the required experience level.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("extract experience level")
     df["experience_level"] = "No Information"
     df.loc[df["title"].str.contains("Junior|Jr.", case=False), "experience_level"] = "Junior"
@@ -75,6 +138,19 @@ def extract_experience_level(df):
 
 
 def convert_salary(df):
+    """Converts salary ranges into average salaries.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("convert salary")
     min_salaries = df["salary"].str.split(" ").str[0].str.replace(".", "", regex=False).astype("float")
     max_salaries = df["salary"].str.split(" ").str[2].str.replace(".", "", regex=False).astype("float")
@@ -85,6 +161,19 @@ def convert_salary(df):
 
 
 def extract_locations(df):
+    """Splits the lists of locations into individual locations.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df_long: pandas.DataFrame
+        transformed dataframe in long format (contains one entry per location)
+    """
+
     print("extract_locations")
     locations = df["location"].str.strip(" ,")
     locations = locations.str.split(", ?").explode()
@@ -111,6 +200,25 @@ def extract_locations(df):
 
 
 def integrate_geo_data(df, df_long, directory):
+    """Integrates the geographic data of the Positionstack API.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+    df_long: pandas.DataFrame
+        transformed dataframe in long format (contains one entry per location)
+    directory: str
+        needed to find the stored data of the Positionstack API
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    df_long: pandas.DataFrame
+        transformed dataframe in long format (contains one entry per location) with additional geographic information
+    """
+
     print("integrate geo data")
     geo_df = pd.read_csv(os.path.join(directory, "geo_data.csv"))
     geo_df = geo_df.loc[(geo_df["type"] == "locality") & (geo_df["confidence"] == 1)]
@@ -122,12 +230,30 @@ def integrate_geo_data(df, df_long, directory):
 
 
 def create_location_features(df):
-    print("create location features")
+    """Creates additional features from geographic information.
 
+    Features:
+    1. main_location ==> as first specified location within the lists
+    2. multiple_locations ==> if multiple locations exist
+    3. main_region ==> associated state to main_location
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
+    # helper function
     def remove_element(x):
         x.remove("bundesweit")
         return x
 
+    print("create location features")
     geo_df = pd.read_csv("data/geo_data.csv")
     df.loc[(df["location"].apply(lambda x: "bundesweit" in x)) & (
                 df["location"].apply(lambda x: len(x)) > 1), "location"].apply(remove_element)
@@ -144,6 +270,19 @@ def create_location_features(df):
 
 
 def convert_industries(df):
+    """Extracts the main industry from a list of industries.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("convert industries")
     df["main_industry"] = df["industry"].str.split("|").str[0]
     df.drop("industry", axis=1, inplace=True)
@@ -151,13 +290,48 @@ def convert_industries(df):
 
 
 def convert_company_size(df):
+    """Unifies the company sizes.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("convert company size")
     df["company_size"] = df["company_size"].replace({"11-50": "0-50", "1-10": "0-50", ">15": "0-50", "1000+": "1001-2500", "130": "51-250",
                                                      "approx. 250": "251-500"})
     return df
 
 
-def extract_skills(df):
+def extract_requirements(df):
+    """Extracts various requirements from the job ad contents.
+
+    Categories of extracted skills:
+    1. programming languages
+    2. tools
+    3. python libraries
+    4. education
+    5. degrees
+    6. knowledge
+    7. soft skills
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
     print("extract skills")
     # programming languages (18)
     df["python"] = df["content"].str.contains("Python", case=False)
@@ -248,9 +422,22 @@ def extract_skills(df):
 
 
 def extract_experience(df):
-    print("extract experience")
+    """Extracts the required professional experience.
 
-    # Helper Functions
+    To avoid infrequent categories, the individual categories are then grouped into three overarching categories.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
+    # helper Functions
     def drop_outliers(x):
         try:
             int_value = int(x)
@@ -300,6 +487,7 @@ def extract_experience(df):
             else:
                 return "some"
 
+    print("extract experience")
     # first pattern
     pattern = df["content"].str.extract("(\S+) ?Jahre?n? ?(Beruf|\S*erfahrung|relevant|praktisch|einschlägig|fundiert|Expertise)", flags=re.IGNORECASE)[0]
     pattern = pattern.apply(drop_outliers)

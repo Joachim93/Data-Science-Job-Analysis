@@ -1,3 +1,8 @@
+"""
+Script to retrieve geographic data of all locations via the Positionstack API.
+"""
+
+
 import pandas as pd
 from tqdm import tqdm
 import requests
@@ -8,6 +13,13 @@ import config
 
 
 def main(directory):
+    """Retrieves geographical data for all locations.
+
+    Parameters
+    ----------
+    directory: str
+        path to the folder where the data of all job ads are stored
+    """
     try:
         df = pd.read_csv(os.path.join(directory, "data_long.csv"))
     except FileNotFoundError:
@@ -24,17 +36,31 @@ def main(directory):
 
 
 def get_location(location, key):
+    """Retrieve the geographic information for a specified location.
+
+    Parameters
+    ----------
+    location: str
+        location for which the information is to be retrieved
+    key: str
+        private key of a required Positionstack account
+
+    Returns
+    -------
+    results: pandas.DataFrame
+        contains various geographic information if the request was successful
+    """
     url = f"http://api.positionstack.com/v1/forward?access_key={key}&query={location}&limit=1&country=DE"
     try:
         results = pd.DataFrame(requests.get(url).json()["data"])
     except KeyError:
-        pass
+        return None
     else:
         results["location"] = [location]
         return results
-    return None
 
 
 if __name__ == "__main__":
+    # if the script is executed directly, the directory must be passed via the command line
     dir_ = parse_directory()
     main(dir_)

@@ -1,10 +1,24 @@
+"""
+This script contains the function for job matching of the webapp.
+"""
+
 import streamlit as st
 import pandas as pd
 
 
 def job_matching(df):
-    st.title("Job Matching")
+    """Realizes the job matching of the webapp.
 
+    Filters the data first by the specified degree and work experience. Creates a ranking of all remaining jobs, which
+    ranks them according to their similarity to the applicant's stated skills.
+
+    Parameters
+    ----------
+    df: pandas.DatFrame
+        wide format data (contains one entry per job)
+    """
+
+    st.title("Job Matching")
     with st.form(key="inputs"):
         col1, col2 = st.columns(2)
         with col1:
@@ -17,7 +31,7 @@ def job_matching(df):
         col1, col2, col3 = st.columns(3)
         with col1:
             languages = st.multiselect("languages", df["Languages"].columns)
-            technologies = st.multiselect("technologies", df["Technologies"].columns)
+            tools = st.multiselect("tools", df["Tools"].columns)
         with col2:
             libraries = st.multiselect("python libraries", df["Libraries"].columns)
             knowledge = st.multiselect("knowledge", df["Knowledge"].columns)
@@ -43,7 +57,7 @@ def job_matching(df):
         elif education == "master":
             df_filtered = df_filtered.loc[df_filtered["Education", "no_degree_info"] | df_filtered["Education", "master"]]
 
-        query = languages + technologies + libraries + knowledge + soft_skills
+        query = languages + tools + libraries + knowledge + soft_skills
 
         df_query = df_filtered.droplevel(0, axis=1).loc[:, query]
 
