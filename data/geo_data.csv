@@ -1,0 +1,438 @@
+latitude,longitude,type,name,number,postal_code,street,confidence,region,region_code,county,locality,administrative_area,neighbourhood,country,country_code,continent,label,location
+49.307822,8.64145,locality,Walldorf,,,,1.0,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Walldorf,Walldorf,,Germany,DEU,Europe,"Walldorf, BW, Germany",Walldorf
+48.70631,9.11924,locality,Stuttgart,,,,1.0,Baden-Württemberg,BW,Esslingen,Stuttgart,Leinfelden-Echterdingen,,Germany,DEU,Europe,"Stuttgart, BW, Germany",Stuttgart
+48.152126,11.544467,locality,Munich,,,,1.0,Bavaria,BY,Munich,Munich,München,,Germany,DEU,Europe,"Munich, BY, Germany",München
+51.341053,12.404024,locality,Leipzig,,,,1.0,Saxony,SN,Leipzig,Leipzig,Leipzig,,Germany,DEU,Europe,"Leipzig, SN, Germany",Leipzig
+53.576158,10.007046,locality,Hamburg,,,,1.0,Hamburg,HH,Hamburg,Hamburg,Hamburg,,Germany,DEU,Europe,"Hamburg, Germany",Hamburg
+50.041821,8.584764,locality,Frankfurt,,,,1.0,Hesse,HE,Frankfurt,Frankfurt,Frankfurt am Main,,Germany,DEU,Europe,"Frankfurt, HE, Germany",Frankfurt
+51.226297,6.801324,locality,Dusseldorf,,,,1.0,North Rhine-Westphalia,NW,Düsseldorf,Dusseldorf,Düsseldorf,,Germany,DEU,Europe,"Dusseldorf, NW, Germany",Düsseldorf
+52.524932,13.407032,locality,Berlin,,,,1.0,Berlin,BE,,Berlin,Berlin,,Germany,DEU,Europe,"Berlin, Germany",Berlin
+51.507849,7.479247,locality,Dortmund,,,,1.0,North Rhine-Westphalia,NW,Dortmund,Dortmund,Dortmund,,Germany,DEU,Europe,"Dortmund, NW, Germany",Dortmund
+50.774209,6.08443,locality,Aachen,,,,1.0,North Rhine-Westphalia,NW,Aachen,Aachen,Aachen,,Germany,DEU,Europe,"Aachen, NW, Germany",Aachen
+52.537226,13.434735,venue,Sun de Palma,51,10405,Greifswalder Straße,1.0,Berlin,BE,,Berlin,Berlin,Prenzlauer Berg,Germany,DEU,Europe,"Sun de Palma, Berlin, Germany",Palma de Mallorca
+50.087764,8.120627,locality,Wiesbaden,,,,1.0,Hesse,HE,Rheingau-Taunus-Kreis,Wiesbaden,Schlangenbad,,Germany,DEU,Europe,"Wiesbaden, HE, Germany",Wiesbaden
+48.68124,9.011235,locality,Böblingen,,,,1.0,Baden-Württemberg,BW,Böblingen,Böblingen,Böblingen,,Germany,DEU,Europe,"Böblingen, BW, Germany",Böblingen
+51.42973,12.118079,locality,Kabelsketal,,,,1.0,Saxony-Anhalt,ST,Saalekreis,Kabelsketal,Kabelsketal,,Germany,DEU,Europe,"Kabelsketal, ST, Germany",Kabelsketal
+50.736636,7.096342,venue,Nan King,1,53111,Thomas-Mann-Straße,1.0,North Rhine-Westphalia,NW,Bonn,Bonn,Bonn,,Germany,DEU,Europe,"Nan King, Bonn, NW, Germany",
+49.342418,11.116223,locality,Nuremberg,,,,1.0,Bavaria,BY,Roth,Nuremberg,Wendelstein,,Germany,DEU,Europe,"Nuremberg, BY, Germany",Nürnberg
+49.545675,11.94308,locality,Hirschau,,,,1.0,Bavaria,BY,Amberg-Sulzbach,Hirschau,Hirschau,,Germany,DEU,Europe,"Hirschau, BY, Germany",Hirschau
+50.80579,6.05361,neighbourhood,Hand,,,,0.6,North Rhine-Westphalia,NW,Aachen,Aachen,Aachen,Hand,Germany,DEU,Europe,"Hand, Aachen, NW, Germany",Main
+50.928344,7.002998,locality,Cologne,,,,1.0,North Rhine-Westphalia,NW,Köln,Cologne,Köln,,Germany,DEU,Europe,"Cologne, NW, Germany",Köln
+53.022889,14.149543,locality,Schöneberg,,,,0.6,Brandenburg,BB,Uckermark,Schöneberg,Oder-Welse,,Germany,DEU,Europe,"Schöneberg, BB, Germany",Schöneberg
+48.786204,10.106191,locality,Oberkochen,,,,1.0,Baden-Württemberg,BW,Ostalbkreis,Oberkochen,Oberkochen,,Germany,DEU,Europe,"Oberkochen, BW, Germany",Oberkochen
+48.605915,9.147881,region,Baden-Württemberg,,,,1.0,Baden-Württemberg,BW,,,,,Germany,DEU,Europe,"Baden-Württemberg, Germany",Baden-Württemberg
+51.265292,7.143049,locality,Wuppertal,,,,1.0,North Rhine-Westphalia,NW,Wuppertal,Wuppertal,Wuppertal,,Germany,DEU,Europe,"Wuppertal, NW, Germany",Wuppertal
+50.724104,7.114887,locality,Bonn,,,,1.0,North Rhine-Westphalia,NW,Bonn,Bonn,Bonn,,Germany,DEU,Europe,"Bonn, NW, Germany",Bonn
+51.468739,7.019603,locality,Essen,,,,1.0,North Rhine-Westphalia,NW,Essen,Essen,Essen,,Germany,DEU,Europe,"Essen, NW, Germany",Essen
+49.018533,8.368045,locality,Karlsruhe,,,,1.0,Baden-Württemberg,BW,Karlsruhe,Karlsruhe,Karlsruhe,,Germany,DEU,Europe,"Karlsruhe, BW, Germany",Karlsruhe
+52.28562,7.442977,locality,Rheine,,,,1.0,North Rhine-Westphalia,NW,Steinfurt,Rheine,Rheine,,Germany,DEU,Europe,"Rheine, NW, Germany",Rheine
+50.123367,8.920738,locality,Main-Kinzig-Kreis,,,,1.0,Hesse,HE,Main-Kinzig-Kreis,Main-Kinzig-Kreis,Hanau,,Germany,DEU,Europe,"Main-Kinzig-Kreis, HE, Germany",Hanau
+52.018202,8.577806,locality,Bielefeld,,,,1.0,North Rhine-Westphalia,NW,Bielefeld,Bielefeld,Bielefeld,,Germany,DEU,Europe,"Bielefeld, NW, Germany",Bielefeld
+50.23041,8.610123,locality,Bad Homburg,,,,1.0,Hesse,HE,Hochtaunuskreis,Bad Homburg,Bad Homburg v.d. Höhe,,Germany,DEU,Europe,"Bad Homburg, HE, Germany",Bad Homburg
+51.055604,13.731021,locality,Dresden,,,,1.0,Saxony,SN,Dresden,Dresden,Dresden,,Germany,DEU,Europe,"Dresden, SN, Germany",Dresden
+48.704139,11.435272,locality,Ingolstadt,,,,1.0,Bavaria,BY,Pfaffenhofen an der Ilm,Ingolstadt,Manching,,Germany,DEU,Europe,"Ingolstadt, BY, Germany",Ingolstadt
+,,,,,,,,,,,,,,,,,,bundesweit
+52.379952,9.787455,locality,Hanover,,,,1.0,Lower Saxony,NI,Hannover,Hanover,Hannover,,Germany,DEU,Europe,"Hanover, NI, Germany",Hannover
+48.095416,9.790192,locality,Biberach an der Riss,,,,1.0,Baden-Württemberg,BW,Biberach,Biberach an der Riss,Biberach an der Riß,,Germany,DEU,Europe,"Biberach an der Riss, BW, Germany",Biberach
+52.391468,13.28573,locality,Teltow,,,,1.0,Brandenburg,BB,Potsdam-Mittelmark,Teltow,Teltow,,Germany,DEU,Europe,"Teltow, BB, Germany",Teltow
+51.543046,9.93664,locality,Göttingen,,,,1.0,Lower Saxony,NI,Göttingen,Göttingen,Göttingen,,Germany,DEU,Europe,"Göttingen, NI, Germany",Göttingen
+48.945939,8.38468,locality,Ettlingen,,,,1.0,Baden-Württemberg,BW,Karlsruhe,Ettlingen,Ettlingen,,Germany,DEU,Europe,"Ettlingen, BW, Germany",Ettlingen
+52.423458,10.759152,locality,Wolfsburg,,,,1.0,Lower Saxony,NI,Wolfsburg,Wolfsburg,Wolfsburg,,Germany,DEU,Europe,"Wolfsburg, NI, Germany",Wolfsburg
+50.982915,11.026063,locality,Erfurt,,,,1.0,Thuringia,TH,Erfurt,Erfurt,Erfurt,,Germany,DEU,Europe,"Erfurt, TH, Germany",Erfurt
+50.36342,6.611216,locality,Esch,,,,1.0,Rhineland-Palatinate,RP,Vulkaneifel,Esch,Obere Kyll,,Germany,DEU,Europe,"Esch, RP, Germany",Waldems-Esch
+49.475368,8.426544,locality,Ludwigshafen am Rhein,,,,1.0,Rhineland-Palatinate,RP,Ludwigshafen am Rhein,Ludwigshafen am Rhein,Ludwigshafen am Rhein,,Germany,DEU,Europe,"Ludwigshafen am Rhein, RP, Germany",Ludwigshafen
+48.707181,9.000288,locality,Sindelfingen,,,,1.0,Baden-Württemberg,BW,Böblingen,Sindelfingen,Sindelfingen,,Germany,DEU,Europe,"Sindelfingen, BW, Germany",Sindelfingen
+48.819138,8.737415,locality,Pforzheim,,,,1.0,Baden-Württemberg,BW,Enzkreis,Pforzheim,Tiefenbronn,,Germany,DEU,Europe,"Pforzheim, BW, Germany",Pforzheim
+48.719101,9.268924,locality,Ostfildern,,,,1.0,Baden-Württemberg,BW,Esslingen,Ostfildern,Ostfildern,,Germany,DEU,Europe,"Ostfildern, BW, Germany",Ostfildern
+52.272012,10.625469,locality,Braunschweig,,,,1.0,Lower Saxony,NI,Wolfenbuttel,Braunschweig,Cremlingen,,Germany,DEU,Europe,"Braunschweig, NI, Germany",Braunschweig
+50.83382,12.912219,locality,Chemnitz,,,,1.0,Saxony,SN,Chemnitz,Chemnitz,Chemnitz,,Germany,DEU,Europe,"Chemnitz, SN, Germany",Chemnitz
+51.15132,14.973005,locality,Görlitz,,,,1.0,Saxony,SN,Görlitz,Görlitz,Görlitz,,Germany,DEU,Europe,"Görlitz, SN, Germany",Görlitz
+48.249818,11.62499,locality,Garching bei München,,,,1.0,Bavaria,BY,München,Garching bei München,Garching b. München,,Germany,DEU,Europe,"Garching bei München, BY, Germany",Garching
+53.331593,8.481026,locality,Brake,,,,1.0,Lower Saxony,NI,Wesermarsch,Brake,Brake (Unterweser),,Germany,DEU,Europe,"Brake, NI, Germany",Braak
+48.69406,9.16809,locality,Leinfelden-Echterdingen,,,,1.0,Baden-Württemberg,BW,Esslingen,Leinfelden-Echterdingen,Leinfelden-Echterdingen,,Germany,DEU,Europe,"Leinfelden-Echterdingen, BW, Germany",Leinfelden-Echterdingen
+49.945412,11.584207,locality,Bayreuth,,,,1.0,Bavaria,BY,Bayreuth,Bayreuth,Bayreuth,,Germany,DEU,Europe,"Bayreuth, BY, Germany",Bayreuth
+53.712313,9.995697,locality,Norderstedt,,,,1.0,Schleswig-Holstein,SH,Segeberg,Norderstedt,Norderstedt,,Germany,DEU,Europe,"Norderstedt, SH, Germany",Norderstedt
+50.010994,8.454352,locality,Raunheim,,,,1.0,Hesse,HE,Groß-Gerau,Raunheim,Raunheim,,Germany,DEU,Europe,"Raunheim, HE, Germany",Raunheim
+48.769924,8.935182,locality,Renningen,,,,1.0,Baden-Württemberg,BW,Böblingen,Renningen,Renningen,,Germany,DEU,Europe,"Renningen, BW, Germany",Renningen
+49.220182,8.374615,locality,Germersheim,,,,1.0,Rhineland-Palatinate,RP,Germersheim,Germersheim,Germersheim,,Germany,DEU,Europe,"Germersheim, RP, Germany",Germersheim
+49.997895,8.253032,locality,Mainz,,,,1.0,Rhineland-Palatinate,RP,Mainz,Mainz,Mainz,,Germany,DEU,Europe,"Mainz, RP, Germany",Mainz
+52.531489,13.432539,venue,Gasthaus Alt Wien,22,10407,Hufelandstraße,1.0,Berlin,BE,,Berlin,Berlin,Prenzlauer Berg,Germany,DEU,Europe,"Gasthaus Alt Wien, Berlin, Germany",Wien
+49.58181,10.916945,locality,Erlangen,,,,1.0,Bavaria,BY,Erlangen-Höchstadt,Erlangen,Herzogenaurach,,Germany,DEU,Europe,"Erlangen, BY, Germany",Erlangen
+50.094538,8.777582,locality,Offenbach am Main,,,,0.6,Hesse,HE,Offenbach am Main,Offenbach am Main,Offenbach am Main,,Germany,DEU,Europe,"Offenbach am Main, HE, Germany",Offenbach
+51.174766,6.931217,locality,Hilden,,,,1.0,North Rhine-Westphalia,NW,Mettmann,Hilden,Hilden,,Germany,DEU,Europe,"Hilden, NW, Germany",Hilden
+49.197779,9.225185,locality,Neckarsulm,,,,1.0,Baden-Württemberg,BW,Heilbronn,Neckarsulm,Neckarsulm,,Germany,DEU,Europe,"Neckarsulm, BW, Germany",Neckarsulm
+54.073812,10.770997,venue,Stockholm,,,,1.0,Schleswig-Holstein,SH,Ostholstein,Sierksdorf,Ostholstein-Mitte,,Germany,DEU,Europe,"Stockholm, Sierksdorf, SH, Germany",Stockholm
+52.125911,11.626831,locality,Magdeburg,,,,1.0,Saxony-Anhalt,ST,Magdeburg,Magdeburg,Magdeburg,,Germany,DEU,Europe,"Magdeburg, ST, Germany",Magdeburg
+49.488789,8.492765,locality,Mannheim,,,,1.0,Baden-Württemberg,BW,Mannheim,Mannheim,Mannheim,,Germany,DEU,Europe,"Mannheim, BW, Germany",Mannheim
+48.192979,11.645829,locality,Unterföhring,,,,1.0,Bavaria,BY,München,Unterföhring,Unterföhring,,Germany,DEU,Europe,"Unterföhring, BY, Germany",Unterföhring
+51.167328,6.535157,locality,Mönchengladbach,,,,1.0,North Rhine-Westphalia,NW,Rhein-Kreis Neuss,Mönchengladbach,Korschenbroich,,Germany,DEU,Europe,"Mönchengladbach, NW, Germany",Mönchengladbach
+48.360858,7.819838,locality,Lahr,,,,1.0,Baden-Württemberg,BW,Ortenaukreis,Lahr,Lahr/Schwarzwald,,Germany,DEU,Europe,"Lahr, BW, Germany",Lohr
+49.568893,10.881415,locality,Herzogenaurach,,,,1.0,Bavaria,BY,Erlangen-Höchstadt,Herzogenaurach,Herzogenaurach,,Germany,DEU,Europe,"Herzogenaurach, BY, Germany",Herzogenaurach
+48.281797,11.576474,locality,Unterschleißheim,,,,1.0,Bavaria,BY,München,Unterschleißheim,Unterschleißheim,,Germany,DEU,Europe,"Unterschleißheim, BY, Germany",Unterschleißheim
+51.326403,6.964426,locality,Heiligenhaus,,,,1.0,North Rhine-Westphalia,NW,Mettmann,Heiligenhaus,Heiligenhaus,,Germany,DEU,Europe,"Heiligenhaus, NW, Germany",Heiligenhaus
+50.880516,8.036964,locality,Siegen,,,,1.0,North Rhine-Westphalia,NW,Siegen-Wittgenstein,Siegen,Siegen,,Germany,DEU,Europe,"Siegen, NW, Germany",Siegen
+48.059431,11.667294,locality,Ottobrunn,,,,1.0,Bavaria,BY,München,Ottobrunn,Ottobrunn,,Germany,DEU,Europe,"Ottobrunn, BY, Germany",Ottobrunn
+50.870585,6.880676,locality,Hürth,,,,1.0,North Rhine-Westphalia,NW,Rhein-Erft-Kreis,Hürth,Hürth,,Germany,DEU,Europe,"Hürth, NW, Germany",Hürth
+48.807099,8.863614,locality,Heimsheim,,,,1.0,Baden-Württemberg,BW,Enzkreis,Heimsheim,Heckengäu,,Germany,DEU,Europe,"Heimsheim, BW, Germany",Heimsheim
+49.291055,8.664218,venue,Wiesloch-Walldorf,,,,0.8,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Wiesloch,Wiesloch,,Germany,DEU,Europe,"Wiesloch-Walldorf, Wiesloch, BW, Germany",Wiesloch-Walldorf
+48.780891,9.255239,neighbourhood,Untertuerkheim,,,,0.6,Baden-Württemberg,BW,Esslingen,Stuttgart,Leinfelden-Echterdingen,Untertuerkheim,Germany,DEU,Europe,"Untertuerkheim, Stuttgart, BW, Germany",Untertürkheim
+51.941946,7.166349,locality,Coesfeld,,,,1.0,North Rhine-Westphalia,NW,Coesfeld,Coesfeld,Coesfeld,,Germany,DEU,Europe,"Coesfeld, NW, Germany",Coesfeld-Lette
+48.369338,10.896842,locality,Augsburg,,,,1.0,Bavaria,BY,Augsburg,Augsburg,Augsburg,,Germany,DEU,Europe,"Augsburg, BY, Germany",Augsburg
+49.921534,8.748549,locality,Darmstadt,,,,1.0,Hesse,HE,Darmstadt-Dieburg,Darmstadt,Messel,,Germany,DEU,Europe,"Darmstadt, HE, Germany",Darmstadt
+47.661536,9.473899,locality,Friedrichshafen,,,,1.0,Baden-Württemberg,BW,Bodenseekreis,Friedrichshafen,Friedrichshafen,,Germany,DEU,Europe,"Friedrichshafen, BW, Germany",Friedrichshafen
+52.478198,10.54821,locality,Gifhorn,,,,1.0,Lower Saxony,NI,Gifhorn,Gifhorn,Gifhorn,,Germany,DEU,Europe,"Gifhorn, NI, Germany",Gifhorn
+48.810228,11.367673,locality,Gaimersheim,,,,1.0,Bavaria,BY,Eichstätt,Gaimersheim,Gaimersheim,,Germany,DEU,Europe,"Gaimersheim, BY, Germany",Gaimersheim
+54.084592,12.088019,locality,Rostock,,,,1.0,Mecklenburg-Vorpommern,MV,Rostock,Rostock,Rostock,,Germany,DEU,Europe,"Rostock, MV, Germany",Rostock
+49.98942,8.425592,locality,Rüsselsheim am Main,,,,1.0,Hesse,HE,Groß-Gerau,Rüsselsheim am Main,Rüsselsheim am Main,,Germany,DEU,Europe,"Rüsselsheim am Main, HE, Germany",Rüsselsheim
+53.029599,8.731851,locality,Bremen,,,,1.0,Lower Saxony,NI,Diepholz,Bremen,Stuhr,,Germany,DEU,Europe,"Bremen, NI, Germany",Bremen
+49.784984,9.941828,locality,Wurzburg,,,,1.0,Bavaria,BY,Würzburg,Wurzburg,Würzburg,,Germany,DEU,Europe,"Wurzburg, BY, Germany",Würzburg
+51.954044,7.624747,locality,Münster,,,,1.0,North Rhine-Westphalia,NW,Münster,Münster,Münster,,Germany,DEU,Europe,"Münster, NW, Germany",Münster
+48.755271,8.24377,locality,Baden,,,,1.0,Baden-Württemberg,BW,Baden-Baden,Baden,Baden-Baden,,Germany,DEU,Europe,"Baden, BW, Germany",Baden
+49.124652,8.590566,locality,Bruchsal,,,,1.0,Baden-Württemberg,BW,Karlsruhe,Bruchsal,Bruchsal,,Germany,DEU,Europe,"Bruchsal, BW, Germany",Bruchsal
+50.025148,8.694898,locality,Dreieich,,,,1.0,Hesse,HE,Offenbach,Dreieich,Dreieich,,Germany,DEU,Europe,"Dreieich, HE, Germany",Dreieich
+48.396637,9.964547,locality,Ulm,,,,1.0,Baden-Württemberg,BW,Ulm,Ulm,Ulm,,Germany,DEU,Europe,"Ulm, BW, Germany",Ulm
+52.152573,9.94949,locality,Hildesheim,,,,1.0,Lower Saxony,NI,Hildesheim,Hildesheim,Hildesheim,,Germany,DEU,Europe,"Hildesheim, NI, Germany",Hildesheim
+50.141582,8.567638,locality,Eschborn,,,,1.0,Hesse,HE,Main-Taunus-Kreis,Eschborn,Eschborn,,Germany,DEU,Europe,"Eschborn, HE, Germany",Eschborn
+50.934886,12.423965,venue,Zurich,3,04603,Winkelgasse,1.0,Thuringia,TH,Altenburger Land,Saara,Nobitz,,Germany,DEU,Europe,"Zurich, Saara, TH, Germany",Zürich
+48.349526,13.312276,venue,Haus Innsbruck,6,94072,Dr.-Heim-Straße,1.0,Bavaria,BY,Passau,Bad Füssing,Bad Füssing,,Germany,DEU,Europe,"Haus Innsbruck, Bad Füssing, BY, Germany",Innsbruck
+48.84677,8.927857,locality,Weissach,,,,1.0,Baden-Württemberg,BW,Böblingen,Weissach,Weissach,,Germany,DEU,Europe,"Weissach, BW, Germany",Weissach
+51.309934,9.47572,locality,Kassel,,,,1.0,Hesse,HE,Kassel,Kassel,Kassel,,Germany,DEU,Europe,"Kassel, HE, Germany",Kassel
+48.798726,9.063708,locality,Gerlingen,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Gerlingen,Gerlingen,,Germany,DEU,Europe,"Gerlingen, BW, Germany",Gerlingen
+54.073601,10.772152,venue,London,,,,1.0,Schleswig-Holstein,SH,Ostholstein,Sierksdorf,Ostholstein-Mitte,,Germany,DEU,Europe,"London, Sierksdorf, SH, Germany",London
+48.453454,9.342943,locality,St. Johann,,,,0.6,Baden-Württemberg,BW,Reutlingen,St. Johann,St. Johann,,Germany,DEU,Europe,"St. Johann, BW, Germany",Sankt Johann
+50.20462,8.579778,locality,Oberursel,,,,1.0,Hesse,HE,Hochtaunuskreis,Oberursel,Oberursel (Taunus),,Germany,DEU,Europe,"Oberursel, HE, Germany",Oberursel
+47.77255,12.00719,neighbourhood,Jenbach,,,,0.6,Bavaria,BY,Rosenheim,Bad Feilnbach,Bad Feilnbach,Jenbach,Germany,DEU,Europe,"Jenbach, Bad Feilnbach, BY, Germany",Jenbach
+51.305449,6.631279,locality,Krefeld,,,,1.0,North Rhine-Westphalia,NW,Rhein-Kreis Neuss,Krefeld,Meerbusch,,Germany,DEU,Europe,"Krefeld, NW, Germany",Krefeld
+48.922758,9.132016,locality,Tamm,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Tamm,Bietigheim-Bissingen,,Germany,DEU,Europe,"Tamm, BW, Germany",Tamm
+49.199366,9.505019,locality,Öhringen,,,,1.0,Baden-Württemberg,BW,Hohenlohekreis,Öhringen,Öhringen,,Germany,DEU,Europe,"Öhringen, BW, Germany",Öhringen
+49.972939,8.055959,locality,Ingelheim am Rhein,,,,1.0,Rhineland-Palatinate,RP,Mainz-Bingen,Ingelheim am Rhein,Ingelheim am Rhein,,Germany,DEU,Europe,"Ingelheim am Rhein, RP, Germany",Ingelheim
+49.263541,7.082895,locality,Saarbrücken,,,,1.0,Saarland,SL,Saarpfalz-Kreis,Saarbrücken,St. Ingbert,,Germany,DEU,Europe,"Saarbrücken, SL, Germany",Saarbrücken
+48.492368,9.205621,locality,Reutlingen,,,,1.0,Baden-Württemberg,BW,Reutlingen,Reutlingen,Reutlingen,,Germany,DEU,Europe,"Reutlingen, BW, Germany",Reutlingen
+54.322148,10.122597,locality,Kiel,,,,1.0,Schleswig-Holstein,SH,Kiel,Kiel,Kiel,,Germany,DEU,Europe,"Kiel, SH, Germany",Kiel
+51.295678,6.831527,locality,Ratingen,,,,1.0,North Rhine-Westphalia,NW,Mettmann,Ratingen,Ratingen,,Germany,DEU,Europe,"Ratingen, NW, Germany",Ratingen
+49.021388,12.114729,locality,Regensburg,,,,1.0,Bavaria,BY,Regensburg,Regensburg,Regensburg,,Germany,DEU,Europe,"Regensburg, BY, Germany",Regensburg
+51.557355,7.913332,locality,Werl,,,,1.0,North Rhine-Westphalia,NW,Soest,Werl,Werl,,Germany,DEU,Europe,"Werl, NW, Germany",Verl
+52.444133,9.735693,locality,Langenhagen,,,,1.0,Lower Saxony,NI,Hannover,Langenhagen,Langenhagen,,Germany,DEU,Europe,"Langenhagen, NI, Germany",Langenhagen
+52.411044,13.224338,locality,Kleinmachnow,,,,1.0,Brandenburg,BB,Potsdam-Mittelmark,Kleinmachnow,Kleinmachnow,,Germany,DEU,Europe,"Kleinmachnow, BB, Germany",Kleinmachnow
+48.950239,9.137948,locality,Bietigheim-Bissingen,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Bietigheim-Bissingen,Bietigheim-Bissingen,,Germany,DEU,Europe,"Bietigheim-Bissingen, BW, Germany",Bietigheim-Bissingen
+53.870029,10.68237,locality,Lübeck,,,,1.0,Schleswig-Holstein,SH,Lübeck,Lübeck,Lübeck,,Germany,DEU,Europe,"Lübeck, SH, Germany",Lübeck
+51.498071,6.862345,locality,Oberhausen,,,,1.0,North Rhine-Westphalia,NW,Oberhausen,Oberhausen,Oberhausen,,Germany,DEU,Europe,"Oberhausen, NW, Germany",Oberhausen
+53.633013,11.401311,locality,Schwerin,,,,1.0,Mecklenburg-Vorpommern,MV,Schwerin,Schwerin,Schwerin,,Germany,DEU,Europe,"Schwerin, MV, Germany",Schwerin
+48.804506,9.528791,locality,Schorndorf,,,,1.0,Baden-Württemberg,BW,Rems-Murr-Kreis,Schorndorf,Schorndorf,,Germany,DEU,Europe,"Schorndorf, BW, Germany",Schorndorf
+50.664469,8.047053,locality,Salzburg,,,,0.6,Rhineland-Palatinate,RP,Westerwaldkreis,Salzburg,Rennerod,,Germany,DEU,Europe,"Salzburg, RP, Germany",AT-Salzburg-Fuschl
+50.355975,7.592158,locality,Koblenz,,,,1.0,Rhineland-Palatinate,RP,Koblenz,Koblenz,Koblenz,,Germany,DEU,Europe,"Koblenz, RP, Germany",Koblenz
+52.319699,10.240628,locality,Peine,,,,1.0,Lower Saxony,NI,Peine,Peine,Peine,,Germany,DEU,Europe,"Peine, NI, Germany",Peine
+48.000958,12.534377,locality,Altenmarkt an der Alz,,,,1.0,Bavaria,BY,Traunstein,Altenmarkt an der Alz,Altenmarkt a.d. Alz,,Germany,DEU,Europe,"Altenmarkt an der Alz, BY, Germany",Altenmarkt
+50.1374,8.837979,locality,Maintal,,,,1.0,Hesse,HE,Main-Kinzig-Kreis,Maintal,Maintal,,Germany,DEU,Europe,"Maintal, HE, Germany",Maintal
+50.782085,6.091484,venue,Brüssel,,,,1.0,North Rhine-Westphalia,NW,Aachen,Aachen,Aachen,,Germany,DEU,Europe,"Brüssel, Aachen, NW, Germany",Brüssel
+49.134789,10.053118,locality,Crailsheim,,,,1.0,Baden-Württemberg,BW,Schwäbisch Hall,Crailsheim,Crailsheim,,Germany,DEU,Europe,"Crailsheim, BW, Germany",Crailsheim
+48.107601,11.424074,locality,Planegg,,,,1.0,Bavaria,BY,München,Planegg,Planegg,,Germany,DEU,Europe,"Planegg, BY, Germany",Planegg
+54.402899,10.125692,locality,Altenholz,,,,1.0,Schleswig-Holstein,SH,Rendsburg-Eckernförde,Altenholz,Altenholz,,Germany,DEU,Europe,"Altenholz, SH, Germany",Altenholz
+51.488623,11.976793,locality,Halle,,,,1.0,Saxony-Anhalt,ST,Halle,Halle,Halle (Saale),,Germany,DEU,Europe,"Halle, ST, Germany",Halle
+48.690194,9.737014,locality,Salach,,,,1.0,Baden-Württemberg,BW,Göppingen,Salach,Eislingen-Ottenbach-Salach,,Germany,DEU,Europe,"Salach, BW, Germany",Saale
+52.421197,12.523106,locality,Brandenburg,,,,0.6,Brandenburg,BB,Brandenburg an der Havel,Brandenburg,Brandenburg an der Havel,,Germany,DEU,Europe,"Brandenburg, Germany",Brandenburg
+47.972194,7.92173,locality,Freiburg im Breisgau,,,,1.0,Baden-Württemberg,BW,Freiburg im Breisgau,Freiburg im Breisgau,Freiburg im Breisgau,,Germany,DEU,Europe,"Freiburg im Breisgau, BW, Germany",Freiburg
+50.587104,8.465509,locality,Aßlar,,,,1.0,Hesse,HE,Lahn-Dill-Kreis,Aßlar,Aßlar,,Germany,DEU,Europe,"Aßlar, HE, Germany",Aßlar
+50.562142,8.494371,locality,Wetzlar,,,,1.0,Hesse,HE,Lahn-Dill-Kreis,Wetzlar,Wetzlar,,Germany,DEU,Europe,"Wetzlar, HE, Germany",Wetzlar
+49.033805,8.708053,locality,Bretten,,,,1.0,Baden-Württemberg,BW,Karlsruhe,Bretten,Bretten,,Germany,DEU,Europe,"Bretten, BW, Germany",Bretten
+51.624656,6.195011,locality,Weeze,,,,1.0,North Rhine-Westphalia,NW,Kleve,Weeze,Weeze,,Germany,DEU,Europe,"Weeze, NW, Germany",Weeze
+47.673531,9.170081,locality,Konstanz,,,,1.0,Baden-Württemberg,BW,Konstanz,Konstanz,Konstanz,,Germany,DEU,Europe,"Konstanz, BW, Germany",Konstanz
+49.990709,8.663413,locality,Langen,,,,1.0,Hesse,HE,Offenbach,Langen,Langen (Hessen),,Germany,DEU,Europe,"Langen, HE, Germany",Langen
+51.47994,6.75966,locality,Duisburg,,,,1.0,North Rhine-Westphalia,NW,Duisburg,Duisburg,Duisburg,,Germany,DEU,Europe,"Duisburg, NW, Germany",Duisburg
+53.15846,8.210671,locality,Oldenburg,,,,1.0,Lower Saxony,NI,Oldenburg,Oldenburg,Oldenburg (Oldb),,Germany,DEU,Europe,"Oldenburg, NI, Germany",Oldenburg
+51.986869,9.255631,locality,Bad Pyrmont,,,,1.0,Lower Saxony,NI,Hameln-Pyrmont,Bad Pyrmont,Bad Pyrmont,,Germany,DEU,Europe,"Bad Pyrmont, NI, Germany",Bad Pyrmont
+50.938904,6.933672,venue,Brussels,16,50674,Brüsseler Platz,1.0,North Rhine-Westphalia,NW,Köln,Cologne,Köln,,Germany,DEU,Europe,"Brussels, Cologne, NW, Germany",Brussels
+51.474951,7.213937,locality,Bochum,,,,1.0,North Rhine-Westphalia,NW,Bochum,Bochum,Bochum,,Germany,DEU,Europe,"Bochum, NW, Germany",Bochum
+,,,,,,,,,,,,,,,,,,Abingdon
+49.37625,8.769869,locality,Heidelberg,,,,1.0,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Heidelberg,Neckargemünd,,Germany,DEU,Europe,"Heidelberg, BW, Germany",Heidelberg
+52.494795,9.8578,locality,Burgwedel,,,,1.0,Lower Saxony,NI,Hannover,Burgwedel,Burgwedel,,Germany,DEU,Europe,"Burgwedel, NI, Germany",Burgwedel
+48.473373,7.945307,locality,Offenburg,,,,1.0,Baden-Württemberg,BW,Ortenaukreis,Offenburg,Offenburg,,Germany,DEU,Europe,"Offenburg, BW, Germany",Offenburg
+48.641863,12.491006,locality,Dingolfing,,,,1.0,Bavaria,BY,Dingolfing-Landau,Dingolfing,Dingolfing,,Germany,DEU,Europe,"Dingolfing, BY, Germany",Dingolfing
+50.970097,9.687096,country,Germany,,,,1.0,,,,,,,Germany,DEU,Europe,Germany,Germany
+48.533862,12.148372,locality,Landshut,,,,1.0,Bavaria,BY,Landshut,Landshut,Landshut,,Germany,DEU,Europe,"Landshut, BY, Germany",Landshut
+49.769869,8.644382,locality,Seeheim-Jugenheim,,,,1.0,Hesse,HE,Darmstadt-Dieburg,Seeheim-Jugenheim,Seeheim-Jugenheim,,Germany,DEU,Europe,"Seeheim-Jugenheim, HE, Germany",Seeheim-Jugenheim
+50.951783,6.641902,venue,Zagreb,15,50126,Südweststraße,1.0,North Rhine-Westphalia,NW,Rhein-Erft-Kreis,Bergheim,Bergheim,,Germany,DEU,Europe,"Zagreb, Bergheim, NW, Germany",Zagreb
+51.437117,6.894836,locality,Mülheim,,,,0.6,North Rhine-Westphalia,NW,Mülheim an der Ruhr,Mülheim,Mülheim an der Ruhr,,Germany,DEU,Europe,"Mülheim, NW, Germany",Mülheim
+,,,,,,,,,,,,,,,,,,Villach
+50.254292,8.640696,locality,Friedrichsdorf,,,,1.0,Hesse,HE,Hochtaunuskreis,Friedrichsdorf,Friedrichsdorf,,Germany,DEU,Europe,"Friedrichsdorf, HE, Germany",Friedrichsdorf
+52.510275,13.405999,venue,Hybrid City Lab,18,10179,Neue Grünstraße,1.0,Berlin,BE,,Berlin,Berlin,Mitte,Germany,DEU,Europe,"Hybrid City Lab, Berlin, Germany",hybrid
+48.042742,7.647589,locality,Ihringen,,,,1.0,Baden-Württemberg,BW,Breisgau-Hochschwarzwald,Ihringen,Breisach am Rhein,,Germany,DEU,Europe,"Ihringen, BW, Germany",Ihringen
+49.783139,9.879325,locality,Höchberg,,,,1.0,Bavaria,BY,Würzburg,Höchberg,Höchberg,,Germany,DEU,Europe,"Höchberg, BY, Germany",Höchberg
+49.495737,9.813047,locality,Igersheim,,,,1.0,Baden-Württemberg,BW,Main-Tauber-Kreis,Igersheim,Bad Mergentheim,,Germany,DEU,Europe,"Igersheim, BW, Germany",Igersheim
+50.767644,7.190509,locality,Sankt Augustin,,,,1.0,North Rhine-Westphalia,NW,Rhein-Sieg-Kreis,Sankt Augustin,Sankt Augustin,,Germany,DEU,Europe,"Sankt Augustin, NW, Germany",Sankt Augustin
+49.480113,9.903584,locality,Weikersheim,,,,1.0,Baden-Württemberg,BW,Main-Tauber-Kreis,Weikersheim,Weikersheim,,Germany,DEU,Europe,"Weikersheim, BW, Germany",Weikersheim
+48.2266,11.6741,locality,Ismaning,,,,1.0,Bavaria,BY,München,Ismaning,Ismaning,,Germany,DEU,Europe,"Ismaning, BY, Germany",Ismaning
+49.142251,9.210942,locality,Heilbronn,,,,1.0,Baden-Württemberg,BW,Heilbronn,Heilbronn,Heilbronn,,Germany,DEU,Europe,"Heilbronn, BW, Germany",Heilbronn
+52.274158,8.047347,locality,Osnabrück,,,,1.0,Lower Saxony,NI,Osnabrück,Osnabrück,Osnabrück,,Germany,DEU,Europe,"Osnabrück, NI, Germany",Osnabrück
+51.180907,7.180644,locality,Remscheid,,,,1.0,North Rhine-Westphalia,NW,Remscheid,Remscheid,Remscheid,,Germany,DEU,Europe,"Remscheid, NW, Germany",Remscheid
+49.894754,8.610809,locality,Weiterstadt,,,,1.0,Hesse,HE,Darmstadt-Dieburg,Weiterstadt,Weiterstadt,,Germany,DEU,Europe,"Weiterstadt, HE, Germany",Weiterstadt
+51.129669,9.547216,locality,Melsungen,,,,1.0,Hesse,HE,Schwalm-Eder-Kreis,Melsungen,Melsungen,,Germany,DEU,Europe,"Melsungen, HE, Germany",Melsungen
+49.759432,6.650828,venue,Europa,,,,1.0,Rhineland-Palatinate,RP,Trier,Trier,Trier,,Germany,DEU,Europe,"Europa, Trier, RP, Germany",Europa
+48.792711,9.016429,locality,Leonberg,,,,1.0,Baden-Württemberg,BW,Böblingen,Leonberg,Leonberg,,Germany,DEU,Europe,"Leonberg, BW, Germany",Leonberg
+50.129861,6.137678,venue,52 Luxembourg,,,,1.0,Rhineland-Palatinate,RP,Eifelkreis Bitburg-Prüm,Sevenig (Our),Arzfeld,,Germany,DEU,Europe,"52 Luxembourg, Sevenig (Our), RP, Germany",Luxembourg
+50.920271,11.580264,locality,Jena,,,,1.0,Thuringia,TH,Jena,Jena,Jena,,Germany,DEU,Europe,"Jena, TH, Germany",Jena
+53.250306,10.414613,locality,Lüneburg,,,,1.0,Lower Saxony,NI,Lüneburg,Lüneburg,Lüneburg,,Germany,DEU,Europe,"Lüneburg, NI, Germany",Lüneburg
+49.069568,9.289487,locality,Abstatt,,,,1.0,Baden-Württemberg,BW,Heilbronn,Abstatt,Schozach-Bottwartal,,Germany,DEU,Europe,"Abstatt, BW, Germany",Abstatt
+49.746425,8.11676,locality,Alzey,,,,1.0,Rhineland-Palatinate,RP,Alzey-Worms,Alzey,Alzey,,Germany,DEU,Europe,"Alzey, RP, Germany",Alzey
+52.919263,9.250542,locality,Verden an der Aller,,,,1.0,Lower Saxony,NI,Verden,Verden an der Aller,Verden (Aller),,Germany,DEU,Europe,"Verden an der Aller, NI, Germany",Verden
+52.684756,9.911589,locality,Winsen an der Aller,,,,1.0,Lower Saxony,NI,Celle,Winsen an der Aller,Winsen (Aller),,Germany,DEU,Europe,"Winsen an der Aller, NI, Germany",Aller
+48.697338,8.132098,locality,Bühl,,,,1.0,Baden-Württemberg,BW,Rastatt,Bühl,Bühl,,Germany,DEU,Europe,"Bühl, BW, Germany",Bühl
+49.329484,7.334935,locality,Homburg,,,,1.0,Saarland,SL,Saarpfalz-Kreis,Homburg,Homburg,,Germany,DEU,Europe,"Homburg, SL, Germany",Homburg
+48.431585,11.594587,locality,Allershausen,,,,1.0,Bavaria,BY,Freising,Allershausen,Allershausen,,Germany,DEU,Europe,"Allershausen, BY, Germany",Allershausen
+49.154164,8.291435,locality,Rülzheim,,,,1.0,Rhineland-Palatinate,RP,Germersheim,Rülzheim,Rülzheim,,Germany,DEU,Europe,"Rülzheim, RP, Germany",Rülzheim
+48.453804,8.693657,locality,Horb am Neckar,,,,1.0,Baden-Württemberg,BW,Freudenstadt,Horb am Neckar,Horb am Neckar,,Germany,DEU,Europe,"Horb am Neckar, BW, Germany",Horb
+51.094865,8.626307,locality,Bromskirchen,,,,1.0,Hesse,HE,Waldeck-Frankenberg,Bromskirchen,Bromskirchen,,Germany,DEU,Europe,"Bromskirchen, HE, Germany",Bromskirchen
+47.892072,10.267813,locality,Wolfertschwenden,,,,1.0,Bavaria,BY,Unterallgäu,Wolfertschwenden,Bad Grönenbach,,Germany,DEU,Europe,"Wolfertschwenden, BY, Germany",Wolfertschwenden
+51.66718,6.962979,locality,Dorsten,,,,1.0,North Rhine-Westphalia,NW,Recklinghausen,Dorsten,Dorsten,,Germany,DEU,Europe,"Dorsten, NW, Germany",Dorsten
+51.718539,8.740642,locality,Paderborn,,,,1.0,North Rhine-Westphalia,NW,Paderborn,Paderborn,Paderborn,,Germany,DEU,Europe,"Paderborn, NW, Germany",Paderborn
+52.157833,10.411769,locality,Salzgitter,,,,1.0,Lower Saxony,NI,Salzgitter,Salzgitter,Salzgitter,,Germany,DEU,Europe,"Salzgitter, NI, Germany",Salzgitter
+48.393453,10.026622,locality,Neu-Ulm,,,,1.0,Bavaria,BY,Neu-Ulm,Neu-Ulm,Neu-Ulm,,Germany,DEU,Europe,"Neu-Ulm, BY, Germany",Neu-Ulm
+48.753432,8.549484,locality,Bad Wildbad,,,,1.0,Baden-Württemberg,BW,Calw,Bad Wildbad,Bad Wildbad,,Germany,DEU,Europe,"Bad Wildbad, BW, Germany",Bad Wildbad
+51.903311,8.390601,locality,Gütersloh,,,,1.0,North Rhine-Westphalia,NW,Gütersloh,Gütersloh,Gütersloh,,Germany,DEU,Europe,"Gütersloh, NW, Germany",Gütersloh
+52.29757,8.894268,locality,Minden,,,,1.0,North Rhine-Westphalia,NW,Minden-Lübbecke,Minden,Minden,,Germany,DEU,Europe,"Minden, NW, Germany",Minden
+48.180834,12.841521,locality,Burghausen,,,,1.0,Bavaria,BY,Altötting,Burghausen,Burghausen,,Germany,DEU,Europe,"Burghausen, BY, Germany",Burghausen
+53.536564,8.099767,locality,Wilhelmshaven,,,,1.0,Lower Saxony,NI,Wilhelmshaven,Wilhelmshaven,Wilhelmshaven,,Germany,DEU,Europe,"Wilhelmshaven, NI, Germany",Wilhelmshaven
+50.229276,8.767219,locality,Karben,,,,1.0,Hesse,HE,Wetteraukreis,Karben,Karben,,Germany,DEU,Europe,"Karben, HE, Germany",Karben
+47.67017,9.381973,locality,Immenstaad am Bodensee,,,,1.0,Baden-Württemberg,BW,Bodenseekreis,Immenstaad am Bodensee,Friedrichshafen,,Germany,DEU,Europe,"Immenstaad am Bodensee, BW, Germany",Immenstaad
+51.829936,8.149658,locality,Oelde,,,,1.0,North Rhine-Westphalia,NW,Warendorf,Oelde,Oelde,,Germany,DEU,Europe,"Oelde, NW, Germany",Oelde
+51.75589,8.22049,neighbourhood,Basel,,,,0.6,North Rhine-Westphalia,NW,Warendorf,Wadersloh,Wadersloh,Basel,Germany,DEU,Europe,"Basel, Wadersloh, NW, Germany",Basel
+,,,,,,,,,,,,,,,,,,Oensingen
+48.347977,8.071256,locality,Zell am Harmersbach,,,,1.0,Baden-Württemberg,BW,Ortenaukreis,Zell am Harmersbach,Zell am Harmersbach,,Germany,DEU,Europe,"Zell am Harmersbach, BW, Germany",Zell
+51.56528,12.13279,neighbourhood,Schweiz,,,,0.6,Saxony-Anhalt,ST,Saalekreis,Landsberg,Landsberg,Schweiz,Germany,DEU,Europe,"Schweiz, Landsberg, ST, Germany",Schweiz
+47.618029,7.665466,locality,Loerrach,,,,1.0,Baden-Württemberg,BW,Lörrach,Loerrach,Lörrach,,Germany,DEU,Europe,"Loerrach, BW, Germany",Lörrach
+47.560866,7.78799,locality,Rheinfelden,,,,1.0,Baden-Württemberg,BW,Lörrach,Rheinfelden,Rheinfelden (Baden),,Germany,DEU,Europe,"Rheinfelden, BW, Germany",Rheinfelden
+50.334935,7.712906,locality,Bad Ems,,,,1.0,Rhineland-Palatinate,RP,Rhein-Lahn-Kreis,Bad Ems,Bad Ems,,Germany,DEU,Europe,"Bad Ems, RP, Germany",Bad Ems
+50.553947,9.676195,locality,Fulda,,,,1.0,Hesse,HE,Fulda,Fulda,Fulda,,Germany,DEU,Europe,"Fulda, HE, Germany",Fulda
+47.6428,7.74005,locality,Steinen,,,,1.0,Baden-Württemberg,BW,Lörrach,Steinen,Steinen,,Germany,DEU,Europe,"Steinen, BW, Germany",Steinen
+48.798726,9.063708,locality,Gerlingen,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Gerlingen,Gerlingen,,Germany,DEU,Europe,"Gerlingen, BW, Germany",Gerlingen-Schillerhöhe
+48.524568,9.117632,locality,Kusterdingen,,,,1.0,Baden-Württemberg,BW,Tübingen,Kusterdingen,Kusterdingen,,Germany,DEU,Europe,"Kusterdingen, BW, Germany",Kusterdingen
+50.045714,10.223773,locality,Schweinfurt,,,,1.0,Bavaria,BY,Schweinfurt,Schweinfurt,Schweinfurt,,Germany,DEU,Europe,"Schweinfurt, BY, Germany",Schweinfurt
+51.220335,7.956622,locality,Plettenberg,,,,1.0,North Rhine-Westphalia,NW,Olpe,Plettenberg,Finnentrop,,Germany,DEU,Europe,"Plettenberg, NW, Germany",Plettenberg
+51.823092,11.287817,locality,Gatersleben,,,,1.0,Saxony-Anhalt,ST,Salzlandkreis,Gatersleben,Seeland,,Germany,DEU,Europe,"Gatersleben, ST, Germany",Gatersleben
+48.691368,9.420216,locality,Wernau,,,,1.0,Baden-Württemberg,BW,Esslingen,Wernau,Wernau (Neckar),,Germany,DEU,Europe,"Wernau, BW, Germany",Wernau
+49.37,8.735,locality,Rhein-Neckar-Kreis,,,,1.0,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Rhein-Neckar-Kreis,Neckargemünd,,Germany,DEU,Europe,"Rhein-Neckar-Kreis, BW, Germany",Neckar
+48.225116,8.41761,locality,Schramberg,,,,1.0,Baden-Württemberg,BW,Rottweil,Schramberg,Schramberg,,Germany,DEU,Europe,"Schramberg, BW, Germany",Schramberg
+50.714118,7.400272,locality,Hennef,,,,1.0,Rhineland-Palatinate,RP,Neuwied,Hennef,Asbach,,Germany,DEU,Europe,"Hennef, RP, Germany",Hennef
+,,,,,,,,,,,,,,,,,,Tallin
+52.133757,11.619067,venue,Amsterdam,9,39108,Olvenstedter Straße,1.0,Saxony-Anhalt,ST,Magdeburg,Magdeburg,Magdeburg,,Germany,DEU,Europe,"Amsterdam, Magdeburg, ST, Germany",Amsterdam
+49.16895,9.919476,locality,Ilshofen,,,,1.0,Baden-Württemberg,BW,Schwäbisch Hall,Ilshofen,Ilshofen-Vellberg,,Germany,DEU,Europe,"Ilshofen, BW, Germany",Ilshofen
+48.836284,8.911176,locality,Mönsheim,,,,1.0,Baden-Württemberg,BW,Böblingen,Mönsheim,Weissach,,Germany,DEU,Europe,"Mönsheim, BW, Germany",Mönsheim
+48.150544,11.345154,locality,Puchheim,,,,1.0,Bavaria,BY,Fürstenfeldbruck,Puchheim,Puchheim,,Germany,DEU,Europe,"Puchheim, BY, Germany",Puchheim
+50.873347,6.68953,locality,Kerpen,,,,1.0,North Rhine-Westphalia,NW,Rhein-Erft-Kreis,Kerpen,Kerpen,,Germany,DEU,Europe,"Kerpen, NW, Germany",Kerpen
+50.179279,9.038583,locality,Langenselbold,,,,1.0,Hesse,HE,Main-Kinzig-Kreis,Langenselbold,Langenselbold,,Germany,DEU,Europe,"Langenselbold, HE, Germany",Langenselbold
+48.89912,9.195073,locality,Ludwigsburg,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Ludwigsburg,Ludwigsburg,,Germany,DEU,Europe,"Ludwigsburg, BW, Germany",Ludwigsburg
+47.541105,10.260103,locality,Blaichach,,,,1.0,Bavaria,BY,Oberallgäu,Blaichach,Blaichach,,Germany,DEU,Europe,"Blaichach, BY, Germany",Blaichach
+50.644868,8.702625,locality,Lollar,,,,1.0,Hesse,HE,Gießen,Lollar,Lollar,,Germany,DEU,Europe,"Lollar, HE, Germany",Lollar
+50.438801,7.825746,locality,Montabaur,,,,1.0,Rhineland-Palatinate,RP,Westerwaldkreis,Montabaur,Montabaur,,Germany,DEU,Europe,"Montabaur, RP, Germany",Montabaur
+47.880558,11.701025,locality,Holzkirchen,,,,1.0,Bavaria,BY,Miesbach,Holzkirchen,Holzkirchen,,Germany,DEU,Europe,"Holzkirchen, BY, Germany",Holzkirchen
+51.540584,7.20971,locality,Herne,,,,1.0,North Rhine-Westphalia,NW,Herne,Herne,Herne,,Germany,DEU,Europe,"Herne, NW, Germany",Herne
+48.876757,9.077487,locality,Schwieberdingen,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Schwieberdingen,Schwieberdingen-Hemmingen,,Germany,DEU,Europe,"Schwieberdingen, BW, Germany",Schwieberdingen
+47.558444,9.704194,locality,Lindau,,,,1.0,Bavaria,BY,Lindau,Lindau,Lindau (Bodensee),,Germany,DEU,Europe,"Lindau, BY, Germany",Lindau
+49.439283,7.760953,locality,Kaiserslautern,,,,1.0,Rhineland-Palatinate,RP,Kaiserslautern,Kaiserslautern,Kaiserslautern,,Germany,DEU,Europe,"Kaiserslautern, RP, Germany",Kaiserslautern
+48.096726,7.967846,locality,Waldkirch,,,,1.0,Baden-Württemberg,BW,Emmendingen,Waldkirch,Waldkirch,,Germany,DEU,Europe,"Waldkirch, BW, Germany",Waldkirch
+53.576158,10.007046,locality,Hamburg,,,,1.0,Hamburg,HH,Hamburg,Hamburg,Hamburg,,Germany,DEU,Europe,"Hamburg, Germany",Hamburg-Rahlstedt
+52.163186,10.550799,locality,Wolfenbüttel,,,,1.0,Lower Saxony,NI,Wolfenbuttel,Wolfenbüttel,Wolfenbüttel,,Germany,DEU,Europe,"Wolfenbüttel, NI, Germany",Wolfenbüttel
+49.078381,8.395605,locality,Eggenstein-Leopoldshafen,,,,1.0,Baden-Württemberg,BW,Karlsruhe,Eggenstein-Leopoldshafen,Eggenstein-Leopoldshafen,,Germany,DEU,Europe,"Eggenstein-Leopoldshafen, BW, Germany",Eggenstein-Leopoldshafen
+52.409514,13.052214,locality,Potsdam,,,,1.0,Brandenburg,BB,Potsdam,Potsdam,Potsdam,,Germany,DEU,Europe,"Potsdam, BB, Germany",Potsdam
+49.279698,9.689136,locality,Künzelsau,,,,1.0,Baden-Württemberg,BW,Hohenlohekreis,Künzelsau,Künzelsau,,Germany,DEU,Europe,"Künzelsau, BW, Germany",Künzelsau-Gaisbach
+53.543781,10.167054,locality,Oststeinbek,,,,1.0,Schleswig-Holstein,SH,Stormarn,Oststeinbek,Oststeinbek,,Germany,DEU,Europe,"Oststeinbek, SH, Germany",Oststeinbek
+49.26593,8.61803,locality,Sankt Leon-Rot,,,,1.0,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Sankt Leon-Rot,St. Leon-Rot,,Germany,DEU,Europe,"Sankt Leon-Rot, BW, Germany",Sankt Leon-Rot
+48.755271,8.24377,locality,Baden,,,,1.0,Baden-Württemberg,BW,Baden-Baden,Baden,Baden-Baden,,Germany,DEU,Europe,"Baden, BW, Germany",Baden-Baden
+51.197317,6.692426,locality,Neuss,,,,1.0,North Rhine-Westphalia,NW,Rhein-Kreis Neuss,Neuss,Neuss,,Germany,DEU,Europe,"Neuss, NW, Germany",Neuss
+49.228965,6.990988,venue,"New York, New York",57,66117,Trillerweg,1.0,Saarland,SL,Saarpfalz-Kreis,Saarbrücken,St. Ingbert,,Germany,DEU,Europe,"New York, New York, Saarbrücken, SL, Germany",New York
+50.814731,7.129776,locality,Troisdorf,,,,1.0,North Rhine-Westphalia,NW,Rhein-Sieg-Kreis,Troisdorf,Troisdorf,,Germany,DEU,Europe,"Troisdorf, NW, Germany",Troisdorf
+48.647621,9.449523,locality,Kirchheim unter Teck,,,,1.0,Baden-Württemberg,BW,Esslingen,Kirchheim unter Teck,Kirchheim unter Teck,,Germany,DEU,Europe,"Kirchheim unter Teck, BW, Germany",Kirchheim
+51.193186,7.013046,locality,Haan,,,,1.0,North Rhine-Westphalia,NW,Mettmann,Haan,Haan,,Germany,DEU,Europe,"Haan, NW, Germany",Haan
+48.048643,11.703157,locality,Hohenbrunn,,,,1.0,Bavaria,BY,München,Hohenbrunn,Hohenbrunn,,Germany,DEU,Europe,"Hohenbrunn, BY, Germany",Hohenbrunn
+48.815768,9.25852,venue,Kolding – das 1 Liter Haus!,,,,1.0,Baden-Württemberg,BW,Rems-Murr-Kreis,Fellbach,Fellbach,Berg,Germany,DEU,Europe,"Kolding – das 1 Liter Haus!, Fellbach, BW, Germany",Kolding
+48.128899,11.367687,locality,Germering,,,,1.0,Bavaria,BY,Fürstenfeldbruck,Germering,Germering,,Germany,DEU,Europe,"Germering, BY, Germany",Germering
+50.144572,11.064719,locality,Lichtenfels,,,,1.0,Bavaria,BY,Lichtenfels,Lichtenfels,Lichtenfels,,Germany,DEU,Europe,"Lichtenfels, BY, Germany",Lichtenfels
+52.432494,13.836588,locality,Grünheide,,,,1.0,Brandenburg,BB,Oder-Spree,Grünheide,Grünheide (Mark),,Germany,DEU,Europe,"Grünheide, BB, Germany",Grunheide
+54.740015,9.435791,locality,Flensburg,,,,1.0,Schleswig-Holstein,SH,Schleswig-Flensburg,Flensburg,Handewitt,,Germany,DEU,Europe,"Flensburg, SH, Germany",Flensburg
+54.081695,9.794596,region,Schleswig-Holstein,,,,1.0,Schleswig-Holstein,SH,,,,,Germany,DEU,Europe,"Schleswig-Holstein, Germany",Schleswig-Holstein
+51.266207,6.537727,locality,Willich,,,,1.0,North Rhine-Westphalia,NW,Viersen,Willich,Willich,,Germany,DEU,Europe,"Willich, NW, Germany",Willich
+47.766452,9.174415,locality,Überlingen,,,,1.0,Baden-Württemberg,BW,Bodenseekreis,Überlingen,Überlingen,,Germany,DEU,Europe,"Überlingen, BW, Germany",Überlingen
+48.523078,9.059097,locality,Tübingen,,,,1.0,Baden-Württemberg,BW,Tübingen,Tübingen,Tübingen,,Germany,DEU,Europe,"Tübingen, BW, Germany",Tübingen
+48.808468,9.319723,locality,Kernen im Remstal,,,,1.0,Baden-Württemberg,BW,Rems-Murr-Kreis,Kernen im Remstal,Kernen im Remstal,,Germany,DEU,Europe,"Kernen im Remstal, BW, Germany",Kernen
+50.66062,10.478757,locality,Christes,,,,1.0,Thuringia,TH,Schmalkalden-Meiningen,Christes,Dolmar-Salzbrücke,,Germany,DEU,Europe,"Christes, TH, Germany",Christes
+48.57774,9.19581,neighbourhood,Dornach,,,,0.6,Baden-Württemberg,BW,Reutlingen,Pliezhausen,Pliezhausen,Dornach,Germany,DEU,Europe,"Dornach, Pliezhausen, BW, Germany",Dornach
+49.235706,7.271102,locality,Blieskastel,,,,1.0,Saarland,SL,Saarpfalz-Kreis,Blieskastel,Blieskastel,,Germany,DEU,Europe,"Blieskastel, SL, Germany",Blieskastel
+51.07288,13.025382,locality,Waldheim,,,,1.0,Saxony,SN,Mittelsachsen,Waldheim,Waldheim,,Germany,DEU,Europe,"Waldheim, SN, Germany",Waldheim
+54.216229,10.879762,locality,Lensahn,,,,1.0,Schleswig-Holstein,SH,Ostholstein,Lensahn,Lensahn,,Germany,DEU,Europe,"Lensahn, SH, Germany",Lensahn
+50.050435,8.695685,locality,Neu-Isenburg,,,,1.0,Hesse,HE,Offenbach,Neu-Isenburg,Neu-Isenburg,,Germany,DEU,Europe,"Neu-Isenburg, HE, Germany",Neu-Isenburg
+47.853616,12.116299,locality,Rosenheim,,,,1.0,Bavaria,BY,Rosenheim,Rosenheim,Rosenheim,,Germany,DEU,Europe,"Rosenheim, BY, Germany",Rosenheim
+49.94365,11.44213,neighbourhood,Eschen,,,,0.6,Bavaria,BY,Bayreuth,Eckersdorf,Eckersdorf,Eschen,Germany,DEU,Europe,"Eschen, Eckersdorf, BY, Germany",Eschen
+,,,,,,,,,,,,,,,,,,Liechtenstein
+50.484503,8.269093,locality,Weilburg,,,,1.0,Hesse,HE,Limburg-Weilburg,Weilburg,Weilburg,,Germany,DEU,Europe,"Weilburg, HE, Germany",Weilburg
+54.313738,9.680169,locality,Buedelsdorf,,,,1.0,Schleswig-Holstein,SH,Rendsburg-Eckernförde,Buedelsdorf,Büdelsdorf,,Germany,DEU,Europe,"Buedelsdorf, SH, Germany",Büdelsdorf
+50.170725,12.137508,locality,Selb,,,,1.0,Bavaria,BY,Wunsiedel im Fichtelgebirge,Selb,Selb,,Germany,DEU,Europe,"Selb, BY, Germany",Selb
+,,,,,,,,,,,,,,,,,,Dordrecht
+51.135209,7.213733,locality,Wermelskirchen,,,,1.0,North Rhine-Westphalia,NW,Rheinisch-Bergischer Kreis,Wermelskirchen,Wermelskirchen,,Germany,DEU,Europe,"Wermelskirchen, NW, Germany",Wermelskirchen
+52.488741,13.396822,venue,Austria,30,10961,Bergmannstraße,0.8,Berlin,BE,,Berlin,Berlin,Kreuzberg,Germany,DEU,Europe,"Austria, Berlin, Germany",Austria
+50.493707,12.137093,locality,Plauen,,,,1.0,Saxony,SN,Vogtlandkreis,Plauen,Plauen,,Germany,DEU,Europe,"Plauen, SN, Germany",Plauen
+53.673068,10.235456,locality,Ahrensburg,,,,1.0,Schleswig-Holstein,SH,Stormarn,Ahrensburg,Ahrensburg,,Germany,DEU,Europe,"Ahrensburg, SH, Germany",Ahrensburg
+54.070224,9.982761,locality,Neumünster,,,,1.0,Schleswig-Holstein,SH,Neumünster,Neumünster,Neumünster,,Germany,DEU,Europe,"Neumünster, SH, Germany",Neumünster
+49.377025,10.188145,locality,Rothenburg upon Tauber,,,,1.0,Bavaria,BY,Ansbach,Rothenburg upon Tauber,Rothenburg ob der Tauber,,Germany,DEU,Europe,"Rothenburg upon Tauber, BY, Germany",Rothenburg
+53.569149,10.179477,locality,Barsbüttel,,,,1.0,Schleswig-Holstein,SH,Stormarn,Barsbüttel,Barsbüttel,,Germany,DEU,Europe,"Barsbüttel, SH, Germany",Barsbüttel
+50.727308,13.174637,venue,Österreich,,,,1.0,Saxony,SN,Erzgebirgskreis,Pockau-Lengefeld,Pockau-Lengefeld,,Germany,DEU,Europe,"Österreich, Pockau-Lengefeld, SN, Germany",Österreich
+49.480351,10.981111,locality,Fürth,,,,1.0,Bavaria,BY,Fürth,Fürth,Fürth,,Germany,DEU,Europe,"Fürth, BY, Germany",Fürth
+50.434336,7.67019,locality,Höhr-Grenzhausen,,,,1.0,Rhineland-Palatinate,RP,Westerwaldkreis,Höhr-Grenzhausen,Höhr-Grenzhausen,,Germany,DEU,Europe,"Höhr-Grenzhausen, RP, Germany",Höhr-Grenzhausen
+51.176385,7.070708,locality,Solingen,,,,1.0,North Rhine-Westphalia,NW,Solingen,Solingen,Solingen,,Germany,DEU,Europe,"Solingen, NW, Germany",Solingen
+50.206473,9.277774,locality,Biebergemünd,,,,1.0,Hesse,HE,Main-Kinzig-Kreis,Biebergemünd,Biebergemünd,,Germany,DEU,Europe,"Biebergemünd, HE, Germany",Biebergemünd
+53.331671,9.866311,locality,Buchholz in der Nordheide,,,,1.0,Lower Saxony,NI,Harburg,Buchholz in der Nordheide,Buchholz in der Nordheide,,Germany,DEU,Europe,"Buchholz in der Nordheide, NI, Germany",Boppard-Buchholz
+50.823526,6.128758,locality,Würselen,,,,1.0,North Rhine-Westphalia,NW,Aachen,Würselen,Würselen,,Germany,DEU,Europe,"Würselen, NW, Germany",Würselen
+49.634032,9.008157,locality,Erbach im Odenwald,,,,1.0,Hesse,HE,Odenwaldkreis,Erbach im Odenwald,Erbach,,Germany,DEU,Europe,"Erbach im Odenwald, HE, Germany",Erbach
+49.976929,9.147466,locality,Aschaffenburg,,,,1.0,Bavaria,BY,Aschaffenburg,Aschaffenburg,Aschaffenburg,,Germany,DEU,Europe,"Aschaffenburg, BY, Germany",Aschaffenburg
+48.004839,11.647386,county,München,,,,1.0,Bavaria,BY,München,,,,Germany,DEU,Europe,"München, BY, Germany",München-Ismaning
+51.849002,6.871077,locality,Borken,,,,1.0,North Rhine-Westphalia,NW,Borken,Borken,Borken,,Germany,DEU,Europe,"Borken, NW, Germany",Borken
+50.869385,9.711579,locality,Bad Hersfeld,,,,1.0,Hesse,HE,Hersfeld-Rotenburg,Bad Hersfeld,Bad Hersfeld,,Germany,DEU,Europe,"Bad Hersfeld, HE, Germany",Bad Hersfeld
+49.532304,9.332866,locality,Buchen,,,,1.0,Baden-Württemberg,BW,Neckar-Odenwald-Kreis,Buchen,Buchen (Odenwald),,Germany,DEU,Europe,"Buchen, BW, Germany",Büchen
+48.064962,8.45318,locality,Villingen-Schwenningen,,,,1.0,Baden-Württemberg,BW,Schwarzwald-Baar-Kreis,Villingen-Schwenningen,Villingen-Schwenningen,,Germany,DEU,Europe,"Villingen-Schwenningen, BW, Germany",Villingen-Schwenningen
+52.984564,9.833087,locality,Soltau,,,,1.0,Lower Saxony,NI,Heidekreis,Soltau,Soltau,,Germany,DEU,Europe,"Soltau, NI, Germany",Soltau
+,,,,,,,,,,,,,,,,,,Fuschl
+52.038423,8.149491,locality,Versmold,,,,1.0,North Rhine-Westphalia,NW,Gütersloh,Versmold,Versmold,,Germany,DEU,Europe,"Versmold, NW, Germany",Versmold
+49.775722,9.180212,locality,Klingenberg am Main,,,,1.0,Bavaria,BY,Miltenberg,Klingenberg am Main,Klingenberg a. Main,,Germany,DEU,Europe,"Klingenberg am Main, BY, Germany",Klingenberg
+49.024432,8.75407,locality,Knittlingen,,,,1.0,Baden-Württemberg,BW,Enzkreis,Knittlingen,Knittlingen,,Germany,DEU,Europe,"Knittlingen, BW, Germany",Knittlingen
+51.128116,7.903165,locality,Attendorn,,,,1.0,North Rhine-Westphalia,NW,Olpe,Attendorn,Attendorn,,Germany,DEU,Europe,"Attendorn, NW, Germany",Attendorn
+48.274746,8.856263,locality,Balingen,,,,1.0,Baden-Württemberg,BW,Zollernalbkreis,Balingen,Balingen,,Germany,DEU,Europe,"Balingen, BW, Germany",Balingen
+49.279698,9.689136,locality,Künzelsau,,,,1.0,Baden-Württemberg,BW,Hohenlohekreis,Künzelsau,Künzelsau,,Germany,DEU,Europe,"Künzelsau, BW, Germany",Künzelsau
+50.504362,8.186614,locality,Merenberg,,,,1.0,Hesse,HE,Limburg-Weilburg,Merenberg,Merenberg,,Germany,DEU,Europe,"Merenberg, HE, Germany",Merenberg
+51.306941,7.385694,locality,Ennepetal,,,,1.0,North Rhine-Westphalia,NW,Ennepe-Ruhr-Kreis,Ennepetal,Ennepetal,,Germany,DEU,Europe,"Ennepetal, NW, Germany",Ennepetal
+51.628151,7.05154,locality,Gelsenkirchen,,,,1.0,North Rhine-Westphalia,NW,Recklinghausen,Gelsenkirchen,Marl,,Germany,DEU,Europe,"Gelsenkirchen, NW, Germany",Gelsenkirchen
+48.709756,9.423625,locality,Plochingen,,,,1.0,Baden-Württemberg,BW,Esslingen,Plochingen,Plochingen,,Germany,DEU,Europe,"Plochingen, BW, Germany",Plochingen
+49.949967,12.240427,locality,Mitterteich,,,,1.0,Bavaria,BY,Tirschenreuth,Mitterteich,Mitterteich,,Germany,DEU,Europe,"Mitterteich, BY, Germany",Mitterteich
+51.207878,6.95525,locality,Erkrath,,,,1.0,North Rhine-Westphalia,NW,Mettmann,Erkrath,Erkrath,,Germany,DEU,Europe,"Erkrath, NW, Germany",Erkrath
+51.599252,7.756528,locality,Bönen,,,,1.0,North Rhine-Westphalia,NW,Unna,Bönen,Bönen,,Germany,DEU,Europe,"Bönen, NW, Germany",Bönen
+51.674274,7.821892,locality,Hamm,,,,1.0,North Rhine-Westphalia,NW,Hamm,Hamm,Hamm,,Germany,DEU,Europe,"Hamm, NW, Germany",Hamm
+51.537065,7.685846,locality,Unna,,,,1.0,North Rhine-Westphalia,NW,Unna,Unna,Unna,,Germany,DEU,Europe,"Unna, NW, Germany",Unna
+51.568226,8.113109,locality,Soest,,,,1.0,North Rhine-Westphalia,NW,Soest,Soest,Soest,,Germany,DEU,Europe,"Soest, NW, Germany",Soest
+51.788395,7.618854,locality,Ascheberg,,,,1.0,North Rhine-Westphalia,NW,Coesfeld,Ascheberg,Ascheberg,,Germany,DEU,Europe,"Ascheberg, NW, Germany",Ascheberg
+48.527542,9.353555,locality,Dettingen an der Erms,,,,0.6,Baden-Württemberg,BW,Reutlingen,Dettingen an der Erms,Dettingen an der Erms,,Germany,DEU,Europe,"Dettingen an der Erms, BW, Germany",Dettingen
+51.586044,7.214087,locality,Recklinghausen,,,,1.0,North Rhine-Westphalia,NW,Recklinghausen,Recklinghausen,Recklinghausen,,Germany,DEU,Europe,"Recklinghausen, NW, Germany",Recklinghausen
+51.401978,8.065168,locality,Arnsberg,,,,1.0,North Rhine-Westphalia,NW,Hochsauerlandkreis,Arnsberg,Arnsberg,,Germany,DEU,Europe,"Arnsberg, NW, Germany",Arnsberg
+48.10732,11.45196,neighbourhood,Martinsried,,,,0.6,Bavaria,BY,München,Planegg,Planegg,Martinsried,Germany,DEU,Europe,"Martinsried, Planegg, BY, Germany",Martinsried
+,,,,,,,,,,,,,,,,,,Bregenz
+52.379952,9.787455,locality,Hanover,,,,1.0,Lower Saxony,NI,Hannover,Hanover,Hannover,,Germany,DEU,Europe,"Hanover, NI, Germany",Hanover
+48.807108,11.291813,locality,Buxheim,,,,1.0,Bavaria,BY,Eichstätt,Buxheim,Buxheim,,Germany,DEU,Europe,"Buxheim, BY, Germany",Buxheim
+48.683414,9.211114,locality,Filderstadt,,,,1.0,Baden-Württemberg,BW,Esslingen,Filderstadt,Filderstadt,,Germany,DEU,Europe,"Filderstadt, BW, Germany",Filderstadt
+48.76965,11.65861,region,Bavaria,,,,1.0,Bavaria,BY,,,,,Germany,DEU,Europe,"Bavaria, Germany",Bayern
+50.254252,8.357787,locality,Waldems,,,,1.0,Hesse,HE,Rheingau-Taunus-Kreis,Waldems,Waldems,,Germany,DEU,Europe,"Waldems, HE, Germany",Waldems
+49.750116,6.645776,locality,Trier,,,,1.0,Rhineland-Palatinate,RP,Trier,Trier,Trier,,Germany,DEU,Europe,"Trier, RP, Germany",Trier
+48.605915,9.147881,region,Baden-Württemberg,,,,0.3,Baden-Württemberg,BW,,,,,Germany,DEU,Europe,"Baden-Württemberg, Germany",Oberkochen-Württemberg
+49.612207,8.648188,locality,Laudenbach,,,,1.0,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Laudenbach,Hemsbach,,Germany,DEU,Europe,"Laudenbach, BW, Germany",Laudenbach
+52.427996,7.066335,locality,Nordhorn,,,,1.0,Lower Saxony,NI,Grafschaft Bentheim,Nordhorn,Nordhorn,,Germany,DEU,Europe,"Nordhorn, NI, Germany",Nordhorn
+49.120445,10.305026,locality,Schopfloch,,,,1.0,Bavaria,BY,Ansbach,Schopfloch,Schopfloch,,Germany,DEU,Europe,"Schopfloch, BY, Germany",Schopfloch
+50.912747,13.340935,locality,Freiberg,,,,1.0,Saxony,SN,Mittelsachsen,Freiberg,Freiberg,,Germany,DEU,Europe,"Freiberg, SN, Germany",Freiberg
+48.6153,9.48582,neighbourhood,Nabern,,,,0.6,Baden-Württemberg,BW,Esslingen,Kirchheim unter Teck,Kirchheim unter Teck,Nabern,Germany,DEU,Europe,"Nabern, Kirchheim unter Teck, BW, Germany",Nabern
+50.322777,11.998445,locality,Gattendorf,,,,1.0,Bavaria,BY,Hof,Gattendorf,Feilitzsch,,Germany,DEU,Europe,"Gattendorf, BY, Germany",Gattendorf
+49.997933,11.389776,macrocounty,Upper Franconia,,,,0.4,Bavaria,BY,,,,,Germany,DEU,Europe,"Upper Franconia, BY, Germany",Oberfranken
+52.229401,11.006095,locality,Helmstedt,,,,1.0,Lower Saxony,NI,Helmstedt,Helmstedt,Helmstedt,,Germany,DEU,Europe,"Helmstedt, NI, Germany",Helmstedt
+49.966143,8.668955,locality,Egelsbach,,,,1.0,Hesse,HE,Offenbach,Egelsbach,Egelsbach,,Germany,DEU,Europe,"Egelsbach, HE, Germany",Egelsbach
+49.354084,7.255839,locality,Bexbach,,,,1.0,Saarland,SL,Saarpfalz-Kreis,Bexbach,Bexbach,,Germany,DEU,Europe,"Bexbach, SL, Germany",Bexbach
+48.363527,12.254803,locality,Velden,,,,1.0,Bavaria,BY,Landshut,Velden,Velden,,Germany,DEU,Europe,"Velden, BY, Germany",Velden
+52.520669,8.198046,locality,Damme,,,,1.0,Lower Saxony,NI,Vechta,Damme,Damme,,Germany,DEU,Europe,"Damme, NI, Germany",Damme
+50.909894,6.814001,locality,Frechen,,,,1.0,North Rhine-Westphalia,NW,Rhein-Erft-Kreis,Frechen,Frechen,,Germany,DEU,Europe,"Frechen, NW, Germany",Frechen
+52.238901,9.859819,locality,Sarstedt,,,,1.0,Lower Saxony,NI,Hildesheim,Sarstedt,Sarstedt,,Germany,DEU,Europe,"Sarstedt, NI, Germany",Sarstedt
+,,,,,,,,,,,,,,,,,,Gutenbergquartier
+49.511052,11.275743,locality,Lauf an der Pegnitz,,,,1.0,Bavaria,BY,Nürnberger Land,Lauf an der Pegnitz,Lauf a.d. Pegnitz,,Germany,DEU,Europe,"Lauf an der Pegnitz, BY, Germany",Lauf
+47.783953,9.612955,locality,Ravensburg,,,,1.0,Baden-Württemberg,BW,Ravensburg,Ravensburg,Mittleres Schussental,,Germany,DEU,Europe,"Ravensburg, BW, Germany",Ravensburg
+47.277817,10.179064,venue,Koblach-Hütte,,,,1.0,Bavaria,BY,Oberallgäu,Oberstdorf,Oberstdorf,,Germany,DEU,Europe,"Koblach-Hütte, Oberstdorf, BY, Germany",Koblach
+47.722046,10.318357,locality,Kempten,,,,1.0,Bavaria,BY,Kempten,Kempten,Kempten (Allgäu),,Germany,DEU,Europe,"Kempten, BY, Germany",Kempten
+51.604888,7.536057,locality,Lünen,,,,1.0,North Rhine-Westphalia,NW,Unna,Lünen,Lünen,,Germany,DEU,Europe,"Lünen, NW, Germany",Lünen
+48.531563,9.149398,locality,Kirchentellinsfurt,,,,1.0,Baden-Württemberg,BW,Tübingen,Kirchentellinsfurt,Kirchentellinsfurt,,Germany,DEU,Europe,"Kirchentellinsfurt, BW, Germany",Kirchentellinsfurt
+51.21895,6.76339,region,North Rhine-Westphalia,,,,1.0,North Rhine-Westphalia,NW,,,,,Germany,DEU,Europe,"North Rhine-Westphalia, Germany",Westfalen
+51.800982,11.335941,locality,Nachterstedt,,,,0.6,Saxony-Anhalt,ST,Salzlandkreis,Nachterstedt,Seeland,,Germany,DEU,Europe,"Nachterstedt, ST, Germany",Nachterstedt
+48.152126,11.544467,locality,Munich,,,,1.0,Bavaria,BY,Munich,Munich,München,,Germany,DEU,Europe,"Munich, BY, Germany",Munich
+50.87658,12.601941,locality,Waldenburg,,,,1.0,Saxony,SN,Zwickau,Waldenburg,Waldenburg,,Germany,DEU,Europe,"Waldenburg, SN, Germany",Waldenburg
+49.19867,8.120824,locality,Landau,,,,1.0,Rhineland-Palatinate,RP,Landau in der Pfalz,Landau,Landau in der Pfalz,,Germany,DEU,Europe,"Landau, RP, Germany",Landau
+51.370021,7.126993,locality,Hattingen,,,,1.0,North Rhine-Westphalia,NW,Mettmann,Hattingen,Velbert,,Germany,DEU,Europe,"Hattingen, NW, Germany",Hattingen
+49.845203,9.605811,locality,Marktheidenfeld,,,,1.0,Bavaria,BY,Main-Spessart,Marktheidenfeld,Marktheidenfeld,,Germany,DEU,Europe,"Marktheidenfeld, BY, Germany",Marktheidenfeld
+50.024462,9.257926,locality,Sailauf,,,,1.0,Bavaria,BY,Aschaffenburg,Sailauf,Sailauf,,Germany,DEU,Europe,"Sailauf, BY, Germany",Sailauf
+51.177232,14.43138,locality,Bautzen,,,,1.0,Saxony,SN,Bautzen,Bautzen,Bautzen,,Germany,DEU,Europe,"Bautzen, SN, Germany",Bautzen
+50.833342,6.084806,locality,Herzogenrath,,,,1.0,North Rhine-Westphalia,NW,Aachen,Herzogenrath,Herzogenrath,,Germany,DEU,Europe,"Herzogenrath, NW, Germany",Herzogenrath
+52.547903,9.730138,locality,Wedemark,,,,1.0,Lower Saxony,NI,Hannover,Wedemark,Wedemark,,Germany,DEU,Europe,"Wedemark, NI, Germany",Wedemark
+51.933495,10.324922,locality,Langelsheim,,,,1.0,Lower Saxony,NI,Goslar,Langelsheim,Langelsheim,,Germany,DEU,Europe,"Langelsheim, NI, Germany",Langelsheim
+,,,,,,,,,,,,,,,,,,MĂŒnster
+49.99775,10.208766,locality,Grafenrheinfeld,,,,1.0,Bavaria,BY,Schweinfurt,Grafenrheinfeld,Grafenrheinfeld,,Germany,DEU,Europe,"Grafenrheinfeld, BY, Germany",Grafenrheinfeld
+48.07924,11.743692,locality,Grasbrunn,,,,1.0,Bavaria,BY,München,Grasbrunn,Grasbrunn,,Germany,DEU,Europe,"Grasbrunn, BY, Germany",Grasbrunn
+52.367615,9.703262,neighbourhood,Linden,,,,0.6,Lower Saxony,NI,Hannover,Hanover,Hannover,Linden,Germany,DEU,Europe,"Linden, Hanover, NI, Germany",Linden
+48.835135,10.100839,locality,Aalen,,,,1.0,Baden-Württemberg,BW,Ostalbkreis,Aalen,Aalen,,Germany,DEU,Europe,"Aalen, BW, Germany",Aalen
+52.372248,13.31106,locality,Großbeeren,,,,1.0,Brandenburg,BB,Teltow-Fläming,Großbeeren,Großbeeren,,Germany,DEU,Europe,"Großbeeren, BB, Germany",Großbeeren
+48.826,9.06937,locality,Ditzingen,,,,1.0,Baden-Württemberg,BW,Ludwigsburg,Ditzingen,Ditzingen,,Germany,DEU,Europe,"Ditzingen, BW, Germany",Ditzingen
+48.046251,11.533756,locality,Grünwald,,,,1.0,Bavaria,BY,München,Grünwald,Grünwald,,Germany,DEU,Europe,"Grünwald, BY, Germany",Grünwald
+50.859186,12.762987,locality,Limbach-Oberfrohna,,,,1.0,Saxony,SN,Zwickau,Limbach-Oberfrohna,Limbach-Oberfrohna,,Germany,DEU,Europe,"Limbach-Oberfrohna, SN, Germany",Limbach
+50.682656,10.916862,locality,Ilmenau,,,,1.0,Thuringia,TH,Ilm-Kreis,Ilmenau,Ilmenau,,Germany,DEU,Europe,"Ilmenau, TH, Germany",Ilmenau
+48.73655,9.315444,locality,Esslingen am Neckar,,,,0.6,Baden-Württemberg,BW,Esslingen,Esslingen am Neckar,Esslingen am Neckar,,Germany,DEU,Europe,"Esslingen am Neckar, BW, Germany",Esslingen
+48.327097,11.750298,locality,Hallbergmoos,,,,1.0,Bavaria,BY,Freising,Hallbergmoos,Hallbergmoos,,Germany,DEU,Europe,"Hallbergmoos, BY, Germany",Hallbergmoos
+49.296664,6.807061,locality,Schwalbach,,,,1.0,Saarland,SL,Saarlouis,Schwalbach,Schwalbach,,Germany,DEU,Europe,"Schwalbach, SL, Germany",Schwalbach
+51.316197,9.495893,neighbourhood,Nord,,,,1.0,Hesse,HE,Kassel,Kassel,Kassel,Nord,Germany,DEU,Europe,"Nord, Kassel, HE, Germany",Nord
+49.675135,12.148735,locality,Weiden in der Oberpfalz,,,,0.6,Bavaria,BY,Weiden in der Oberpfalz,Weiden in der Oberpfalz,Weiden i.d. OPf.,,Germany,DEU,Europe,"Weiden in der Oberpfalz, BY, Germany",Weiden
+49.895431,10.897137,locality,Bamberg,,,,1.0,Bavaria,BY,Bamberg,Bamberg,Bamberg,,Germany,DEU,Europe,"Bamberg, BY, Germany",Bamberg
+52.83864,10.294221,locality,Unterlüß,,,,1.0,Lower Saxony,NI,Celle,Unterlüß,Südheide,,Germany,DEU,Europe,"Unterlüß, NI, Germany",Unterlüß
+49.297519,9.657803,locality,Ingelfingen,,,,1.0,Baden-Württemberg,BW,Hohenlohekreis,Ingelfingen,Künzelsau,,Germany,DEU,Europe,"Ingelfingen, BW, Germany",Ingelfingen-Criesbach
+51.028122,9.410616,locality,Homberg,,,,1.0,Hesse,HE,Schwalm-Eder-Kreis,Homberg,Homberg (Efze),,Germany,DEU,Europe,"Homberg, HE, Germany",Homberg
+49.584868,11.011478,venue,Ohm-Gymnasium,6,91052,Am Röthelheim,1.0,Bavaria,BY,Erlangen-Höchstadt,Erlangen,Herzogenaurach,,Germany,DEU,Europe,"Ohm-Gymnasium, Erlangen, BY, Germany",Ohm
+,,,,,,,,,,,,,,,,,,Pilsen
+50.20047,8.850401,locality,Schöneck,,,,1.0,Hesse,HE,Main-Kinzig-Kreis,Schöneck,Schöneck,,Germany,DEU,Europe,"Schöneck, HE, Germany",Schöneck
+50.466623,12.288678,county,Vogtlandkreis,,,,0.4,Saxony,SN,Vogtlandkreis,,,,Germany,DEU,Europe,"Vogtlandkreis, SN, Germany",Vogtland
+47.558669,10.224939,locality,Immenstadt,,,,1.0,Bavaria,BY,Oberallgäu,Immenstadt,Immenstadt i. Allgäu,,Germany,DEU,Europe,"Immenstadt, BY, Germany",Immenstadt
+48.657795,8.943355,locality,Ehningen,,,,1.0,Baden-Württemberg,BW,Böblingen,Ehningen,Gärtringen/Ehningen,,Germany,DEU,Europe,"Ehningen, BW, Germany",Ehningen
+50.942982,7.459329,locality,Much,,,,1.0,North Rhine-Westphalia,NW,Oberbergischer Kreis,Much,Wiehl,,Germany,DEU,Europe,"Much, NW, Germany",Much
+49.453203,12.181704,locality,Nabburg,,,,1.0,Bavaria,BY,Schwandorf,Nabburg,Nabburg,,Germany,DEU,Europe,"Nabburg, BY, Germany",Nabburg
+50.074641,8.856302,locality,Obertshausen,,,,1.0,Hesse,HE,Offenbach,Obertshausen,Obertshausen,,Germany,DEU,Europe,"Obertshausen, HE, Germany",Obertshausen
+51.665907,7.625455,locality,Werne,,,,1.0,North Rhine-Westphalia,NW,Unna,Werne,Werne,,Germany,DEU,Europe,"Werne, NW, Germany",Werne
+49.660728,11.035931,locality,Baiersdorf,,,,1.0,Bavaria,BY,Erlangen-Höchstadt,Baiersdorf,Baiersdorf,,Germany,DEU,Europe,"Baiersdorf, BY, Germany",Baiersdorf
+51.446992,10.044105,locality,Gleichen,,,,1.0,Lower Saxony,NI,Göttingen,Gleichen,Gleichen,,Germany,DEU,Europe,"Gleichen, NI, Germany",Gleichen
+48.799643,9.812401,locality,Schwäbisch Gmünd,,,,1.0,Baden-Württemberg,BW,Ostalbkreis,Schwäbisch Gmünd,Schwäbisch Gmünd,,Germany,DEU,Europe,"Schwäbisch Gmünd, BW, Germany",Schwäbisch Gmünd
+51.227901,9.664837,locality,Hessisch Lichtenau,,,,1.0,Hesse,HE,Kassel,Hessisch Lichtenau,Helsa,,Germany,DEU,Europe,"Hessisch Lichtenau, HE, Germany",Lichtenau
+51.048254,7.029976,locality,Leverkusen,,,,1.0,North Rhine-Westphalia,NW,Leverkusen,Leverkusen,Leverkusen,,Germany,DEU,Europe,"Leverkusen, NW, Germany",Leverkusen
+,,,,,,,,,,,,,,,,,,bundesweit–bundesweit
+47.984131,8.817883,locality,Tuttlingen,,,,1.0,Baden-Württemberg,BW,Tuttlingen,Tuttlingen,Tuttlingen,,Germany,DEU,Europe,"Tuttlingen, BW, Germany",Tuttlingen
+47.558444,9.704194,locality,Lindau,,,,1.0,Bavaria,BY,Lindau,Lindau,Lindau (Bodensee),,Germany,DEU,Europe,"Lindau, BY, Germany",Lindau Bodensee
+48.571465,13.437462,locality,Passau,,,,1.0,Bavaria,BY,Passau,Passau,Passau,,Germany,DEU,Europe,"Passau, BY, Germany",Passau
+51.277427,14.104909,locality,Kamenz,,,,1.0,Saxony,SN,Bautzen,Kamenz,Kamenz-Schönteichen,,Germany,DEU,Europe,"Kamenz, SN, Germany",Kamenz
+52.072656,8.417333,venue,Parks (Denver Col),,,,1.0,North Rhine-Westphalia,NW,Gütersloh,Werther,Werther (Westf.),,Germany,DEU,Europe,"Parks (Denver Col), Werther, NW, Germany",Denver
+52.609052,12.345483,locality,Rathenow,,,,1.0,Brandenburg,BB,Havelland,Rathenow,Rathenow,,Germany,DEU,Europe,"Rathenow, BB, Germany",Rathenow
+52.031102,8.759578,locality,Herford,,,,1.0,North Rhine-Westphalia,NW,Lippe,Herford,Bad Salzuflen,,Germany,DEU,Europe,"Herford, NW, Germany",Herford
+52.435424,8.612005,locality,Rahden,,,,1.0,North Rhine-Westphalia,NW,Minden-Lübbecke,Rahden,Rahden,,Germany,DEU,Europe,"Rahden, NW, Germany",Rahden
+52.380084,8.624842,locality,Espelkamp,,,,1.0,North Rhine-Westphalia,NW,Minden-Lübbecke,Espelkamp,Espelkamp,,Germany,DEU,Europe,"Espelkamp, NW, Germany",Espelkamp
+48.049034,8.195593,locality,Furtwangen im Schwarzwald,,,,1.0,Baden-Württemberg,BW,Schwarzwald-Baar-Kreis,Furtwangen im Schwarzwald,Furtwangen im Schwarzwald,,Germany,DEU,Europe,"Furtwangen im Schwarzwald, BW, Germany",Furtwangen
+49.385648,11.356734,locality,Altdorf bei Nürnberg,,,,1.0,Bavaria,BY,Nürnberger Land,Altdorf bei Nürnberg,Altdorf b. Nürnberg,,Germany,DEU,Europe,"Altdorf bei Nürnberg, BY, Germany",Altdorf
+53.16269,8.99905,neighbourhood,Grasdorf,,,,0.6,Lower Saxony,NI,Osterholz,Grasberg,Grasberg,Grasdorf,Germany,DEU,Europe,"Grasdorf, Grasberg, NI, Germany",Grasdorf
+50.258998,10.961291,locality,Coburg,,,,1.0,Bavaria,BY,Coburg,Coburg,Coburg,,Germany,DEU,Europe,"Coburg, BY, Germany",Coburg
+50.050278,8.626884,venue,FFM,,,,1.0,Hesse,HE,Offenbach,Neu-Isenburg,Neu-Isenburg,Sachsenhausen,Germany,DEU,Europe,"FFM, Neu-Isenburg, HE, Germany",FFM
+52.606495,12.880777,locality,Nauen,,,,1.0,Brandenburg,BB,Havelland,Nauen,Nauen,,Germany,DEU,Europe,"Nauen, BB, Germany",Nauen
+52.838209,13.82194,locality,Eberswalde,,,,1.0,Brandenburg,BB,Barnim,Eberswalde,Eberswalde,,Germany,DEU,Europe,"Eberswalde, BB, Germany",Eberswalde
+49.28479,12.15447,neighbourhood,Oder,,,,0.6,Bavaria,BY,Schwandorf,Steinberg am See,Wackersdorf,Oder,Germany,DEU,Europe,"Oder, Steinberg am See, BY, Germany",Oder
+48.624309,10.241786,locality,Giengen an der Brenz,,,,1.0,Baden-Württemberg,BW,Heidenheim,Giengen an der Brenz,Giengen an der Brenz,,Germany,DEU,Europe,"Giengen an der Brenz, BW, Germany",Giengen
+49.459586,8.17015,locality,Bad Dürkheim,,,,1.0,Rhineland-Palatinate,RP,Bad Durkheim,Bad Dürkheim,Bad Dürkheim,,Germany,DEU,Europe,"Bad Dürkheim, RP, Germany",Bad Dürkheim
+47.782446,11.97035,venue,St. Florian,,,,1.0,Bavaria,BY,Rosenheim,Bad Feilnbach,Bad Feilnbach,,Germany,DEU,Europe,"St. Florian, Bad Feilnbach, BY, Germany",Sankt Florian
+,,,,,,,,,,,,,,,,,,Österreichweit
+51.504926,7.623162,locality,Holzwickede,,,,1.0,North Rhine-Westphalia,NW,Unna,Holzwickede,Holzwickede,,Germany,DEU,Europe,"Holzwickede, NW, Germany",Holzwickede
+52.199058,8.800363,locality,Bad Oeynhausen,,,,1.0,North Rhine-Westphalia,NW,Minden-Lübbecke,Bad Oeynhausen,Bad Oeynhausen,,Germany,DEU,Europe,"Bad Oeynhausen, NW, Germany",Bad Oeynhausen
+50.560245,8.595595,locality,Giessen,,,,1.0,Hesse,HE,Lahn-Dill-Kreis,Giessen,Wetzlar,,Germany,DEU,Europe,"Giessen, HE, Germany",Gießen
+47.9626,12.593247,locality,Traunreut,,,,1.0,Bavaria,BY,Traunstein,Traunreut,Traunreut,,Germany,DEU,Europe,"Traunreut, BY, Germany",Traunreut
+50.716316,12.487302,locality,Zwickau,,,,1.0,Saxony,SN,Zwickau,Zwickau,Zwickau,,Germany,DEU,Europe,"Zwickau, SN, Germany",Zwickau
+50.664469,8.047053,locality,Salzburg,,,,1.0,Rhineland-Palatinate,RP,Westerwaldkreis,Salzburg,Rennerod,,Germany,DEU,Europe,"Salzburg, RP, Germany",Salzburg
+49.471437,8.566462,venue,Dr. Bern Krakow,,,,1.0,Baden-Württemberg,BW,Rhein-Neckar-Kreis,Ilvesheim,Ilvesheim,,Germany,DEU,Europe,"Dr. Bern Krakow, Ilvesheim, BW, Germany",Bern
+47.778628,10.616315,locality,Marktoberdorf,,,,1.0,Bavaria,BY,Ostallgäu,Marktoberdorf,Marktoberdorf,,Germany,DEU,Europe,"Marktoberdorf, BY, Germany",Marktoberdorf
+50.577409,11.80898,locality,Schleiz,,,,1.0,Thuringia,TH,Saale-Orla-Kreis,Schleiz,Schleiz,,Germany,DEU,Europe,"Schleiz, TH, Germany",Schleiz
+48.681906,9.275862,locality,Neuhausen auf den Fildern,,,,0.6,Baden-Württemberg,BW,Esslingen,Neuhausen auf den Fildern,Neuhausen auf den Fildern,,Germany,DEU,Europe,"Neuhausen auf den Fildern, BW, Germany",Neuhausen
+50.655816,6.790875,locality,Euskirchen,,,,1.0,North Rhine-Westphalia,NW,Euskirchen,Euskirchen,Euskirchen,,Germany,DEU,Europe,"Euskirchen, NW, Germany",Euskirchen
+51.52669,9.32653,neighbourhood,Lamerden,,,,0.6,Hesse,HE,Kassel,Liebenau,Liebenau,Lamerden,Germany,DEU,Europe,"Lamerden, Liebenau, HE, Germany",Lamerden
+50.713073,7.129514,venue,Villa Graz,2,53113,Johanniterstraße,1.0,North Rhine-Westphalia,NW,Bonn,Bonn,Bonn,,Germany,DEU,Europe,"Villa Graz, Bonn, NW, Germany",Graz
+50.44636,9.03445,neighbourhood,Ober Schmitten,,,,0.6,Hesse,HE,Wetteraukreis,Nidda,Nidda,Ober Schmitten,Germany,DEU,Europe,"Ober Schmitten, Nidda, HE, Germany",Ober-Schmitten
+48.817227,9.276206,locality,Fellbach,,,,1.0,Baden-Württemberg,BW,Rems-Murr-Kreis,Fellbach,Fellbach,,Germany,DEU,Europe,"Fellbach, BW, Germany",Fellbach
+48.641976,9.01103,locality,Holzgerlingen,,,,1.0,Baden-Württemberg,BW,Böblingen,Holzgerlingen,Holzgerlingen,,Germany,DEU,Europe,"Holzgerlingen, BW, Germany",Holzgerlingen
+51.383848,7.687591,locality,Iserlohn,,,,1.0,North Rhine-Westphalia,NW,Märkischer Kreis,Iserlohn,Iserlohn,,Germany,DEU,Europe,"Iserlohn, NW, Germany",Iserlohn
+50.393851,7.166739,venue,Weitere Sehenswürdigkeiten in und um Rieden,,,,1.0,Rhineland-Palatinate,RP,Mayen-Koblenz,Rieden,Mendig,,Germany,DEU,Europe,"Weitere Sehenswürdigkeiten in und um Rieden, Rieden, RP, Germany",weitere
+48.697159,9.318045,locality,Denkendorf,,,,1.0,Baden-Württemberg,BW,Esslingen,Denkendorf,Denkendorf,,Germany,DEU,Europe,"Denkendorf, BW, Germany",Denkendorf
+51.163614,11.125218,locality,Sömmerda,,,,1.0,Thuringia,TH,Sömmerda,Sömmerda,Sömmerda,,Germany,DEU,Europe,"Sömmerda, TH, Germany",Sömmerda
+52.299264,9.81597,locality,Laatzen,,,,1.0,Lower Saxony,NI,Hannover,Laatzen,Laatzen,,Germany,DEU,Europe,"Laatzen, NI, Germany",Laatzen
+51.163614,11.125218,locality,Sömmerda,,,,1.0,Thuringia,TH,Sömmerda,Sömmerda,Sömmerda,,Germany,DEU,Europe,"Sömmerda, TH, Germany",Augsburg oder Sömmerda
+49.247043,7.370796,locality,Zweibrücken,,,,1.0,Rhineland-Palatinate,RP,Zweibrücken,Zweibrücken,Zweibrücken,,Germany,DEU,Europe,"Zweibrücken, RP, Germany",Zweibrücken
+48.14744,8.54639,neighbourhood,Horgen,,,,0.6,Baden-Württemberg,BW,Rottweil,Zimmern ob Rottweil,Rottweil,Horgen,Germany,DEU,Europe,"Horgen, Zimmern ob Rottweil, BW, Germany",Horgen
+50.723299,10.889006,locality,Martinroda,,,,1.0,Thuringia,TH,Ilm-Kreis,Martinroda,Geratal,,Germany,DEU,Europe,"Martinroda, TH, Germany",Martinroda
+50.626108,6.947908,locality,Rheinbach,,,,1.0,North Rhine-Westphalia,NW,Rhein-Sieg-Kreis,Rheinbach,Rheinbach,,Germany,DEU,Europe,"Rheinbach, NW, Germany",Rheinbach
+50.898267,7.176529,locality,Rösrath,,,,1.0,North Rhine-Westphalia,NW,Rheinisch-Bergischer Kreis,Rösrath,Rösrath,,Germany,DEU,Europe,"Rösrath, NW, Germany",Rösrath
+51.599252,7.756528,locality,Bönen,,,,1.0,North Rhine-Westphalia,NW,Unna,Bönen,Bönen,,Germany,DEU,Europe,"Bönen, NW, Germany",Boenen
