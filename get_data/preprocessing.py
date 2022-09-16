@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 import re
 import os
-import positionstack
-from arguments import parse_directory
+from get_data import positionstack
+from get_data.arguments import parse_directory
 import warnings
 warnings.filterwarnings('ignore')
 

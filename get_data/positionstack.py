@@ -8,8 +8,8 @@ from tqdm import tqdm
 import requests
 import os
 import concurrent.futures
-from arguments import parse_directory
-import config
+from get_data.arguments import parse_directory
+from get_data import config
 
 
 def main(directory):

@@ -6,9 +6,7 @@ notebooks/.ipynb_checkpoints
 /data3
 /data4
 /__pycache__
+/get_data/__pycache__
 /webapp/__pycache__
-/shapefiles
-/catboost_info
-config.py
+get_data/config.py
 Untitled.ipynb
-Indeed.ipynb
