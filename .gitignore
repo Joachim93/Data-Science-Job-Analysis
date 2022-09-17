@@ -5,8 +5,9 @@ notebooks/.ipynb_checkpoints
 /data2
 /data3
 /data4
+/data5
 /__pycache__
-/get_data/__pycache__
+/data_collection/__pycache__
 /webapp/__pycache__
-get_data/config.py
-Untitled.ipynb
+data_collection/config.py
+tests_job_analysis.ipynb

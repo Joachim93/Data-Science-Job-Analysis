@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 import re
 import os
-from get_data import positionstack
-from get_data.arguments import parse_directory
+import positionstack
+from arguments import parse_preprocessing
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -20,9 +20,9 @@ def main():
     2. wide format: contains one entry per job ad ==> needed for all further analysis
     """
 
-    directory = parse_directory()
+    args = parse_preprocessing()
     try:
-        data = pd.read_csv(os.path.join(directory, "data_raw.csv"))
+        data = pd.read_csv(os.path.join(args.directory, "data_raw.csv"))
     except FileNotFoundError:
         print("Needed data was not found in directory.")
     else:
@@ -31,17 +31,18 @@ def main():
         data = convert_title(data)
         data = extract_experience_level(data)
         data = convert_salary(data)
-        data_long = extract_locations(data)
-        data_long.to_csv(os.path.join(directory, "data_long.csv"), index=False)
-        positionstack.main(directory)
-        data, data_long = integrate_geo_data(data, data_long, directory)
-        data_long.to_csv(os.path.join(directory, "data_long.csv"), index=False)
-        data = create_location_features(data)
+        data, data_long = extract_locations(data)
+        data_long.to_csv(os.path.join(args.directory, "data_long.csv"), index=False)
+        if args.geo_data:
+            positionstack.main(args.directory)
+            data_long = integrate_geo_data(data_long, args.directory)
+            data_long.to_csv(os.path.join(args.directory, "data_long.csv"), index=False)
+        data = create_location_features(data, args.directory, args.geo_data)
         data = convert_industries(data)
         data = convert_company_size(data)
         data = extract_requirements(data)
         data = extract_experience(data)
-        data.to_csv(os.path.join(directory, "data_wide.csv"), index=False)
+        data.to_csv(os.path.join(args.directory, "data_wide.csv"), index=False)
     return None
 
 
@@ -152,11 +153,14 @@ def convert_salary(df):
     """
 
     print("convert salary")
-    min_salaries = df["salary"].str.split(" ").str[0].str.replace(".", "", regex=False).astype("float")
-    max_salaries = df["salary"].str.split(" ").str[2].str.replace(".", "", regex=False).astype("float")
-    df["average_salary"] = (min_salaries + max_salaries) / 2
-    df.drop("salary", axis=1, inplace=True)
-    df.loc[df["average_salary"] < 25000, "average_salary"] = np.nan
+    if df["salary"].dtype == "object":
+        min_salaries = df["salary"].str.split(" ").str[0].str.replace(".", "", regex=False).astype("float")
+        max_salaries = df["salary"].str.split(" ").str[2].str.replace(".", "", regex=False).astype("float")
+        df["average_salary"] = (min_salaries + max_salaries) / 2
+        df.drop("salary", axis=1, inplace=True)
+        df.loc[df["average_salary"] < 25000, "average_salary"] = np.nan
+    else:
+        df.rename(columns={"salary": "average_salary"}, inplace=True)
     return df
 
 
@@ -170,6 +174,8 @@ def extract_locations(df):
 
     Returns
     -------
+    df: pandas.DataFrame
+        transformed dataframe
     df_long: pandas.DataFrame
         transformed dataframe in long format (contains one entry per location)
     """
@@ -196,16 +202,17 @@ def extract_locations(df):
     locations = locations.replace("^$", np.nan, regex=True)
     df_long = pd.merge(df, locations, left_index=True, right_index=True, how="left", suffixes=("_x", None))
     df_long = df_long.drop("location_x", axis=1)
-    return df_long
+    locations_list = df_long.groupby("link")["location"].apply(lambda x: x.tolist())
+    df = pd.merge(df, locations_list, on="link", suffixes=("_x", None), how="left")
+    df = df.drop("location_x", axis=1)
+    return df, df_long
 
 
-def integrate_geo_data(df, df_long, directory):
+def integrate_geo_data(df_long, directory):
     """Integrates the geographic data of the Positionstack API.
 
     Parameters
     ----------
-    df: pandas.DataFrame
-        original dataframe
     df_long: pandas.DataFrame
         transformed dataframe in long format (contains one entry per location)
     directory: str
@@ -213,8 +220,6 @@ def integrate_geo_data(df, df_long, directory):
 
     Returns
     -------
-    df: pandas.DataFrame
-        transformed dataframe
     df_long: pandas.DataFrame
         transformed dataframe in long format (contains one entry per location) with additional geographic information
     """
@@ -222,14 +227,11 @@ def integrate_geo_data(df, df_long, directory):
     print("integrate geo data")
     geo_df = pd.read_csv(os.path.join(directory, "geo_data.csv"))
     geo_df = geo_df.loc[(geo_df["type"] == "locality") & (geo_df["confidence"] == 1)]
-    df_long_geo = pd.merge(df_long, geo_df[["latitude", "longitude", "location", "region"]], on="location", how="inner")
-    locations = df_long.groupby("link")["location"].apply(lambda x: x.tolist())
-    df = pd.merge(df, locations, on="link", suffixes=("_x", None), how="left")
-    df = df.drop("location_x", axis=1)
-    return df, df_long_geo
+    df_long = pd.merge(df_long, geo_df[["latitude", "longitude", "location", "region"]], on="location", how="inner")
+    return df_long
 
 
-def create_location_features(df):
+def create_location_features(df, directory, geo_flag):
     """Creates additional features from geographic information.
 
     Features:
@@ -241,6 +243,10 @@ def create_location_features(df):
     ----------
     df: pandas.DataFrame
         original dataframe
+    directory: str
+        needed to find the stored data of the Positionstack API
+    geo_flag: bool
+        if geo_data is available to extract the region
 
     Returns
     -------
@@ -254,16 +260,17 @@ def create_location_features(df):
         return x
 
     print("create location features")
-    geo_df = pd.read_csv("data/geo_data.csv")
     df.loc[(df["location"].apply(lambda x: "bundesweit" in x)) & (
                 df["location"].apply(lambda x: len(x)) > 1), "location"].apply(remove_element)
     df.loc[(df["location"].apply(lambda x: "bundesweit" in x)) & (
                 df["location"].apply(lambda x: len(x)) > 1), "location"].apply(remove_element)
     df["main_location"] = df["location"].str[0]
     df["multiple_locations"] = df["location"].apply(lambda x: len(x) > 1)
-    df = pd.merge(df, geo_df[["location", "region"]], left_on="main_location", right_on="location",
-                  suffixes=(None, "_y"), how="left")
-    df.drop("location_y", axis=1, inplace=True)
+    if geo_flag:
+        geo_df = pd.read_csv(os.path.join(directory, "geo_data.csv"))
+        df = pd.merge(df, geo_df[["location", "region"]], left_on="main_location", right_on="location",
+                      suffixes=(None, "_y"), how="left")
+        df.drop("location_y", axis=1, inplace=True)
     df.drop("location", axis=1, inplace=True)
     df.rename({"region": "main_region"}, axis=1, inplace=True)
     return df

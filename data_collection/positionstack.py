@@ -8,8 +8,8 @@ from tqdm import tqdm
 import requests
 import os
 import concurrent.futures
-from get_data.arguments import parse_directory
-from get_data import config
+from arguments import parse_positionstack
+import config
 
 
 def main(directory):
@@ -62,5 +62,5 @@ def get_location(location, key):
 
 if __name__ == "__main__":
     # if the script is executed directly, the directory must be passed via the command line
-    dir_ = parse_directory()
-    main(dir_)
+    args = parse_positionstack()
+    main(args.directory)

@@ -16,7 +16,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from arguments import parse_arguments
+from arguments import parse_webscraper
 
 import config
 
@@ -31,8 +31,11 @@ def main():
     4. Combining the results and saving them as .csv file.
     """
 
-    args = parse_arguments()
-    cookies = get_cookies()
+    args = parse_webscraper()
+    if args.salary:
+        cookies = get_cookies()
+    else:
+        cookies = None
     os.makedirs(args.directory, exist_ok=True)
     # needed format of the url
     keywords = [keyword.replace("_", "%20") for keyword in args.keywords]
@@ -60,6 +63,18 @@ def main():
             urls.append(url)
 
         print(f"Get links for {num_relevant_jobs} job descriptions {keyword.replace('%20', '_')}")
+        # if args.salary:
+        #     with concurrent.futures.ThreadPoolExecutor() as executor:
+        #         results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls[:1]), total=len(urls)))
+        #     for result in results:
+        #         links.extend(result["link"])
+        #         salaries.extend(result["salary"])
+        # else:
+        #     with concurrent.futures.ThreadPoolExecutor() as executor:
+        #         results = list(tqdm(executor.map(get_links, urls[:1]), total=len(urls)))
+        #     for result in results:
+        #         links.extend(result["link"])
+
         with concurrent.futures.ThreadPoolExecutor() as executor:
             results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls[:1]), total=len(urls)))
         for result in results:
