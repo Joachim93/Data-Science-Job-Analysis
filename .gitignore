@@ -1,6 +1,7 @@
 /.idea
 /.ipynb_checkpoints
 notebooks/.ipynb_checkpoints
+notebooks/modeling_new.ipynb
 /data/.ipynb_checkpoints
 /data2
 /data3
@@ -8,6 +9,6 @@ notebooks/.ipynb_checkpoints
 /data5
 /__pycache__
 /data_collection/__pycache__
-/webapp/__pycache__
+/deployment/__pycache__
 data_collection/config.py
 tests_job_analysis.ipynb
