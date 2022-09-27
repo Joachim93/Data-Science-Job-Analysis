@@ -2,8 +2,8 @@
 This script contains the function for job matching of the webapp.
 """
 
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
 
 def job_matching(df):

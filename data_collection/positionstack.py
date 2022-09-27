@@ -2,14 +2,15 @@
 Script to retrieve geographic data of all locations via the Positionstack API.
 """
 
-
-import pandas as pd
-from tqdm import tqdm
-import requests
 import os
 import concurrent.futures
-from arguments import parse_positionstack
+
+import requests
+import pandas as pd
+from tqdm import tqdm
+
 import config
+from arguments import parse_positionstack
 
 
 def main(directory):

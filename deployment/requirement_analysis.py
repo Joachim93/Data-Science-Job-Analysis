@@ -2,8 +2,8 @@
 This script contains the function for requirement analysis of the webapp.
 """
 
-import streamlit as st
 import pandas as pd
+import streamlit as st
 import plotly.express as px
 
 

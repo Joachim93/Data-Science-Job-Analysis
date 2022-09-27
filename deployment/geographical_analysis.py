@@ -2,9 +2,9 @@
 This script contains the function for geographical analysis of the webapp.
 """
 
+import numpy as np
 import streamlit as st
 import plotly.express as px
-import numpy as np
 
 
 def geographical_analysis(df):

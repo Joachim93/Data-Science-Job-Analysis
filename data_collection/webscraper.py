@@ -2,23 +2,24 @@
 Script to scrape all job ads for specified keywords on 'https://www.stepstone.de/'.
 """
 
-import requests
-from bs4 import BeautifulSoup
-import concurrent.futures
-import numpy as np
-import pandas as pd
-from tqdm import tqdm
 import os
 import re
+import concurrent.futures
+
+import requests
+import numpy as np
+import pandas as pd
+from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from tqdm import tqdm
 from webdriver_manager.chrome import ChromeDriverManager
-from arguments import parse_webscraper
 
 import config
+from arguments import parse_webscraper
 
 
 def main():
@@ -64,7 +65,7 @@ def main():
 
         print(f"Get links for {num_relevant_jobs} job descriptions {keyword.replace('%20', '_')}")
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls[:1]), total=len(urls)))
+            results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls), total=len(urls)))
         for result in results:
             links.extend(result["link"])
             salaries.extend(result["salary"])

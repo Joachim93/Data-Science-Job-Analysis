@@ -9,13 +9,14 @@ def parse_webscraper():
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--directory",
                         type=str,
-                        required=True,
-                        # default="data",
+                        default="data",
                         help="path to directory with scraped data inside")
     parser.add_argument("-k", "--keywords",
                         type=str,
                         nargs="*",
-                        default=["data scientist", "data engineer"],
+                        default=["data_science", "machine_learning", "maschinelles_lernen", "data_scientist",
+                                 "data_analyst", "data_mining", "data engineer", "deep_learning",
+                                 "künstliche_intelligenz", "artificial_intelligence"],
                         help="keywords to search for (to specifiy keywords consisting of multiple words use '_' instead"
                              " of spaces)")
     parser.add_argument("-s", "--salary",

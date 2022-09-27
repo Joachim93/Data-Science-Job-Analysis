@@ -2,14 +2,15 @@
 Script to prepare the scraped data for later analysis.
 """
 
-import pandas as pd
-import numpy as np
-import re
 import os
+import re
+import warnings
+
+import numpy as np
+import pandas as pd
+
 import positionstack
 from arguments import parse_preprocessing
-import warnings
-warnings.filterwarnings('ignore')
 
 
 def main():
@@ -20,6 +21,7 @@ def main():
     2. wide format: contains one entry per job ad ==> needed for all further analysis
     """
 
+    warnings.filterwarnings('ignore')
     args = parse_preprocessing()
     try:
         data = pd.read_csv(os.path.join(args.directory, "data_raw.csv"))

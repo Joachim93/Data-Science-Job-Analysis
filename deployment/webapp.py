@@ -2,12 +2,12 @@
 Script to generate the webapp.
 """
 
-import streamlit as st
 import pandas as pd
+import streamlit as st
 
 from geographical_analysis import geographical_analysis
-from requirement_analysis import requirements_analysis
 from job_matching import job_matching
+from requirement_analysis import requirements_analysis
 
 
 def main():
