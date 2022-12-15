@@ -43,11 +43,11 @@ def load_data():
     df_wide = pd.read_csv("data/data_wide.csv")
     df_wide = df_wide.loc[df_wide["title_category"] != "Others"]
     if "main_region" in df_wide.columns:
-        groups = 21 * ["General_info"] + 18 * ["Languages"] + 19 * ["Tools"] + 14 * ["Libraries"] + 4 * ["Education"] \
-                 + 5 * ["Degree"] + 8 * ["Knowledge"] + 10 * ["Soft Skills"] + 4 * ["Experience"]
+        groups = (21 * ["General_info"] + 18 * ["Languages"] + 19 * ["Tools"] + 14 * ["Libraries"] + 4 * ["Education"]
+                  + 5 * ["Degree"] + 8 * ["Knowledge"] + 10 * ["Soft Skills"] + 4 * ["Experience"])
     else:
-        groups = 20 * ["General_info"] + 18 * ["Languages"] + 19 * ["Tools"] + 14 * ["Libraries"] + 4 * ["Education"] \
-                 + 5 * ["Degree"] + 8 * ["Knowledge"] + 10 * ["Soft Skills"] + 4 * ["Experience"]
+        groups = (20 * ["General_info"] + 18 * ["Languages"] + 19 * ["Tools"] + 14 * ["Libraries"] + 4 * ["Education"]
+                  + 5 * ["Degree"] + 8 * ["Knowledge"] + 10 * ["Soft Skills"] + 4 * ["Experience"])
     df_wide.columns = pd.MultiIndex.from_arrays([groups, df_wide.columns])
     return df_long, df_wide
 

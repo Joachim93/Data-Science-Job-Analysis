@@ -19,14 +19,16 @@ def job_matching(df):
     """
 
     st.title("Job Matching")
+    st.write("This interface provides a ranking of all jobs contained in the database ordered by their similarity to"
+             " the specified skills.")
     with st.form(key="inputs"):
         col1, col2 = st.columns(2)
         with col1:
-            experience = st.radio("how much professional experience do you have?", ["little", "some", "much"])
-            st.write("job with lower experience levels will always be included")
+            experience = st.radio("how much professional experience do you have?", ["little (0-2 years)",
+                                                                                    "some (3-4 years)",
+                                                                                    "much (5+ years)"])
         with col2:
             education = st.radio("what level of education do you have?", ["no degree", "bachelor", "master", "phd"])
-            st.write("job with lower education levels will always be included")
 
         col1, col2, col3 = st.columns(3)
         with col1:
@@ -37,14 +39,14 @@ def job_matching(df):
             knowledge = st.multiselect("knowledge", df["Knowledge"].columns)
         with col3:
             soft_skills = st.multiselect("soft_skills", df["Soft Skills"].columns)
-            min_matches = st.number_input("Select the minimum number of matches for an opening to be displayed", min_value=0)
+            min_matches = st.number_input("minimum number of matches to be displayed", min_value=1)
 
         submitted = st.form_submit_button("Search Jobs")
 
     if submitted:
-        if experience == "little":
+        if experience == "little (0-2 years)":
             df_filtered = df.loc[df["Experience", "no_experience_information"] | df["Experience", "little_experience"]]
-        elif experience == "some":
+        elif experience == "some (3-4 years)":
             df_filtered = df.loc[
                 df["Experience", "no_experience_information"] | df["Experience", "little_experience"] | df[
                     "Experience", "some_experience"]]
@@ -67,5 +69,14 @@ def job_matching(df):
 
         df_display = df_display.loc[df_display["matches"] >= min_matches]
 
-        st.write(f"{df_display.shape[0]} job openings are fitting your criteria")
-        st.dataframe(df_display)
+        num_jobs = df_display.shape[0]
+        st.write(f"{num_jobs} job openings are fitting the criteria")
+
+        if num_jobs:
+            st.dataframe(df_display)
+            st.download_button(
+                label="Download",
+                data=df_display.to_csv(),
+                file_name='best_jobs.csv',
+                mime='text/csv',
+            )

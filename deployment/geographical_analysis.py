@@ -20,6 +20,7 @@ def geographical_analysis(df):
 
     if "latitude" in df.columns:
         st.title("Distribution of Data Science Jobs in Germany")
+        st.write("This interface provides an overview of the geographical distribution of the desired job titles.")
         col1, col2 = st.columns([1, 2])
         choices = ["Data Scientist", "Data Analyst", "Data Engineer", "Machine Learning Engineer", "Software Engineer",
                    "Data Science Consultant", "Data Science Manager"]

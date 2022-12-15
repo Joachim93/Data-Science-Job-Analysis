@@ -14,7 +14,7 @@ As part of this analysis, the following steps were performed, which will be disc
 - Exploratory analysis of the data to get information about the job market
 - Design and analysis of a model to predict the salary of a job (MAE ~ 6000 €)
 - Publication of the results as an interactive webapp using Streamlit ==> 
-Link: https://joachim93-data-science-job-analysis-webappwebapp-l9dmku.streamlitapp.com/
+Link: https://joachim93-data-science-job-analysis-deploymentwebapp-iaz63l.streamlitapp.com/
 
 A description for using this code can be found [here](#usage).
 
@@ -62,18 +62,55 @@ Machine Learning Engineer, Software Engineer, Data Science Consultant, Data Scie
 
 ## Data Analysis
 
-TODO
+An exploratory data analysis was then performed. The graphs were created with the help of the Plotly library. 
+The aspects to which particular attention was paid here include:
+- Analysis of the requirements for candidates
+    - What programming languages, tools, or soft skills are most often required? Are there differences between job titles?
+    - What degrees and how much work experience are required?
+- In which regions of Germany are there the most vacancies?
+- Which attributes of the job influence the salary?
+
+![results](https://user-images.githubusercontent.com/38660103/192770654-20232ba0-dd16-4afa-9131-ae1d11b00ea0.png)
 
 
 ## Model Building
 
-TODO
+Next, I tried to predict the salary of a job ad by the remaining variables. First, 20% of the data was split off as 
+test data. The remaining data was used for cross validation. The Mean Absolute Error (MAE) was chosen as the 
+optimization criterion, since large errors should not be penalized more than small ones. For categorical features 
+One-Hot-Encoding and Target Encoding were tested. Missing values were replaced by a new category "missing_value". 
+Then the following models were tested and tuned using Randomized Search:
+
+|Model                      |MAE    |
+|:--------------------------|:-----:|
+|Target Mean                |9331   |
+|Linear Regression          |7090   |
+|Random Forest              |6470   |
+|XGBoost                    |6345   |
+|Polynomial Regression      |6266   |
+|Lasso Regression           |6261   |
+|Elastic Net                |6256   |
+|Support Vector Regression  |6237   |
+|Ridge Regression           |6232   |
+
+With the best model, an improvement of over 3000 euros could be achieved compared to a naive baseline such as the target 
+mean.
 
 
 ## Deployment
 
-TODO
+Finally, an interactive webapp was implemented using Streamlit, which allows users to perform certain analyses on the 
+data themselves. The webapp was hosted via the Streamlit Cloud and can be accessed at 
+https://joachim93-data-science-job-analysis-deploymentwebapp-iaz63l.streamlitapp.com/. It contains three standalone 
+modules:
+- Requirements Analysis.
+    - This interface provides the ability to view and compare different requirements for different job titles.
+- Geographic Analysis.
+    - This interface provides an overview of the geographic distribution of desired job titles.
+- Job Matching
+    - This interface provides a ranked list of all jobs contained in the database, ordered by their similarity to the specified skills.
 
+![job_matching](https://user-images.githubusercontent.com/38660103/193302405-3bf6e07f-d2ae-43e5-9444-316062ec55b5.PNG)
 
 ## Usage
 

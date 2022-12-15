@@ -49,4 +49,3 @@ def parse_positionstack():
                         help="path to directory with scraped data inside")
     args = parser.parse_args()
     return args
-

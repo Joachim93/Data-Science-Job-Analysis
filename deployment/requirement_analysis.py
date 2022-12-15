@@ -20,6 +20,8 @@ def requirements_analysis(df):
     """
 
     st.title("Requirements for Data Science Jobs in Germany")
+    st.write("This interface offers the possibility to display and compare different requirements for different job"
+             " titles.")
     col1, col2, col3 = st.columns(3)
     choices_job = ["All"] + list(df["General_info", "title_category"].unique())
     choices_requirement = df.columns.unique(0).drop("General_info")
