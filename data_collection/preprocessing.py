@@ -44,6 +44,7 @@ def main():
         data = convert_company_size(data)
         data = extract_requirements(data)
         data = extract_experience(data)
+        data = remove_duplicates(data)
         data.to_csv(os.path.join(args.directory, "data_wide.csv"), index=False)
     return None
 
@@ -313,8 +314,9 @@ def convert_company_size(df):
     """
 
     print("convert company size")
-    df["company_size"] = df["company_size"].replace({"11-50": "0-50", "1-10": "0-50", ">15": "0-50", "1000+": "1001-2500",
-                                                     "130": "51-250", "approx. 250": "251-500"})
+    df["company_size"] = df["company_size"].replace({"11-50": "0-50", "1-10": "0-50", ">15": "0-50",
+                                                     "1000+": "1001-2500", "130": "51-250", "approx. 250": "251-500",
+                                                     "201-500 Mitarbeiter": "251-500", "120": "251-500"})
     return df
 
 
@@ -561,6 +563,24 @@ def extract_experience(df):
     experience_bins.fillna("no_experience_information", inplace=True)
     experience_dummies = pd.get_dummies(experience_bins, dtype="bool")
     df = pd.merge(df, experience_dummies, left_index=True, right_index=True)
+    return df
+
+
+def remove_duplicates(df):
+    """Removes duplicate job ads.
+
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        original dataframe
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe
+    """
+
+    df = df[~df.drop(["link", "title", "content", "release_date"], axis=1).duplicated()]
     return df
 
 
