@@ -58,6 +58,7 @@ Machine Learning Engineer, Software Engineer, Data Science Consultant, Data Scie
     - Knowledge
     - Soft skills
     - Professional experience
+- Remove duplicate entries
     
 
 ## Data Analysis
@@ -81,17 +82,19 @@ optimization criterion, since large errors should not be penalized more than sma
 One-Hot-Encoding and Target Encoding were tested. Missing values were replaced by a new category "missing_value". 
 Then the following models were tested and tuned using Randomized Search:
 
-|Model                      |MAE    |
-|:--------------------------|:-----:|
-|Target Mean                |9331   |
-|Linear Regression          |7090   |
-|Random Forest              |6470   |
-|XGBoost                    |6345   |
-|Polynomial Regression      |6266   |
-|Lasso Regression           |6261   |
-|Elastic Net                |6256   |
-|Support Vector Regression  |6237   |
-|Ridge Regression           |6232   |
+|Model                          |MAE    |
+|:------------------------------|:-----:|
+|Target Mean                    |9486   |
+|Linear Regression              |8237   |
+|Polynomial Regression          |7052   |
+|Random Forest                  |6850   |
+|Light GBM                      |6795   |
+|Ridge Regression               |6762   |
+|Support Vector Regression      |6734   |
+|XGBoost                        |6730   |
+|Elastic Net                    |6714   |
+|Lasso Regression               |6684   |
+|Lasso (with Feature Selection) |6455   |
 
 With the best model, an improvement of over 3000 euros could be achieved compared to a naive baseline such as the target 
 mean.
