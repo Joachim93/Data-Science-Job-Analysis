@@ -9,8 +9,8 @@ import warnings
 import numpy as np
 import pandas as pd
 
-import positionstack
-from arguments import parse_preprocessing
+from . import positionstack
+from .arguments import parse_preprocessing
 
 
 def main():

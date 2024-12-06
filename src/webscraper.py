@@ -2,6 +2,7 @@
 Script to scrape all job ads for specified keywords on 'https://www.stepstone.de/'.
 """
 
+import json
 import os
 import re
 import concurrent.futures
@@ -18,8 +19,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from tqdm import tqdm
 from webdriver_manager.chrome import ChromeDriverManager
 
-import config
-from arguments import parse_webscraper
+from . import config
+from .arguments import parse_webscraper
 
 
 def main():
@@ -54,7 +55,7 @@ def main():
         url = f"https://www.stepstone.de/5/ergebnisliste.html?what={keyword}&searchOrigin=Resultlist_top-search&of={num_jobs - 1}"
         r = requests.get(url, headers=config.headers)
         soup = BeautifulSoup(r.content, "html.parser")
-        similar_jobs = soup.find("h4", class_="SectionHeaderStyled-sc-fdk3rh-1 cnAJiQ").text
+        similar_jobs = soup.find("h4", class_="res-s8ib6k").text
         num_similar_jobs = int(re.sub("[^0-9]", "", similar_jobs))
         num_relevant_jobs = num_jobs - num_similar_jobs
 
@@ -63,7 +64,7 @@ def main():
             url = f"https://www.stepstone.de/5/ergebnisliste.html?what={keyword}&searchOrigin=Resultlist_top-search&of={offset}"
             urls.append(url)
 
-        print(f"Get links for {num_relevant_jobs} job descriptions {keyword.replace('%20', '_')}")
+        print(f"Get links for {num_relevant_jobs} job description: {keyword.replace('%20', '_')}")
         with concurrent.futures.ThreadPoolExecutor() as executor:
             results = list(tqdm(executor.map(lambda x: get_links(x, cookies), urls), total=len(urls)))
         for result in results:
@@ -101,7 +102,7 @@ def get_cookies():
         contains all cookies of the session
     """
 
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=Service("chromedriver"))
     driver.get(
         "https://www.stepstone.de/candidate/login?login_source=Homepage_top-login&intcid=Button_Homepage"
         "-navigation_login")
@@ -112,7 +113,7 @@ def get_cookies():
     element.send_keys(config.stepstone_email)
     element = driver.find_element(By.XPATH, "//input[@name='password']")
     element.send_keys(config.stepstone_password)
-    element = driver.find_element(By.XPATH, "//input[@name='rememberMe']")
+    element = driver.find_element(By.XPATH, "//input[@id='stepstone-checkbox-53']")
     element.click()
     element = driver.find_element(By.XPATH, "//button[@type='submit']")
     element.click()
@@ -196,59 +197,56 @@ def get_content(link):
             results["release_date"] = np.nan
             print(link)
             return results
+        
+    print("request finished")
     results["link"] = link
     soup_job = BeautifulSoup(r.content, "html.parser")
     try:
-        results["company"] = soup_job.find("h1", class_="sc-brqgnP exEzGX").text
+        results["company"] = soup_job.find("li", class_="at-listing__list-icons_company-name job-ad-display-62o8fr").text
     except AttributeError:
         results["company"] = np.nan
     try:
-        results["title"] = soup_job.find("h1", class_="listing__job-title at-header-company-jobTitle sc-gPEVay czGyJS").text
+        results["title"] = soup_job.find("h1", class_="job-ad-display-29uigd").text
     except AttributeError:
         results["title"] = np.nan
     try:
-        results["location"] = soup_job.find("li", class_="at-listing__list-icons_location js-map-offermetadata-link sc-kgoBCf dyHDRg").text
+        results["location"] = soup_job.find("li", class_="at-listing__list-icons_location map-trigger job-ad-display-62o8fr").text
     except AttributeError:
         results["location"] = np.nan
     try:
-        results["contract_type"] = soup_job.find("li", class_="at-listing__list-icons_contract-type sc-kgoBCf dyHDRg").text
+        results["contract_type"] = soup_job.find("li", class_="at-listing__list-icons_contract-type job-ad-display-62o8fr").text
     except AttributeError:
         results["contract_type"] = np.nan
     try:
-        results["work_type"] = soup_job.find("li", class_="at-listing__list-icons_work-type sc-kgoBCf dyHDRg").text
+        results["work_type"] = soup_job.find("li", class_="at-listing__list-icons_work-type job-ad-display-62o8fr").text
     except AttributeError:
         results["work_type"] = np.nan
     try:
-        results["content"] = soup_job.find("div", class_="listing-content-provider-jcjzuc").text
+        results["content"] = soup_job.find_all("div", class_="job-ad-display-1t26un2")[1].text
     except AttributeError:
         results["content"] = np.nan
+    # try:
+    #     industries = soup_job.find_all("li", class_="TokenItem-sc-18nyxil eyoowz")
+    #     industries = [industry.text for industry in industries]
+    #     results["industry"] = "|".join(industries)
+    # except AttributeError:
+    #     results["industry"] = np.nan
     try:
-        industries = soup_job.find_all("li", class_="TokenItem-sc-18nyxil eyoowz")
-        industries = [industry.text for industry in industries]
-        results["industry"] = "|".join(industries)
-    except AttributeError:
-        results["industry"] = np.nan
-    try:
-        results["rating"] = soup_job.find("div", class_="styled__RatingValue-sc-1moxtx3-2 ljexEK").text
+        results["rating"] = soup_job.find("div", class_="job-ad-display-12tnuxd")["aria-valuenow"]
     except AttributeError:
         results["rating"] = np.nan
     try:
-        results["num_ratings"] = soup_job.find("a", class_="styled__Link-hkoash-2 fkAStA").text
+        results["num_ratings"] = soup_job.find("span", class_="job-ad-display-cioz7s").text
     except AttributeError:
         results["num_ratings"] = np.nan
     try:
-        link = soup_job.find("a", class_="at-company-hub-link")
-        if link:
-            results["company_link"] = link["href"]
-        else:
-            results["company_link"] = np.nan
+        results["company_link"] = soup_job.find("a", class_="job-ad-display-1ifgnl6")["href"]
     except AttributeError:
         results["company_link"] = np.nan
     try:
-        js_code = soup_job.find("script", id="js-section-preloaded-HeaderStepStoneBlock").text
-        pattern = re.compile(r'"onlineDate":"(\d{4}-\d{2}-\d{2})')
-        match = pattern.search(js_code)
-        results["release_date"] = match.group(1)
+        content = soup_job.find("script", type="application/ld+json").text
+        string = json.loads(content)["datePosted"]
+        results["release_date"] = re.match(r"\d{4}-\d{2}-\d{2}", string).group(0)
     except AttributeError:
         results["release_date"] = np.nan
     return results
@@ -273,10 +271,17 @@ def get_company_info(link):
         r = requests.get(link, headers=config.headers, timeout=10)
     except requests.exceptions.RequestException:
         results["company_size"] = np.nan
+        results["industry"] = np.nan
         return results
     soup = BeautifulSoup(r.content, "html.parser")
     try:
-        elements = soup.find_all("li", re.compile("StyledMetaDataWrapper"))
+        industries = soup.find_all("span", class_="TextWrapper-sc-1h7tbr7 gilIdr")
+        industries = [industry.text for industry in industries]
+        results["industry"] = "|".join(industries)
+    except AttributeError:
+        results["industry"] = np.nan
+    try:
+        elements = soup.find_all("li", "StyledMetaDataWrapper-sc-3ipi04 hrtfgu ch-iAbgNi cEbPlc")
         if len(elements) > 1 and ("http" not in elements[1].text):
             results["company_size"] = elements[1].text
         else:
