@@ -19,8 +19,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from tqdm import tqdm
 from webdriver_manager.chrome import ChromeDriverManager
 
-from . import config
-from .arguments import parse_webscraper
+import config
+from arguments import parse_webscraper
 
 
 def main():
@@ -102,7 +102,7 @@ def get_cookies():
         contains all cookies of the session
     """
 
-    driver = webdriver.Chrome(service=Service("chromedriver"))
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     driver.get(
         "https://www.stepstone.de/candidate/login?login_source=Homepage_top-login&intcid=Button_Homepage"
         "-navigation_login")
@@ -113,7 +113,7 @@ def get_cookies():
     element.send_keys(config.stepstone_email)
     element = driver.find_element(By.XPATH, "//input[@name='password']")
     element.send_keys(config.stepstone_password)
-    element = driver.find_element(By.XPATH, "//input[@id='stepstone-checkbox-53']")
+    element = driver.find_element(By.XPATH, "//input[@data-testid='remember-me']")
     element.click()
     element = driver.find_element(By.XPATH, "//button[@type='submit']")
     element.click()
@@ -143,14 +143,15 @@ def get_links(url, cookies):
         contains a list with links and another with salary information
     """
 
-    r = requests.get(url, headers=config.headers, cookies=cookies)
+    # r = requests.get(url, headers=config.headers, cookies=cookies)
+    r = requests.get(url, headers=config.headers)
     soup = BeautifulSoup(r.content, "html.parser")
-    posts = soup.find_all("article", class_="resultlist-1pa5tff")
+    posts = soup.find_all("article", attrs={"data-testid": "job-item"})
     results = {}
     links = []
     salaries = []
     for post in posts:
-        link = post.find("a", class_="resultlist-12iu5pk")["href"]
+        link = post.find("a", attrs={"data-at": "job-item-title"})["href"]
         links.append('https://www.stepstone.de' + link)
         try:
             salary = post.find("strong", class_="resultlist-izsl9y").text
@@ -179,10 +180,10 @@ def get_content(link):
     results = {}
     # sometimes the content of a url cannot be retrieved the first time due to various reasons
     try:
-        r = requests.get(link, headers=config.headers, timeout=10)
+        r = requests.get(link, headers=config.headers, timeout=5)
     except requests.exceptions.RequestException:
         try:
-            r = requests.get(link, headers=config.headers, timeout=10)
+            r = requests.get(link, headers=config.headers, timeout=5)
         except requests.exceptions.RequestException:
             results["link"] = link
             results["company"] = np.nan
@@ -195,52 +196,41 @@ def get_content(link):
             results["rating"] = np.nan
             results["num_ratings"] = np.nan
             results["release_date"] = np.nan
-            print(link)
+            print("Request failed")
             return results
         
     print("request finished")
     results["link"] = link
     soup_job = BeautifulSoup(r.content, "html.parser")
     try:
-        results["company"] = soup_job.find("li", class_="at-listing__list-icons_company-name job-ad-display-62o8fr").text
-    except AttributeError:
-        results["company"] = np.nan
-    try:
-        results["title"] = soup_job.find("h1", class_="job-ad-display-29uigd").text
+        results["title"] = soup_job.find("h1", attrs={"data-at": "header-job-title"}).text
     except AttributeError:
         results["title"] = np.nan
     try:
-        results["location"] = soup_job.find("li", class_="at-listing__list-icons_location map-trigger job-ad-display-62o8fr").text
+        results["company"] = soup_job.find("span", attrs={"data-at": "metadata-company-name"}).text
     except AttributeError:
-        results["location"] = np.nan
+        results["company"] = np.nan
     try:
-        results["contract_type"] = soup_job.find("li", class_="at-listing__list-icons_contract-type job-ad-display-62o8fr").text
+        results["location"] = soup_job.find("span", attrs={"data-at": "metadata-location"}).text
+    except AttributeError:
+        try:
+            results["location"] = soup_job.find("a", attrs={"data-at": "metadata-location"}).text
+        except AttributeError:
+            results["location"] = np.nan
+    try:
+        results["contract_type"] = soup_job.find("span", attrs={"data-at": "metadata-contract-type"}).text
     except AttributeError:
         results["contract_type"] = np.nan
     try:
-        results["work_type"] = soup_job.find("li", class_="at-listing__list-icons_work-type job-ad-display-62o8fr").text
+        results["work_type"] = soup_job.find("span", attrs={"data-at": "metadata-work-type"}).text
     except AttributeError:
         results["work_type"] = np.nan
     try:
-        results["content"] = soup_job.find_all("div", class_="job-ad-display-1t26un2")[1].text
+        results["content"] = soup_job.find("div", attrs={"data-at": "job-ad-content"}).text
     except AttributeError:
         results["content"] = np.nan
-    # try:
-    #     industries = soup_job.find_all("li", class_="TokenItem-sc-18nyxil eyoowz")
-    #     industries = [industry.text for industry in industries]
-    #     results["industry"] = "|".join(industries)
-    # except AttributeError:
-    #     results["industry"] = np.nan
     try:
-        results["rating"] = soup_job.find("div", class_="job-ad-display-12tnuxd")["aria-valuenow"]
-    except AttributeError:
-        results["rating"] = np.nan
-    try:
-        results["num_ratings"] = soup_job.find("span", class_="job-ad-display-cioz7s").text
-    except AttributeError:
-        results["num_ratings"] = np.nan
-    try:
-        results["company_link"] = soup_job.find("a", class_="job-ad-display-1ifgnl6")["href"]
+        results["company_link"] = soup_job.find("a", attrs={"data-at": "header-company-logo"})["href"]
     except AttributeError:
         results["company_link"] = np.nan
     try:
@@ -272,22 +262,60 @@ def get_company_info(link):
     except requests.exceptions.RequestException:
         results["company_size"] = np.nan
         results["industry"] = np.nan
+        results["rating"] = np.nan
+        results["num_ratings"] = np.nan
         return results
+    
     soup = BeautifulSoup(r.content, "html.parser")
+
     try:
-        industries = soup.find_all("span", class_="TextWrapper-sc-1h7tbr7 gilIdr")
-        industries = [industry.text for industry in industries]
-        results["industry"] = "|".join(industries)
-    except AttributeError:
-        results["industry"] = np.nan
-    try:
-        elements = soup.find_all("li", "StyledMetaDataWrapper-sc-3ipi04 hrtfgu ch-iAbgNi cEbPlc")
-        if len(elements) > 1 and ("http" not in elements[1].text):
-            results["company_size"] = elements[1].text
-        else:
-            results["company_size"] = np.nan
+        infos = soup.find("span", class_="job-ad-display-87xi43").text
+        industries = []
+        for info in infos.split(" • "):
+            if "Mitarbeiter" in info:
+                results["company_size"] = info
+            else:
+                industries.append(info)
+        results["industries"] = "|".join(industries)
     except AttributeError:
         results["company_size"] = np.nan
+        results["industry"] = np.nan
+
+    try:
+        results["rating"] = soup.find("div", attrs={"aria-label": "rating"})["aria-valuenow"]
+    except (TypeError, AttributeError):
+        results["rating"] = np.nan
+        results["num_ratings"] = np.nan
+    else:
+        try:
+            results["num_ratings"] = soup.find("div", attrs={"data-genesis-element": "RATING"}).text
+        except AttributeError:
+            results["num_ratings"] = np.nan
+
+    return results
+
+
+def scrape_features(link):
+    """Combines scraping of job ad and company information.
+
+    Parameters
+    ----------
+    link: str
+        link to job ad
+
+    Returns
+    -------
+    results: dict
+        contains extracted information from the job ad
+    """
+    
+    results = get_content(link)
+    if results["company_link"]:
+        company_info = get_company_info(results["company_link"])
+        results.update(company_info)
+    else:
+        results["company_size"] = np.nan
+        results["industry"] = np.nan
     return results
 
 
