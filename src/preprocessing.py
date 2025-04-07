@@ -8,9 +8,11 @@ import warnings
 
 import numpy as np
 import pandas as pd
+from sklearn.preprocessing import OneHotEncoder
 
-from . import positionstack
-from .arguments import parse_preprocessing
+import config
+import positionstack
+from arguments import parse_preprocessing
 
 
 def main():
@@ -86,10 +88,9 @@ def convert_work_types(df):
     """
 
     print("convert work type")
-    work_types = df["work_type"].str.replace(", ", ",").str.get_dummies(",").astype("bool")
-    work_types = work_types.rename({"Vollzeit": "full_time", "Teilzeit": "part_time",
-                                    "Home Office möglich": "home_office_possible"}, axis=1)
-    df = pd.concat([df, work_types], axis=1)
+    df["full_time"] = df["work_type"].str.contains("Vollzeit")
+    df["part_time"] = df["work_type"].str.contains("Teilzeit")
+    df["home_office_possible"] = df["work_type"].str.contains("Home Office möglich")
     df = df.drop("work_type", axis=1)
     return df
 
@@ -294,7 +295,10 @@ def convert_industries(df):
     """
 
     print("convert industries")
-    df["main_industry"] = df["industry"].str.split("|").str[0]
+    try:
+        df["main_industry"] = df["industry"].str.split("|").str[0]
+    except AttributeError:
+        df["main_industry"] = np.nan
     df.drop("industry", axis=1, inplace=True)
     return df
 
@@ -347,7 +351,7 @@ def extract_requirements(df):
     # programming languages (18)
     df["python"] = df["content"].str.contains("Python", case=False)
     df["r"] = df["content"].str.contains("\WR(\W|Studio)", case=False, regex=True)
-    df["sql"] = df["content"].str.contains("SQL", case=False)
+    df["sql"] = df["content"].str.contains("(?<!No)SQL", case=False)
     df["java"] = df["content"].str.contains("Java ", case=False)
     df["javascript"] = df["content"].str.contains("Javascript", case=False)
     df["c"] = df["content"].str.contains("\WC ", case=False, regex=True)
@@ -357,33 +361,67 @@ def extract_requirements(df):
     df["julia"] = df["content"].str.contains("Julia", case=False)
     df["matlab"] = df["content"].str.contains("Matlab", case=False)
     df["swift"] = df["content"].str.contains("Swift", case=False)
-    df["go"] = df["content"].str.contains("\WGo ", case=True)
-    df["sas"] = df["content"].str.contains("\WSas\W", case=False, regex=True)
+    df["go"] = df["content"].str.contains("\WGo |Golang", case=True)
     df["perl"] = df["content"].str.contains("Perl", case=False)
     df["php"] = df["content"].str.contains("Php", case=False)
     df["html"] = df["content"].str.contains("HTML", case=False)
     df["css"] = df["content"].str.contains("CSS", case=False)
-    # tools (19)
+    df["rust"] = df["content"].str.contains("\WRust\W", case=False, regex=True)
+    # tools (31)
     df["excel"] = df["content"].str.contains("Excel", case=True)
     df["tableau"] = df["content"].str.contains("Tableau", case=False)
-    df["power_bi"] = df["content"].str.contains("(Power ?BI|PBI)", case=False, regex=True)
+    df["power_bi"] = df["content"].str.contains("Power ?BI|PBI", case=False, regex=True)
     df["spark"] = df["content"].str.contains("Spark", case=False)
     df["hadoop"] = df["content"].str.contains("Hadoop", case=False)
     df["hive"] = df["content"].str.contains("Hive", case=False)
-    df["snowflake"] = df["content"].str.contains("Snowflake", case=False)
-    df["aws"] = df["content"].str.contains("(AWS|Amazon ?Web ?Services)", case=False, regex=True)
+    df["aws"] = df["content"].str.contains("AWS|Amazon ?Web ?Services|Redshift", case=False, regex=True)
     df["kafka"] = df["content"].str.contains("Kafka", case=False)
-    df["azure"] = df["content"].str.contains("Azure", case=False)
-    df["google_cloud"] = df["content"].str.contains("Google ?Cloud|GCP", case=False)
+    df["azure"] = df["content"].str.contains("Azure|Synapse", case=False)
+    df["google_cloud"] = df["content"].str.contains("Google ?Cloud|GCP|Big ?query", case=False)
     df["docker"] = df["content"].str.contains("Docker", case=False)
     df["git"] = df["content"].str.contains("\WGit", case=False, regex=True)
-    df["linux"] = df["content"].str.contains("(Linux|Unix)", case=False, regex=True)
+    df["linux"] = df["content"].str.contains("Linux|Unix|Bash|Shell", case=False, regex=True)
     df["kubernetes"] = df["content"].str.contains("Kubernetes", case=False)
     df["jenkins"] = df["content"].str.contains("Jenkins", case=False)
-    df["bigquery"] = df["content"].str.contains("Big ?query", case=False)
     df["airflow"] = df["content"].str.contains("Airflow", case=False)
     df["databricks"] = df["content"].str.contains("Databricks", case=False)
-    # python libraries (14)
+    df["sas"] = df["content"].str.contains("\WSas\W", case=False, regex=True)
+    df["spss"] = df["content"].str.contains("Spss", case=False, regex=True)
+    df["terraform"] = df["content"].str.contains("Terraform", case=False, regex=True)
+    df["ansible"] = df["content"].str.contains("Ansible", case=False, regex=True)
+    df["puppet"] = df["content"].str.contains("Puppet", case=False, regex=True)
+    df["mlflow"] = df["content"].str.contains("Mlflow", case=False, regex=True)
+    df["kubeflow"] = df["content"].str.contains("Kubeflow", case=False, regex=True)
+    df["splunk"] = df["content"].str.contains("Splunk", case=False, regex=True)
+    df["talend"] = df["content"].str.contains("Talend", case=False, regex=True)
+    df["prometheus"] = df["content"].str.contains("Prometheus", case=False, regex=True)
+    df["grafana"] = df["content"].str.contains("Grafana", case=False, regex=True)
+    df["flink"] = df["content"].str.contains("Flink", case=False, regex=True)
+    df["storm"] = df["content"].str.contains("Storm", case=False, regex=True)
+    df["looker"] = df["content"].str.contains("Looker", case=False, regex=True)
+    # databases / data warehouses (21)
+    df["mysql"] = df["content"].str.contains("My ?SQL", case=False, regex=True)
+    df["postgresql"] = df["content"].str.contains("Postgre", case=False, regex=True)
+    df["oracle"] = df["content"].str.contains("Oracle", case=False, regex=True)
+    df["sql_server"] = df["content"].str.contains("SQL ?Server", case=False, regex=True)
+    df["maria_db"] = df["content"].str.contains("Maria ?DB", case=False, regex=True)
+    df["sqlite"] = df["content"].str.contains("Sqlite", case=False, regex=True)
+    df["ibm_db2"] = df["content"].str.contains("DB2", case=False, regex=True)
+    df["amazon_redshift"] = df["content"].str.contains("Redshift", case=False, regex=True)
+    df["google_bigquery"] = df["content"].str.contains("Big ?Query", case=False, regex=True)
+    df["azure_synapse"] = df["content"].str.contains("Synapse", case=False, regex=True)
+    df["snowflake"] = df["content"].str.contains("Snowflake", case=False, regex=True)
+    df["redis"] = df["content"].str.contains("Redis", case=False, regex=True)
+    df["dynamo_db"] = df["content"].str.contains("Dynamo ?DB", case=False, regex=True)
+    df["mongo_db"] = df["content"].str.contains("Mongo ?DB", case=False, regex=True)
+    df["firebase"] = df["content"].str.contains("Firebase", case=False, regex=True)
+    df["couch_db"] = df["content"].str.contains("Couch ?DB|Couchbase", case=False, regex=True)
+    df["cassandra"] = df["content"].str.contains("Cassandra", case=False, regex=True)
+    df["hbase"] = df["content"].str.contains("H ?Base", case=False, regex=True)
+    df["neo4j"] = df["content"].str.contains("Neo4j", case=False, regex=True)
+    df["amazon_neptune"] = df["content"].str.contains("Amazon ?Neptune", case=False, regex=True)
+    df["elastic_search"] = df["content"].str.contains("Elastic ?Search", case=False, regex=True)
+    # python libraries (18)
     df["pandas"] = df["content"].str.contains("Pandas", case=False)
     df["numpy"] = df["content"].str.contains("Numpy", case=False)
     df["tensorflow/keras"] = df["content"].str.contains("Tensorflow|Keras", case=False)
@@ -398,18 +436,22 @@ def extract_requirements(df):
     df["scipy"] = df["content"].str.contains("scipy", case=False)
     df["statsmodels"] = df["content"].str.contains("statsmodels", case=False)
     df["flask"] = df["content"].str.contains("flask", case=False)
-    # education (4)
+    df["fastapi"] = df["content"].str.contains("fast ?api", case=False)
+    df["dask"] = df["content"].str.contains("dask", case=False)
+    df["xgboost"] = df["content"].str.contains("xg ?boost|light ?gbm", case=False)
+    df["pyspark"] = df["content"].str.contains("pyspark", case=False)
+    # degrees (4)
     df["master"] = df["content"].str.contains("(master|diplom)", case=False, regex=True)
     df["phd"] = df["content"].str.contains("(doktor|phd|promotion)", case=False, regex=True)
     df["bachelor"] = (df["content"].str.contains("(Studium|degree|Hochschulabschluss|studiert|Studienabschluss|studies|bachelor)", case=False, regex=True)) & ~df["master"]
     df["no_degree_info"] = ~df["bachelor"] & ~df["master"] & ~df["phd"]
-    # degrees (5)
+    # majors (5)
     df["computer_science"] = df["content"].str.contains("(computer science|informatik|informatics)", case=False, regex=True)
     df["math/statistics"] = df["content"].str.contains("(math|Statistik|statistics|stats)", case=False, regex=True)
     df["natural_science"] = df["content"].str.contains("(Physik|physics|Naturwissenschaft|natural science|Chemie|chemistry|Biologie|biology|natur-)", case=False, regex=True)
     df["engineering"] = df["content"].str.contains("(Ingenieurwesen|Ingenieurwissenschaft|Engineering)", case=False, regex=True)
     df["business"] = df["content"].str.contains("(bwl|Betriebswirtschaft|vwl|Volkswirtschaft|Wirtschaftswissenschaft)", case=False, regex=True)
-    # knowledge (8)
+    # knowledge (13)
     df["machine_learning"] = df["content"].str.contains("(Machine Learning|Machinelle[sn]? Lern)", case=False, regex=True)
     df["deep_learning"] = df["content"].str.contains("Deep Learning|Neural|Neuronal", case=False, regex=True)
     df["computer_vision"] = df["content"].str.contains("computer vision|convolution|cnn|image processing|Bildverarbeitung", case=False, regex=True)
@@ -417,7 +459,12 @@ def extract_requirements(df):
     df["autonomous_driving"] = df["content"].str.contains("autonomous driving|autonomes fahren", case=False, regex=True)
     df["robotics"] = df["content"].str.contains("roboti", case=False, regex=True)
     df["reinforcement_learning"] = df["content"].str.contains("reinforcement", case=False, regex=True)
-    df["predictive_modeling"] = df["content"].str.contains("forecasting|time series|Zeitreihe|predictive|anomal|Vorhersage|modeling", case=False, regex=True)
+    df["regression"] = df["content"].str.contains("regression", case=False, regex=True)
+    df["classification"] = df["content"].str.contains("classification|Klassifikation|Klassifizierung", case=False, regex=True)
+    df["clustering"] = df["content"].str.contains("cluster", case=False, regex=True)
+    df["forecasting"] = df["content"].str.contains("forecast|time ?series|Zeitreihe", case=False, regex=True)
+    df["recommender_systems"] = df["content"].str.contains("recommender system|recommendation system|Empfehlungssystem", case=False, regex=True)
+    df["anomaly_detection"] = df["content"].str.contains("anomaly|Anomalie", case=False, regex=True)
     # soft skills (10)
     df["communication"] = df["content"].str.contains("communication| Kommunikation|storytelling", case=False, regex=True)
     df["teamwork"] = df["content"].str.contains("teamfähig|teamplay|teamwork|teamorient|interpersonal|zwischenmenschlich", case=False, regex=True)
@@ -428,7 +475,7 @@ def extract_requirements(df):
     df["flexibility"] = df["content"].str.contains("belastbarkeit|flexibilit|anpassungsfähig", case=False, regex=True)
     df["business_focus"] = df["content"].str.contains("unternehmerisch|Geschäftssinn", case=False, regex=True)
     df["initiative"] = df["content"].str.contains("(selbst|eigen)ständig|eigen(initiative|verantwortung)", case=False, regex=True)
-    df["structured_working"] = df["content"].str.contains("(struktur|strategi|orientiert)[\S]* Arbeit|sorgfalt|sorgfältig|(selbst|Zeit|time )manage", case=False, regex=True)
+    df["structured_working"] = df["content"].str.contains("(struktur|strategi|orientiert)[\S]* Arbeit|sorgfalt|sorgfältig|(slebst|Zeit|time )manage", case=False, regex=True)
     return df
 
 
@@ -500,19 +547,20 @@ def extract_experience(df):
 
     print("extract experience")
     # first pattern
-    pattern = df["content"].str.extract("(\S+) ?Jahre?n? ?(Beruf|\S*erfahrung|relevant|praktisch|einschlägig|fundiert|Expertise)", flags=re.IGNORECASE)[0]
+    pattern = df["content"].str.extract(r"(\S+) ?Jahre?n? ?(Beruf|\S*erfahrung|relevant|praktisch|einschlägig|fundiert|Expertise)", flags=re.IGNORECASE)[0]
     pattern = pattern.apply(drop_outliers)
     pattern = pattern.apply(convert_ranges)
     pattern = pattern.replace({"ein": "1", "zwei": "2", "drei": "3", "vier": "4", "fünf": "5", "sechs": "6",
                                "sieben": "7", "acht": "8", "neun": "9", "zehn": "10"})
     pattern = pattern.apply(unify_words)
     pattern = pattern.replace({"einigen": "much", "einige": "much", "mehr": "much", "mehrere": "much"})
-    digits = pattern.str.extract("\D*(\d+)\D*")[0]
+    pattern = pattern.fillna("")
+    digits = pattern.str.extract(r"\D*(\d+)\D*")[0]
     pattern = digits.combine_first(pattern)
     experience = pattern.apply(drop_useless)
     # second pattern
-    pattern = df["content"].str.extract("(\S+) ?jährige[rn]? ?(Beruf|\S*erfahrung|,? praktisch|,? relevant|,? einschlägig|,? fundiert|Expertise)", flags=re.IGNORECASE)[0]
-    pattern = pattern.where(~(pattern.str.contains("(mehr|lang)", case=False, regex=True, na=False)), "much")
+    pattern = df["content"].str.extract(r"(\S+) ?jährige[rn]? ?(Beruf|\S*erfahrung|,? praktisch|,? relevant|,? einschlägig|,? fundiert|Expertise)", flags=re.IGNORECASE)[0]
+    pattern = pattern.where(~(pattern.str.contains("mehr|lang", case=False, regex=True, na=False)), "much")
     pattern = pattern.str.strip("- ")
     pattern = pattern.apply(drop_outliers)
     pattern = pattern.apply(unify_words)
@@ -521,24 +569,25 @@ def extract_experience(df):
     pattern = pattern.apply(drop_useless)
     experience = experience.combine_first(pattern)
     # third pattern
-    pattern = df["content"].str.extract("(\S+) ?years?( of)? ?(\S* ?experience|professional|relevant|work|employment|proven|practical)", flags=re.IGNORECASE)[0]
+    pattern = df["content"].str.extract(r"(\S+) ?years?( of)? ?(\S* ?experience|professional|relevant|work|employment|proven|practical)", flags=re.IGNORECASE)[0]
     pattern = pattern.apply(convert_ranges)
-    digits = pattern.str.extract("\D*(\d+)\D*")[0]
+    pattern = pattern.fillna("")
+    digits = pattern.str.extract(r"\D*(\d+)\D*")[0]
     pattern = digits.combine_first(pattern)
     pattern = pattern.apply(unify_words)
-    pattern = pattern.where(~(pattern.str.contains("(several|multiple)", case=False, regex=True, na=False)), "much")
+    pattern = pattern.where(~(pattern.str.contains("several|multiple", case=False, regex=True, na=False)), "much")
     pattern = pattern.replace({"one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6",
                                "seven": "7", "eight": "8", "nine": "9", "ten": "10"})
     pattern = pattern.apply(drop_outliers)
     pattern = pattern.apply(drop_useless)
     experience = experience.combine_first(pattern)
     # fourth pattern
-    pattern = df["content"].str.extract("(\S+) ?Berufserfahrung", flags=re.IGNORECASE)[0]
+    pattern = df["content"].str.extract(r"(\S+) ?Berufserfahrung", flags=re.IGNORECASE)[0]
     pattern = pattern.apply(unify_words)
     pattern = pattern.apply(convert_keywords)
     experience = experience.combine_first(pattern)
     # fifth pattern
-    pattern = df["content"].str.extract("(\S+) ?(professional|work|working|practical) experience", flags=re.IGNORECASE)[0]
+    pattern = df["content"].str.extract(r"(\S+) ?(professional|work|working|practical) experience", flags=re.IGNORECASE)[0]
     pattern = pattern.apply(unify_words)
     pattern = pattern.apply(convert_keywords)
     experience = experience.combine_first(pattern)
@@ -555,13 +604,16 @@ def extract_experience(df):
     pattern = pattern.replace({True: "little", False: np.nan})
     experience = experience.combine_first(pattern)
 
-    experience_bins = experience.replace(
-        {"1": "little_experience", "2": "little_experience", "3": "some_experience", "4": "some_experience",
-         "5": "much_experience", "6": "much_experience", "7": "much_experience", "8": "much_experience",
-         "9": "much_experience", "10": "much_experience", "little": "little_experience",
-         "some": "some_experience", "much": "much_experience"})
+    experience_bins = experience.replace({"1": "<=2_years_experience", "2": "<=2_years_experience", "3": "3-4_years_experience", "4": "3-4_years_experience", 
+                                      "5": ">=5_years_experience", "6": ">=5_years_experience", "7": ">=5_years_experience", "8": ">=5_years_experience",
+                                      "9": ">=5_years_experience", "10": ">=5_years_experience", "little": "<=2_years_experience", "some": "3-4_years_experience",
+                                      "much": ">=5_years_experience"})
     experience_bins.fillna("no_experience_information", inplace=True)
-    experience_dummies = pd.get_dummies(experience_bins, dtype="bool")
+    categories = ["<=2_years_experience", "3-4_years_experience", ">=5_years_experience", "no_experience_information"]
+    # pd.get_dummies() would only generate one feature for new data points
+    experience_dummies = OneHotEncoder(categories=[categories], sparse_output=False, dtype="bool").fit_transform(experience_bins.to_frame())
+    experience_dummies = pd.DataFrame(experience_dummies, columns=categories)
+
     df = pd.merge(df, experience_dummies, left_index=True, right_index=True)
     return df
 
@@ -581,6 +633,64 @@ def remove_duplicates(df):
     """
 
     df = df[~df.drop(["link", "title", "content", "release_date"], axis=1).duplicated()]
+    return df
+
+
+def preprocess_data(df):
+    """Preprocesses the input data for the prediction model.
+    
+    Parameters
+    ----------
+    df: pandas.DataFrame
+        input data
+
+    Returns
+    -------
+    df: pandas.DataFrame
+        transformed dataframe 
+    """
+
+    df = pd.DataFrame(df, index=[0])
+
+    df = filter_contract_types(df)
+    if len(df) == 0:
+        print("The model can only predict salaries for permanent employment or trainee positions.")
+        return None
+
+    df = convert_work_types(df)
+
+    df = convert_title(df)
+
+    df = extract_experience_level(df)
+
+    df, _ = extract_locations(df)
+    df = create_location_features(df, None, None)
+
+    geo_df = pd.read_csv("data/geo_data.csv")
+    query = df["main_location"].iloc[0]
+    response = geo_df.loc[(geo_df["name"] == query) & (geo_df["type"] == "locality") & (geo_df["confidence"] == 1)]
+    
+    # the code in the comments can be used to get the location data from the Positionstack API when executed locally
+    # when used in the published streamlit app I decided to only use the data from the Positionstack API that I already saved in the data folder
+    if response.empty:
+        # response = positionstack.get_location(query, config.positionstack_key)
+        # if "region" in response.columns:
+        #     if (response["type"].iloc[0] == "locality") & response["confidence"].iloc[0] == 1:
+        #         df["main_region"] = response["region"].iloc[0]
+        # else:
+        #     df["main_region"] = np.nan
+        df["main_region"] = np.nan
+    else:
+        df["main_region"] = response["region"].iloc[0]
+
+    df = convert_industries(df)
+
+    df = convert_company_size(df)
+
+    df = extract_requirements(df)
+
+    df = extract_experience(df)
+
     return df
 
 

@@ -9,8 +9,8 @@ import requests
 import pandas as pd
 from tqdm import tqdm
 
-from . import config
-from .arguments import parse_positionstack
+import config
+from arguments import parse_positionstack
 
 
 def main(directory):
