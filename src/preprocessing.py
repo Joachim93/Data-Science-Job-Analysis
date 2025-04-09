@@ -656,20 +656,14 @@ def preprocess_data(df):
     if len(df) == 0:
         print("The model can only predict salaries for permanent employment or trainee positions.")
         return None
-
     df = convert_work_types(df)
-
     df = convert_title(df)
-
     df = extract_experience_level(df)
-
     df, _ = extract_locations(df)
     df = create_location_features(df, None, None)
-
     geo_df = pd.read_csv("data/geo_data.csv")
     query = df["main_location"].iloc[0]
     response = geo_df.loc[(geo_df["name"] == query) & (geo_df["type"] == "locality") & (geo_df["confidence"] == 1)]
-    
     # the code in the comments can be used to get the location data from the Positionstack API when executed locally
     # when used in the published streamlit app I decided to only use the data from the Positionstack API that I already saved in the data folder
     if response.empty:
@@ -682,15 +676,10 @@ def preprocess_data(df):
         df["main_region"] = np.nan
     else:
         df["main_region"] = response["region"].iloc[0]
-
     df = convert_industries(df)
-
     df = convert_company_size(df)
-
     df = extract_requirements(df)
-
     df = extract_experience(df)
-
     return df
 
 

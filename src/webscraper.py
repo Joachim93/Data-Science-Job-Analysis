@@ -231,7 +231,7 @@ def get_content(link):
         results["content"] = np.nan
     try:
         results["company_link"] = soup_job.find("a", attrs={"data-at": "header-company-logo"})["href"]
-    except AttributeError:
+    except (TypeError, AttributeError):
         results["company_link"] = np.nan
     try:
         content = soup_job.find("script", type="application/ld+json").text
@@ -276,7 +276,7 @@ def get_company_info(link):
                 results["company_size"] = info
             else:
                 industries.append(info)
-        results["industries"] = "|".join(industries)
+        results["industry"] = "|".join(industries)
     except AttributeError:
         results["company_size"] = np.nan
         results["industry"] = np.nan
