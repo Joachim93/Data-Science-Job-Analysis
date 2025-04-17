@@ -78,37 +78,37 @@ An exploratory data analysis was then performed. The graphs were created with th
 - In which regions of Germany are there the most vacancies?
 - Which attributes of the job influence the salary?
 
-<div style="display: flex; gap: 10px; width: 100%;">
-    <div style="display: flex; flex-direction: column; gap: 10px; width: 50%;">
-        <img src="images/requirements.png" alt="Image 1" width="100%"/>
-        <img src="images/salaries.png" alt="Image 2" width="100%"/>
-    </div>
-    <div style="width: 50%;">
-        <img src="images/germany.png" alt="Image 3" width="100%" style="height: 100%;"/>
-    </div>
-</div>
+<table>
+<tr>
+  <td width="50%" valign="top">
+    <img src="images/requirements.png" alt="Image 1" width="100%"/>
+    <img src="images/salaries.png" alt="Image 2" width="100%"/>
+  </td>
+  <td width="50%">
+    <img src="images/germany.png" alt="Image 3" width="100%"/>
+  </td>
+</tr>
+</table>
 
 
 ## Model Building
 
 Next, I tried to predict the salary of a job ad by the remaining variables. First, 20% of the data was split off as test data. The remaining data was used for cross validation. The Mean Absolute Error (MAE) was chosen as the optimization criterion, since large errors should not be penalized more than small ones. For categorical features One-Hot-Encoding and Target Encoding were tested. Missing values were replaced by a new category "missing_value". When using Target Encoding, the features where scaled afterwards. Then the following models were tested and tuned using Randomized Search:
 
-<div style="display: flex; gap: 20px; width: 100%;">
-    <div style="width: 50%;">
-        <img src="images/scores.png" alt="Model Scores" width="100%"/>
-    </div>
-    <div style="width: 50%;">
-        <img src="images/importances.png" alt="Feature Importances" width="100%"/>
-    </div>
-</div>
-
-<img src="images/scores.png" alt="Alternativtext"/>
+<table>
+<tr>
+  <td width="50%">
+    <img src="images/scores.png" alt="Model Scores" width="100%"/>
+  </td>
+  <td width="50%">
+    <img src="images/importances.png" alt="Feature Importances" width="100%"/>
+  </td>
+</tr>
+</table>
 
 With the best model, an MAE of 6455 € was achieved, which represents an improvement of over 3000 € compared to the target mean, which was used as a naive baseline.
+The drop column feature importanes were then calculated for the graph on the right in order to find out which features contributed most to reducing the error.
 
-Anschließend wurden Drop Column Feature Importanes berechnet, um herauszufinden, welche Features am stärksten zur Reduzierung des Fehlers beigetragen haben.
-
-<img src="images/importances.png" alt="Alternativtext"/>
 
 
 ## Deployment
@@ -124,40 +124,32 @@ modules:
 - Job Matching
     - This interface provides a ranked list of all jobs contained in the database, ordered by their similarity to the specified skills.
 
-
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-    <div style="text-align: center;">
-        <h3>Requirements Analysis</h3>
-        <div style="height: 300px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/requirement_analysis.png" alt="Requirements Analysis" width="100%" style="max-height: 100%; object-fit: contain;"/>
-        </div>
-        <p>Analysis of the most important skills and requirements across different job titles.</p>
-    </div>
-    <div style="text-align: center;">
-        <h3>Geographical Analysis</h3>
-        <div style="height: 300px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/geographical_analysis.png" alt="Geographical Analysis" width="100%" style="max-height: 100%; object-fit: contain;"/>
-        </div>
-        <p>Overview of job distribution across different regions in Germany.</p>
-    </div>
-</div>
-
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-    <div style="text-align: center;">
-        <h3>Job Recommendation</h3>
-        <div style="height: 300px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/job_recommendation.png" alt="Requirements Analysis" width="100%" style="max-height: 100%; object-fit: contain;"/>
-        </div>
-        <p>Analysis of the most important skills and requirements across different job titles.</p>
-    </div>
-    <div style="text-align: center;">
-        <h3>Salary Estimation</h3>
-        <div style="height: 300px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center;">
-            <img src="images/salary_estimation.png" alt="Geographical Analysis" width="100%" style="max-height: 100%; object-fit: contain;"/>
-        </div>
-        <p>Overview of job distribution across different regions in Germany.</p>
-    </div>
-</div>
+<table border="0" cellspacing="0">
+<tr>
+  <td width="50%" align="center">
+    <h3>Requirements Analysis</h3>
+  </td>
+  <td width="50%" align="center">
+    <h3>Geographical Analysis</h3>
+  </td>
+</tr>
+<tr>
+  <td width="50%" align="center">
+    <img src="images/requirement_analysis.PNG" width="80%"/>
+  </td>
+  <td width="50%" align="center">
+    <img src="images/geographical_analysis.PNG" width="80%"/>
+  </td>
+</tr>
+<tr>
+  <td width="50%">
+    <p>Analysis of the most important skills and requirements across different job titles.</p>
+  </td>
+  <td width="50%">
+    <p>Overview of job distribution across different regions in Germany.</p>
+  </td>
+</tr>
+</table>
 
 
 ## Usage
