@@ -18,17 +18,17 @@ In this project, over **3000 job offers** in the field of data science in German
 
 ## Table of Contents
 
-- Data Collection
-- Preprocessing
-- Data Analysis
-- Model Building
-- Deployment
-- Installation and Usage
+- [Data Collection](#data-collection)
+- [Preprocessing](#preprocessing)
+- [Data Analysis](#data-analysis)
+- [Model Building](#model-building)
+- [Deployment](#deployment)
+- [Installation and Usage](#usage)
 
 
 ## Data Collection
 
-A web scraper was implemented that searches job listings on the website "https://www.stepstone.de" and saves various 
+A webscraper was implemented using Beautifulsoup and Selenium that searches job listings on the website "https://www.stepstone.de" and saves various 
 attributes of each of the jobs offered in a .csv file. The extracted information includes:
 - Job title
 - Company
@@ -47,7 +47,7 @@ and geo-coordinates) for each location.
 
 ## Preprocessing
 
-Subsequently, the raw data was cleaned, as well as new features were created from the existing information. The following steps were carried out:
+Subsequently, the raw data was cleaned, as well as new features were created from the existing information using Pandas. The following steps were carried out:
 - Filtering out the relevant work types and contract types.
 - Classification of job titles into seven categories (Data Scientist, Data Analyst, Data Engineer, 
 Machine Learning Engineer, Software Engineer, Data Science Consultant, Data Science Manager)
@@ -59,6 +59,7 @@ Machine Learning Engineer, Software Engineer, Data Science Consultant, Data Scie
 - Capture of various requirements from the text description of the job ads using regular expressions 
     - Programming languages
     - Tools
+    - Databases
     - Python libraries
     - Education
     - Degree
@@ -70,7 +71,7 @@ Machine Learning Engineer, Software Engineer, Data Science Consultant, Data Scie
 
 ## Data Analysis
 
-An exploratory data analysis was then performed. The graphs were created with the help of the Seaborn and Plotly libraries. The aspects to which particular attention was paid here include:
+An exploratory data analysis was then performed. The graphs were created with the help of Seaborn and Plotly. The aspects to which particular attention was paid here include:
 - Analysis of the requirements for candidates
     - What skills (e.g., programming languages, tools or soft skills) are most often required? Are there differences between job titles?
     - What degrees and how much work experience are required?
@@ -107,7 +108,7 @@ Next, I tried to predict the salary of a job ad by the remaining variables. Firs
 </table>
 
 With the best model, an MAE of 6455 € was achieved, which represents an improvement of over 3000 € compared to the target mean, which was used as a naive baseline.
-The drop column feature importanes were then calculated for the graph on the right in order to find out which features contributed most to reducing the error.
+The drop column feature importanes were then calculated for the graph on the right in order to find out which features contributed most to reducing the error. During the model selection process different machine learning libraries like Scikit-Learn, XGBoost and LightGBM were used.
 
 
 
@@ -115,14 +116,8 @@ The drop column feature importanes were then calculated for the graph on the rig
 
 Finally, an interactive webapp was implemented using Streamlit, which allows users to perform certain analyses on the 
 data themselves. The webapp was hosted via the Streamlit Cloud and can be accessed at 
-https://joachim93-data-science-job-analysis-deploymentwebapp-iaz63l.streamlitapp.com/. It contains three standalone 
+https://joachim93-data-science-job-analysis-deploymentwebapp-iaz63l.streamlitapp.com/. It contains four standalone 
 modules:
-- Requirements Analysis.
-    - This interface provides the ability to view and compare different requirements for different job titles.
-- Geographic Analysis.
-    - This interface provides an overview of the geographic distribution of desired job titles.
-- Job Matching
-    - This interface provides a ranked list of all jobs contained in the database, ordered by their similarity to the specified skills.
 
 <table border="0" cellspacing="0">
 <tr>
@@ -143,10 +138,36 @@ modules:
 </tr>
 <tr>
   <td width="50%">
-    <p>Analysis of the most important skills and requirements across different job titles.</p>
+    <p>This interface offers the possibility to display the most important requirements for different job titles, experience levels and company sizes.</p>
   </td>
   <td width="50%">
-    <p>Overview of job distribution across different regions in Germany.</p>
+    <p>This interface provides an overview of the geographical distribution of available data science jobs in Germany. The data can be filtered by job title.</p>
+  </td>
+</tr>
+</table>
+<table border="0" cellspacing="0">
+<tr>
+  <td width="50%" align="center">
+    <h3>Job Recommendation</h3>
+  </td>
+  <td width="50%" align="center">
+    <h3>Salary Estimation</h3>
+  </td>
+</tr>
+<tr>
+  <td width="50%" align="center">
+    <img src="images/job_recommendation.PNG" width="80%"/>
+  </td>
+  <td width="50%" align="center">
+    <img src="images/salary_estimation.PNG" width="80%"/>
+  </td>
+</tr>
+<tr>
+  <td width="50%">
+    <p>This interface provides a recommendation system for job openings based on the user's skills and preferences.</p>
+  </td>
+  <td width="50%">
+    <p>This interface offers the possibility to estimate the salary for a given job ad on Stepstone.</p>
   </td>
 </tr>
 </table>
@@ -182,7 +203,7 @@ modules:
         - is only required if additional geographic information about the locations is to be retrieved as well
         - the required key can be read directly on the start page after creating an account and logging in
         
-4. Using the web scraper (example):
+4. Using the webscraper (example):
     ````
     python data_collection/webscraper.py --directory data --keywords data_science machine_learning --salary
     ````
