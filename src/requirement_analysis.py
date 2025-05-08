@@ -25,19 +25,19 @@ def requirements_analysis(df):
     st.write("")
     col1, col2 = st.columns(2)
     choices_jobtitle = ["All"] + list(df["General_info", "title_category"].unique())
-    choices_requirement = df.columns.unique(0).drop(["General_info", "Major", "Degree", "Experience"])
-    choices_experience = ["All", "<=2_years_experience", "3-4_years_experience", ">=5_years_experience"]
-    choices_size = ["All", "small (0-1,000)", "medium (1,001-10,000)", "big (>10,000)"]
+    choices_requirement = ["All"] + list(df.columns.unique(0).drop(["General_info", "Major", "Degree", "Experience"]))
+    choices_experience = ["All", "<=2 Years Experience", "3-4 Years Experience", ">=5 Years Experience"]
+    choices_size = ["All", "Small (0-1,000)", "Medium (1,001-10,000)", "Big (>10,000)"]
 
     size_groups = {
-        "10,001+": "big (>10,000)", 
-        "5001-10,000": "medium (1,001-10,000)", 
-        "2501-5000": "medium (1,001-10,000)", 
-        "1001-2500": "medium (1,001-10,000)",
-        "501-1000": "small (0-1,000)", 
-        "251-500": "small (0-1,000)", 
-        "51-250": "small (0-1,000)", 
-        "0-50": "small (0-1,000)"
+        "10,001+": "Big (>10,000)", 
+        "5001-10,000": "Medium (1,001-10,000)", 
+        "2501-5000": "Medium (1,001-10,000)", 
+        "1001-2500": "Medium (1,001-10,000)",
+        "501-1000": "Small (0-1,000)", 
+        "251-500": "Small (0-1,000)", 
+        "51-250": "Small (0-1,000)", 
+        "0-50": "Small (0-1,000)"
     }
 
     with col1:
@@ -48,20 +48,28 @@ def requirements_analysis(df):
         selected_jobtitle = st.selectbox("Which jobtitle are you interested in?", choices_jobtitle)
         selected_size = st.selectbox("Which company size are you interested in?", choices_size)
 
+    if selected_requirements != "All":
+        columns = selected_requirements
+    else:
+        columns = df.columns.unique(0).drop(["General_info", "Major", "Degree", "Experience"])
     if selected_experience != "All":
-        df = df.loc[df["Experience", selected_experience]]
+        df = df.loc[df["Experience", selected_experience.replace(" ", "_").lower()]]
     if selected_jobtitle != "All":
         df = df.loc[df["General_info", "title_category"] == selected_jobtitle]
     if selected_size != "All":
         df = df.loc[df["General_info", "company_size"].map(size_groups) == selected_size]
 
-    percentages = pd.Series(df[selected_requirements].mean() * 100, 
+    percentages = pd.Series(df[columns].mean() * 100, 
                             name=selected_requirements).sort_values(ascending=False).to_frame().head(20)
+    if percentages.index.nlevels > 1:
+        percentages = percentages.droplevel(0, axis=0)
+
     percentages.index = percentages.index.str.title()
 
     fig = px.bar(percentages,
              y=selected_requirements,
              x=percentages.index,
+             color_discrete_sequence=['#1f77b4'],
              width=1000, height=500)
 
     fig.update_traces(

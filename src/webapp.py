@@ -19,7 +19,7 @@ def main():
 
     data_long, data_wide = load_data()
     model = load_model()
-    st.sidebar.title("Analyzing the Data Science Job Market in Germany")
+    st.sidebar.title("📊 Analyzing the Data Science Job Market in Germany")
     st.sidebar.write("")
     st.sidebar.write("")
     options = st.sidebar.selectbox("Pages", options=["Requirements Analysis", "Geographical Analysis", 

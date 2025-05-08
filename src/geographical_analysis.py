@@ -27,10 +27,6 @@ def geographical_analysis(df):
         options = ["Data Scientist", "Data Analyst", "Data Engineer", "Machine Learning Engineer", "Software Engineer",
                    "Data Science Consultant", "Data Science Manager"]
 
-        # selection = st.segmented_control(
-        #     "Jobtitles", options, selection_mode="multi", default=options
-        # )
-
         col1, col2, col3 = st.columns(3)
         with col1:
             check_ds = st.checkbox("Data Scientist", value=True)

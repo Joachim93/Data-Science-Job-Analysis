@@ -143,8 +143,7 @@ def get_links(url, cookies):
         contains a list with links and another with salary information
     """
 
-    # r = requests.get(url, headers=config.headers, cookies=cookies)
-    r = requests.get(url, headers=config.headers)
+    r = requests.get(url, headers=config.headers, cookies=cookies)
     soup = BeautifulSoup(r.content, "html.parser")
     posts = soup.find_all("article", attrs={"data-testid": "job-item"})
     results = {}
@@ -276,9 +275,15 @@ def get_company_info(link):
                 results["company_size"] = info
             else:
                 industries.append(info)
+        print(industries)
         results["industry"] = "|".join(industries)
     except AttributeError:
         results["company_size"] = np.nan
+        results["industry"] = np.nan
+
+    if "company_size" not in results:
+        results["company_size"] = np.nan
+    if not results["industry"]:
         results["industry"] = np.nan
 
     try:
