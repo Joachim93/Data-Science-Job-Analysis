@@ -189,7 +189,7 @@ modules:
 
     To collect the data, some personal data is needed, which is stored in the file ``config.py`` and should not be 
     published in this repository. So this file has to be created by a new user and stored in the folder 
-    ``data_collection``. The following variables are defined there:
+    ``src``. The following variables are defined there:
     
     - ``header = {"User-Agent": "..."}``
         - the user agent helps to disguise that the requests are automatic queries
@@ -205,7 +205,7 @@ modules:
         
 4. Using the webscraper (example):
     ````
-    python data_collection/webscraper.py --directory data --keywords data_science machine_learning --salary
+    python src/webscraper.py --directory data --keywords data_science machine_learning --salary
     ````
     - in this case the webscraper searches all job offers under the search terms "data science" and "machine learning 
     and stores the information in the folder "data
@@ -213,7 +213,7 @@ modules:
     
 5. Preprocessing of the data (example):
     ````
-    python data_collection/preprocessing.py --directory data --geo_data
+    python src/preprocessing.py --directory data --geo_data
     ````
     - the script transforms the raw data in the specified folder into a format suitable for the analysis and stores 
     them in the same folder
@@ -222,7 +222,11 @@ modules:
     
 6. Running the webapp:
     ````
-    streamlit run deployment/webapp.py
+    streamlit run src/webapp.py
     ````
     - if during data collection another name than "data" was chosen for the folder with data, it must be changed 
     manually in the code of the function "load_data" in the file ``deployment/webapp.py`` manually.
+
+**Note 1:** The code of the webscraper interacts with an external website, which can change at any time. Therefore, it is possible that a few minor adjustments to the latest changes to the website may need to be made before using the webscraper in order for it to function properly.
+
+**Note 2:** The Positionstack API has now changed its terms of use so that only 100 free requests can be made per month.
