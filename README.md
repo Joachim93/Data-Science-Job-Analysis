@@ -13,7 +13,7 @@ In this project, over **3000 job offers** in the field of data science in German
 
 
 
-👉 [🔗 Link to Webapp](https://joachim93-data-science-job-analysis-deploymentwebapp-iaz63l.streamlitapp.com/)
+👉 [🔗 Link to Web App](https://data-science-job-analysis-germany.streamlit.app/)
 
 
 ## Table of Contents
@@ -114,9 +114,9 @@ The drop column feature importanes were then calculated for the graph on the rig
 
 ## Deployment
 
-Finally, an interactive webapp was implemented using Streamlit, which allows users to perform certain analyses on the 
-data themselves. The webapp was hosted via the Streamlit Cloud and can be accessed at 
-https://joachim93-data-science-job-analysis-deploymentwebapp-iaz63l.streamlitapp.com/. It contains four standalone 
+Finally, an interactive web  was implemented using Streamlit, which allows users to perform certain analyses on the 
+data themselves. The web app was hosted via the Streamlit Cloud and can be accessed at 
+https://data-science-job-analysis-germany.streamlit.app/. It contains four standalone 
 modules:
 
 <table border="0" cellspacing="0">
@@ -185,11 +185,9 @@ modules:
     pip install -r requirements.txt
     ````
    
-3. Create a ``config.py``:
+3. Update the ``src/config.py``:
 
-    To collect the data, some personal data is needed, which is stored in the file ``config.py`` and should not be 
-    published in this repository. So this file has to be created by a new user and stored in the folder 
-    ``src``. The following variables are defined there:
+    To collect the data, some personal data is needed, which is stored in the file ``config.py`` and should not be public. The public version of this file only contains a user agent for the webscraper. The other information need to be added by each user on their own. The following variables can be defined there:
     
     - ``header = {"User-Agent": "..."}``
         - the user agent helps to disguise that the requests are automatic queries
@@ -220,13 +218,15 @@ modules:
     - the ``--geo_data`` flag indicates that geographic information should also be retrieved from the Positionstack-API
     should be retrieved
     
-6. Running the webapp:
+6. Running the web app:
     ````
     streamlit run src/webapp.py
     ````
     - if during data collection another name than "data" was chosen for the folder with data, it must be changed 
-    manually in the code of the function "load_data" in the file ``deployment/webapp.py`` manually.
+    manually in the code of the function "load_data" in the file ``src/webapp.py`` manually.
 
-**Note 1:** The code of the webscraper interacts with an external website, which can change at any time. Therefore, it is possible that a few minor adjustments to the latest changes to the website may need to be made before using the webscraper in order for it to function properly.
+**Note 1:** The code of the webscraper interacts with an external website, which can change at any time. Therefore, it is possible that a few minor adjustments to the latest changes to the website may need to be made before using the webscraper or the salary estimation in order for it to function properly.
 
 **Note 2:** The Positionstack API has now changed its terms of use so that only 100 free requests can be made per month.
+
+**Note 3:** The salary estimate can only be used if the web app is accessed locally, as any requests from the Streamlit Cloud are blocked by the website. 

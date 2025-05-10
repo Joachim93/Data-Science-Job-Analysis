@@ -1,5 +1,5 @@
 """
-This script contains the function for requirement analysis of the webapp.
+This script contains the function for requirement analysis of the web app.
 """
 
 import pandas as pd
@@ -8,7 +8,7 @@ import plotly.express as px
 
 
 def requirements_analysis(df):
-    """Realizes the requirement analysis of the webapp.
+    """Realizes the requirement analysis of the web app.
 
     Filters the data according to the specified information and calculates for each of the specified attributes the
     percentage of jobs where this attribute occurs.

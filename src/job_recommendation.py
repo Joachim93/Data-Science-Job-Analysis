@@ -1,5 +1,5 @@
 """
-This script contains the function for job matching of the webapp.
+This script contains the function for job matching of the web app.
 """
 
 import pandas as pd
@@ -7,7 +7,7 @@ import streamlit as st
 
 
 def job_recommendation(df):
-    """Realizes the job matching of the webapp.
+    """Realizes the job matching of the web app.
 
     Filters the data first by the specified degree and work experience. Creates a ranking of all remaining jobs, which
     ranks them according to their similarity to the applicant's stated skills.
