@@ -192,8 +192,7 @@ def get_content(link):
             results["work_type"] = np.nan
             results["content"] = np.nan
             results["industry"] = np.nan
-            results["rating"] = np.nan
-            results["num_ratings"] = np.nan
+            results["company_link"] = np.nan
             results["release_date"] = np.nan
             print("Request failed")
             return results
@@ -315,12 +314,17 @@ def scrape_features(link):
     """
     
     results = get_content(link)
-    if results["company_link"]:
+    if np.isnan(results["title"]):
+        return None
+
+    if np.isnan(results["company_link"]):
         company_info = get_company_info(results["company_link"])
         results.update(company_info)
     else:
         results["company_size"] = np.nan
         results["industry"] = np.nan
+        results["rating"] = np.nan
+        results["num_ratings"] = np.nan
     return results
 
 

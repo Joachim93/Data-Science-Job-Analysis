@@ -1,5 +1,5 @@
 """
-Script to generate the webapp.
+Script to generate the web app.
 """
 
 import joblib

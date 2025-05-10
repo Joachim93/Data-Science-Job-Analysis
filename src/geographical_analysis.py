@@ -1,5 +1,5 @@
 """
-This script contains the function for geographical analysis of the webapp.
+This script contains the function for geographical analysis of the web app.
 """
 
 import numpy as np
@@ -8,7 +8,7 @@ import plotly.express as px
 
 
 def geographical_analysis(df):
-    """Realizes the geographical analysis of the webapp.
+    """Realizes the geographical analysis of the web app.
 
     Filters the data by the specified job titles and displays the distribution of jobs in Germany on a scatter map.
 
