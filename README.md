@@ -11,9 +11,7 @@ In this project, over **3000 job offers** in the field of data science in German
 - 💰 **Salary Estimate:** What is the approximate salary I can expect to earn in my desired job?
 
 
-
-
-👉 [🔗 Link to Web App](https://data-science-job-analysis-germany.streamlit.app/)
+[🔗 Link to Web App](https://data-science-job-analysis-germany.streamlit.app/)
 
 
 ## Table of Contents
@@ -223,7 +221,8 @@ modules:
     streamlit run src/webapp.py
     ````
     - if during data collection another name than "data" was chosen for the folder with data, it must be changed 
-    manually in the code of the function "load_data" in the file ``src/webapp.py`` manually.
+    manually in the code of the function "load_data" in the file ``src/webapp.py`` manually
+    - it is not absolutely necessary to run the webscraper before using the web app, as data is already in the corresponding folder of this repository
 
 **Note 1:** The code of the webscraper interacts with an external website, which can change at any time. Therefore, it is possible that a few minor adjustments to the latest changes to the website may need to be made before using the webscraper or the salary estimation in order for it to function properly.
 
