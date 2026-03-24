@@ -64,7 +64,7 @@ def requirements_analysis(df):
     if percentages.index.nlevels > 1:
         percentages = percentages.droplevel(0, axis=0)
 
-    percentages.index = percentages.index.str.title()
+    percentages.index = percentages.index.str.replace('_', ' ').str.title()
 
     fig = px.bar(percentages,
              y=selected_requirements,

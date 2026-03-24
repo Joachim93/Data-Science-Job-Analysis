@@ -25,7 +25,7 @@ def salary_estimation(model):
     st.sidebar.write("**Note 1**: The functionality of this module depends on an external website that is updated regularly. " \
     "Therefore, it cannot be guaranteed that this module will continue to function properly after future changes to the website.")
     st.sidebar.write("**Note 2**: The salary estimate can only be used if the web app is accessed locally, " \
-    "as any requests from the Streamlit Cloud are blocked by the website.")
+    "as any requests from the cloud are blocked by the website.")
     st.write("")
 
     with st.form(key='salary_estimation_form'):

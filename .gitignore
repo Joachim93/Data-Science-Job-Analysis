@@ -11,4 +11,7 @@ notebooks/.ipynb_checkpoints
 /src/__pycache__
 src/hidden_config.py
 src/tests.ipynb
-chromedriver.exe
+src/chromedriver.exe
+.dockerignore
+.devcontainer.json
+Keys_Webapp.pem
