@@ -2,7 +2,7 @@
 
 In this project, over **3000 job offers** in the field of data science in Germany were automatically collected from a job exchange and then analyzed in order to gain more precise insights into the current job market. The results of the analysis are also available to other users within an **interactive web app**, which offers the following options:
 
-- 🧠 **Skill Gap Analysis:** What skills and tools are most expected for my desired career?
+- 🧠 **Skill Analysis:** What skills and tools are most expected for my desired career?
 
 - 🎯 **Job Recommendation System:** Which advertised jobs are best suited to my current skillset?
 
@@ -11,7 +11,9 @@ In this project, over **3000 job offers** in the field of data science in German
 - 💰 **Salary Estimate:** What is the approximate salary I can expect to earn in my desired job?
 
 
-[🔗 Link to Web App](https://data-science-job-analysis-germany.streamlit.app/)
+The deployed web app on AWS can be accessed with the following  link: 
+
+[🔗 Link to Web App](http://54.164.145.37:8501/)
 
 
 ## Table of Contents
@@ -21,7 +23,7 @@ In this project, over **3000 job offers** in the field of data science in German
 - [Data Analysis](#data-analysis)
 - [Model Building](#model-building)
 - [Deployment](#deployment)
-- [Installation and Usage](#usage)
+- [Installation and Usage](#installation-and-usage)
 
 
 ## Data Collection
@@ -113,8 +115,7 @@ The drop column feature importanes were then calculated for the graph on the rig
 ## Deployment
 
 Finally, an interactive web  was implemented using Streamlit, which allows users to perform certain analyses on the 
-data themselves. The web app was hosted via the Streamlit Cloud and can be accessed at 
-https://data-science-job-analysis-germany.streamlit.app/. It contains four standalone 
+data themselves. The application was packaged into a container image along with its runtime environment and then deployed to AWS. The built image was first pushed to the Elastic Container Registry (ECR) and then launched within an EC2 instance. The running web app can be accessed via the link http://54.164.145.37:8501/. It contains four standalone 
 modules:
 
 <table border="0" cellspacing="0">
@@ -171,7 +172,7 @@ modules:
 </table>
 
 
-## Usage
+## Installation and Usage
 
 1. Clone repository: 
     ````
